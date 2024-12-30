@@ -10,6 +10,7 @@ urlpatterns = [
     
     # matter
     path('matter/add/', MatterAdd.as_view(), name='matter_add'),
+    path('matter/', MatterRead.as_view(), name='matter'),
 
     path('', index, name='home'),
 ]

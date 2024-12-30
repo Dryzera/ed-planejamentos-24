@@ -1,9 +1,17 @@
 from django.shortcuts import redirect, render
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.views.generic import View
+from django.views.generic import View, ListView
 from home.forms import AddMatterForm
 from home.models import Matter
+
+class MatterRead(ListView):
+    template_name = 'matter/matter.html'
+    model = Matter
+
+    def get(self, request):
+        matters = Matter.objects.filter(teacher=request.user)
+        return render(request, self.template_name, context={'matters': matters})
 
 class MatterAdd(View):
     template_name = 'matter/add.html'
@@ -27,7 +35,7 @@ class MatterAdd(View):
                 duration=form.cleaned_data['duration'],
             )
             matter.save()
-            messages.success('Aula adicionada!')
+            messages.success(request, 'Aula adicionada!')
             return redirect('home:home')
             
         messages.error(request, 'Algo deu errado [cod. 01].')

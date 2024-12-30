@@ -1,0 +1,26 @@
+{% extends "global/base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+      <div class="col-8">
+        <h1 class="mt-2">Suas Aulas Cadastradas</h1>
+        <div class="grid-matters">
+        {% for matter in matters %}
+            <div class='matter'>
+                <div class="aula"><a href="">{{ matter.matter }}</a></div>
+                <div class="infos">
+                    <p class='descriptin-matter'>Descrição:</p>
+                    <ul>
+                        <li><img class='icon-description-matter' src="{% static "global/imgs/home.svg" %}" alt="casa em svg">{{ matter.school }}</li>
+                        <li><img class='icon-description-matter' src="{% static "global/imgs/clock.svg" %}" alt="relógio em svg">{{ matter.hour }}h</li>
+                    </ul>
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock content %}

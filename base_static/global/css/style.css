@@ -1,0 +1,35 @@
+.grid-matters {
+    display: grid;
+    grid-template-columns: repeat(auto-fill);
+    gap: 2rem;
+}
+
+@media (min-width: 600px) {
+    .grid-matters { grid-template-columns: repeat(2, 1fr); }
+  }
+  
+@media (min-width: 900px) {
+.grid-matters { grid-template-columns: repeat(3, 1fr); }
+}
+
+.matter {
+    background-color: #eee;
+    padding: 2rem;
+    border-radius: 1rem;
+}
+
+.matter .aula {
+    font-size: 24px;
+    padding-bottom: 1rem;
+    text-align: center;
+}
+
+.descriptin-matter {
+    font-weight: bold;
+}
+
+.icon-description-matter {
+    width: 20px;
+    vertical-align: text-top;
+    margin-right: 5px;
+}
