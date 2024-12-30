@@ -1,7 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
-
-from . import models
+from home.models import Matter, School
 
 class LoginForm(forms.ModelForm):
     user = forms.CharField(
@@ -26,3 +25,41 @@ class LoginForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ('user', 'password',)
+
+class AddMatterForm(forms.ModelForm):
+    school = forms.ModelChoiceField(queryset=School.objects.all(), empty_label='(Selecione)', label='Escola:')
+
+    matter = forms.CharField(
+        widget=forms.TextInput(
+            attrs={'placeholder': 'Digite aqui...'}
+        ),
+        help_text='Digite o nome da matéria',
+        label='Matéria:'
+    )
+
+    day_week = forms.CharField(
+        widget=forms.Select(
+            choices=Matter.WEEK_DAY_CHOICES
+        ),
+        label='Dia da aula:',
+    )
+
+    hour = forms.TimeField(
+        widget=forms.TimeInput(
+            attrs={'type': 'time'}
+        ),
+        help_text='Coloque o horário em que a aula começa',
+        label='Horário:'
+    )
+
+    duration = forms.FloatField(
+        widget=forms.NumberInput(
+            attrs={'placeholder': 'Digite aqui...', 'class': 'duration'}
+        ),
+        help_text='Coloque a duração da aula em minutos',
+        label='Duração:'
+    )
+    
+    class Meta:
+        model = Matter
+        fields = ('school', 'matter', 'day_week', 'hour', 'duration')

@@ -1,0 +1,30 @@
+{% extends "global/base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+      <div class="col-8">
+        <h1 class="mt-2">Adicionar Aula</h1>
+        <hr class="mt-0 mb-4">
+        <form method="post">
+            {% csrf_token %}
+                {{ form.school|as_crispy_field }}
+                {{ form.matter|as_crispy_field }}
+            <div class="form-row">
+              <div class="form-group col-md-6 mb-0">
+                {{ form.duration|as_crispy_field }}
+              </div>
+              <div class="form-group col-md-4 mb-0">
+                {{ form.hour|as_crispy_field }}
+                </div>
+                <div class="form-group col-md-4 mb-0">
+                    {{ form.day_week|as_crispy_field }}
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Adicionar</button>
+          </form>
+      </div>
+    </div>
+  </div>
+{% endblock content %}
