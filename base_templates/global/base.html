@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    {% include "global/partials/_head.html" %}
+</head>
+<body>
+    <header>
+        {% include "global/partials/_header.html" %}
+    </header>
+    {% if messages %}
+        {% for message in messages %}
+            <div class="message {{ message.tags }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+    <main>
+        {% block content %}{% endblock content %}
+    </main>
+</body>
+</html>

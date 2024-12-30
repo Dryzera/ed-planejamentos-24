@@ -1,0 +1,10 @@
+<h2>${NOME SITE}</h2>
+{% if user.is_authenticated %}
+    <nav class="navigator">
+        <ul class="links">
+            <li><a href="">Planejamento</a></li>
+            <li><a href="">Adicionar nova Aula</a></li>
+            <li><a href="{% url "home:logout" %}">Sair</a></li>
+        </ul>
+    </nav>
+{% endif %}
