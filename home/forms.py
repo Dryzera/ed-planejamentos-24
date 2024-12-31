@@ -52,7 +52,7 @@ class AddMatterForm(forms.ModelForm):
         label='Horário:'
     )
 
-    duration = forms.FloatField(
+    duration = forms.IntegerField(
         widget=forms.NumberInput(
             attrs={'placeholder': 'Digite aqui...', 'class': 'duration'}
         ),

@@ -1,3 +1,7 @@
+html {
+    overflow-x: hidden;
+}
+
 red {
     color: red;
 }
@@ -75,4 +79,37 @@ red {
 .confirm_apagar label {
     margin-left: .5rem;
     margin-top: 4px;
+}
+
+.principal_header {
+    background-color: #d0d0d0;
+    padding-bottom: 1.5rem;
+    border-radius: 0 0 30px 30px;
+    margin-bottom: 2rem;
+}
+
+.site_title {
+    position: relative;
+    top: 10px;
+    left: 10px;
+}
+
+.navigator .links {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.links li {
+    margin: 0 1rem;
+}
+
+.links li a {
+    color: black;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    text-shadow: 4px 3px 10px black;
 }

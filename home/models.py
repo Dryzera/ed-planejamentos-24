@@ -25,7 +25,7 @@ class Matter(models.Model):
     matter = models.CharField(max_length=30, help_text='Nome da aula', verbose_name='Matéria')
     day_week = models.CharField(choices=WEEK_DAY_CHOICES, max_length=20, blank=False, null=False)
     hour = models.TimeField(help_text='Horario de início da aula', verbose_name='Inicio Aula')
-    duration = models.FloatField(default=50, help_text='Duração da aula (em minutos)', verbose_name='Duração da aula')
+    duration = models.IntegerField(default=50, help_text='Duração da aula (em minutos)', verbose_name='Duração da aula')
 
     def __str__(self):
         return f'{self.school} | {self.teacher} | {self.matter}'

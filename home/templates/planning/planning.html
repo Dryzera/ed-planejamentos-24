@@ -1,0 +1,22 @@
+{% extends "global/base.html" %}
+
+{% block content %}
+<form method='post' action="{% url "home:planning_create" %}">
+    {% csrf_token %}
+    <select name="school" id="school">
+        {% for school in schools %}
+            <option value="{{ school.pk }}">{{ school.name }}</option>
+        {% endfor %}
+    </select>
+    <select name="dia_semana" id="dia_semana">
+        <option value="0">Domingo</option>
+        <option value="1">Segunda-Feira</option>
+        <option value="2">Terça-Feira</option>
+        <option value="3">Quarta-Feira</option>
+        <option value="4">Quinta-Feira</option>
+        <option value="5">Sexta-Feira</option>
+        <option value="6">Sábado</option>
+    </select>
+    <button type="submit">Criar</button>
+</form>
+{% endblock content %}
