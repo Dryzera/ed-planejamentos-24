@@ -1,3 +1,7 @@
+red {
+    color: red;
+}
+
 .grid-matters {
     display: grid;
     grid-template-columns: repeat(auto-fill);
@@ -62,4 +66,13 @@
 .message.info {
     background: rgba(85, 88, 255, 0.3);
     border: 1px solid rgba(79, 146, 255, 0.9);
+}
+
+.confirm_apagar {
+    padding-top: 1rem;
+}
+
+.confirm_apagar label {
+    margin-left: .5rem;
+    margin-top: 4px;
 }

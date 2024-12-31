@@ -10,7 +10,7 @@ urlpatterns = [
     path('login/', Login.as_view(), name='login'),
     
     # matter
-    path('matter/<int:pk>/', MatterRead.as_view(), name='matter_view'),
+    path('matter/<int:pk>/', login_required(MatterDetail.as_view(), login_url='home:login'), name='matter_view'),
     path('matter/add/', login_required(MatterAdd.as_view(), login_url='home:login'), name='matter_add'),
     path('matter/', login_required(MatterRead.as_view(), login_url='home:login'), name='matter'),
 

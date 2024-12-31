@@ -1,0 +1,35 @@
+{% extends "global/base.html" %}
+{% load crispy_forms_tags %}
+{% load edfilters %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+      <div class="col-8">
+        <h1 class="mt-2">Editar Aula</h1>
+        <hr class="mt-0 mb-4">
+        <form method="post" action='{% url "home:matter_view" matter.pk %}'>
+            {% csrf_token %}
+                {{ form.school|as_crispy_field }}
+                {{ form.matter|as_crispy_field }}
+            <div class="form-row">
+              <div class="form-group col-md-6 mb-0">
+                {{ form.duration|as_crispy_field}}
+              </div>
+              <div class="form-group col-md-4 mb-0">
+                {{ form.hour|as_crispy_field }}
+                </div>
+                <div class="form-group col-md-4 mb-0">
+                    {{ form.day_week|as_crispy_field }}
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Salvar</button>
+            <div class="form-row confirm_apagar">
+                <input type="checkbox" name="confirm_apagar" id="confirm_apagar">
+                <label for="confirm_apagar">Ao marcar a caixinha, eu estou ciente que essa aula será <red>APAGADA</red> ao clicar em 'salvar'.</label>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock content %}
