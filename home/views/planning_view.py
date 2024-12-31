@@ -16,7 +16,7 @@ class PlanningCreate(View):
         dia_semana = request.POST.get('dia_semana')
         school_pk = request.POST.get('school')
 
-        matters_available = Matter.objects.filter(school=school_pk, day_week=dia_semana)
+        matters_available = Matter.objects.filter(teacher=request.user, school=school_pk, day_week=dia_semana)
         if not matters_available:
             messages.error(request, 'Nenhuma aula para este dia da semana/escola foi encontrada.')
             return redirect('home:planning')       

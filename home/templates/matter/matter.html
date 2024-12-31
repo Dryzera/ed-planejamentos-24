@@ -2,6 +2,10 @@
 {% load static %}
 
 {% block content %}
+<div class="add_new_matter">
+  <a href="{% url "home:matter_add" %}">Adicionar Aula</a>
+</div>
+
 <div class="container">
     <div class="row justify-content-center">
       <div class="col-8">
@@ -14,6 +18,7 @@
                     <p class='descriptin-matter'>Descrição:</p>
                     <ul>
                         <li><img class='icon-description-matter' src="{% static "global/imgs/home.svg" %}" alt="casa em svg">{{ matter.school }}</li>
+                        <li><img class='icon-description-matter' src="{% static "global/imgs/calendar.svg" %}" alt="calendário em svg">{{ matter.get_day_week_display }}</li>
                         <li><img class='icon-description-matter' src="{% static "global/imgs/clock.svg" %}" alt="relógio em svg">{{ matter.hour }}h</li>
                     </ul>
                 </div>

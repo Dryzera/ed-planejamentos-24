@@ -11,7 +11,7 @@ class MatterRead(ListView):
     model = Matter
 
     def get(self, request):
-        matters = Matter.objects.filter(teacher=request.user)
+        matters = Matter.objects.filter(teacher=request.user).order_by('day_week', 'hour')
         return render(request, self.template_name, context={'matters': matters})
 
 class MatterAdd(View):
@@ -36,9 +36,9 @@ class MatterAdd(View):
             )
             matter.save()
             messages.success(request, 'Aula adicionada!')
-            return redirect('home:home')
+            return redirect('home:matter')
             
-        messages.error(request, 'Algo deu errado [cod. 01].')
+        messages.error(request, 'Algo deu errado.')
         return render(request, self.template_name, context={'form': form})
 
 
