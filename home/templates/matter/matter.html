@@ -9,7 +9,7 @@
         <div class="grid-matters">
         {% for matter in matters %}
             <div class='matter'>
-                <div class="aula"><a href="">{{ matter.matter }}</a></div>
+                <div class="aula"><a href="{% url "home:matter_view" matter.pk %}">{{ matter.matter }}</a></div>
                 <div class="infos">
                     <p class='descriptin-matter'>Descrição:</p>
                     <ul>
