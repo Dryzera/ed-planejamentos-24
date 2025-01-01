@@ -11,7 +11,6 @@ def planning(request):
 
 class PlanningCreate(View):
     template_name = 'planning/create.html'
-    list_matters = []
 
     def post(self, request, *args, **kwargs):
         dia_semana = request.POST.get('dia_semana')
@@ -23,15 +22,22 @@ class PlanningCreate(View):
             messages.error(request, 'Nenhuma aula para este dia da semana/escola foi encontrada.')
             return redirect('home:planning')
         
-        gerador.init_generate_document(matters_available, data_planejamento)
-        self.list_matters.append(matters_available)
+        planning = gerador.init_generate_document(matters_available, data_planejamento)
+        print(planning)
+        request.session['info_list'] = {
+        'matters_available': list((i.school.name, i.matter) for i in matters_available),  # Certifique-se de que seja serializável
+        'data_planejamento': data_planejamento,
+        'planning': planning,
+        'day_week': dia_semana
+    }
         return redirect('home:planning_create')
     
     def get(self, request):
-        qtd_matter = len(self.list_matters)
-        print(self.list_matters)
-        context = {
-            'qtd_matter': qtd_matter,
-            'list_matters': self.list_matters
-        }
-        return render(request, self.template_name, context=context)
+        info_list = self.request.session.get('info_list')
+        print(info_list)
+        if info_list['planning']:
+            pass
+        else:
+            messages.error(request, 'Ocorreu um erro inesperado. O seu planejamento não foi gerado. Consulte os dados abaixo ou envie uma mensagem para os responsáveis.')
+
+        return render(request, self.template_name)

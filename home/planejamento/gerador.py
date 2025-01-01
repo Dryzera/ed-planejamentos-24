@@ -13,24 +13,26 @@ def generate_slug() -> str:
     return ''.join(random.choices(string.ascii_letters, k=15))
 
 def init_generate_document(matters: list, date: str):
-    date_formated = datetime.strptime(date, '%Y-%M-%d')
-    date_exibs = datetime.strftime(date_formated, '%d de %B de %Y')
-    document = Document()
-    document.add_heading(f'Planejamento - {date_exibs}', 0)
+    try:
+        date_formated = datetime.strptime(date, '%Y-%M-%d')
+        date_exibs = datetime.strftime(date_formated, '%d de %B de %Y')
+        document = Document()
+        document.add_heading(f'Planejamento - {date_exibs}', 0)
 
-    for matter in matters:
-        print(matter.hour)
-        hour_formated = datetime.strptime(str(matter.hour), '%H:%M:%S')
-        hour_exibs = datetime.strftime(hour_formated, '%Hh%M')
+        for matter in matters:
+            hour_formated = datetime.strptime(str(matter.hour), '%H:%M:%S')
+            hour_exibs = datetime.strftime(hour_formated, '%Hh%M')
 
-        info_aula = document.add_paragraph(f'{hour_exibs} - ')
-        info_aula.add_run(matter.matter).bold = True
-        
-        write_here = document.add_paragraph('').add_run('(escreva aqui)').italic = True
+            info_aula = document.add_paragraph(f'{hour_exibs} - ')
+            info_aula.add_run(matter.matter).bold = True
+            
+            write_here = document.add_paragraph('').add_run('(escreva aqui)').italic = True
 
-    slug_name = generate_slug()
-    file_name = DEFAULT_SAVE_FOLDER / f'planejamento_{slug_name}.docx'
+        slug_name = generate_slug()
+        file_name = DEFAULT_SAVE_FOLDER / f'planejamento_{slug_name}.docx'
 
-    document.save(file_name)
-
-    return slug_name
+        document.save(file_name)
+        return slug_name
+    except:
+        # if raise any error, return False (this is treated on view)
+        return False
