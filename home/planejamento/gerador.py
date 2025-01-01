@@ -1,49 +1,36 @@
 from docx import Document
 from docx.shared import Inches
 from datetime import datetime
+from project.settings import BASE_DIR
+import locale
+import string
+import random
+locale.setlocale(locale.LC_TIME, 'pt_BR.UTF-8')
 
-# start code, this is an example
-def init_generate_document(matters: list): pass
+DEFAULT_SAVE_FOLDER = BASE_DIR / 'files_docx_generated'
 
-DEFAULT_SAVE_FOLDER = 'files_docx_generated'
+def generate_slug() -> str:
+    return ''.join(random.choices(string.ascii_letters, k=15))
 
-document = Document()
+def init_generate_document(matters: list, date: str):
+    date_formated = datetime.strptime(date, '%Y-%M-%d')
+    date_exibs = datetime.strftime(date_formated, '%d de %B de %Y')
+    document = Document()
+    document.add_heading(f'Planejamento - {date_exibs}', 0)
 
-document.add_heading('Document Title', 0)
+    for matter in matters:
+        print(matter.hour)
+        hour_formated = datetime.strptime(str(matter.hour), '%H:%M:%S')
+        hour_exibs = datetime.strftime(hour_formated, '%Hh%M')
 
-p = document.add_paragraph('A plain paragraph having some ')
-p.add_run('bold').bold = True
-p.add_run(' and some ')
-p.add_run('italic.').italic = True
+        info_aula = document.add_paragraph(f'{hour_exibs} - ')
+        info_aula.add_run(matter.matter).bold = True
+        
+        write_here = document.add_paragraph('').add_run('(escreva aqui)').italic = True
 
-document.add_heading('Heading, level 1', level=1)
-document.add_paragraph('Intense quote', style='Intense Quote')
+    slug_name = generate_slug()
+    file_name = DEFAULT_SAVE_FOLDER / f'planejamento_{slug_name}.docx'
 
-document.add_paragraph(
-    'first item in unordered list', style='List Bullet'
-)
-document.add_paragraph(
-    'first item in ordered list', style='List Number'
-)
+    document.save(file_name)
 
-
-records = (
-    (3, '101', 'Spam'),
-    (7, '422', 'Eggs'),
-    (4, '631', 'Spam, spam, eggs, and spam')
-)
-
-table = document.add_table(rows=1, cols=3)
-hdr_cells = table.rows[0].cells
-hdr_cells[0].text = 'Qty'
-hdr_cells[1].text = 'Id'
-hdr_cells[2].text = 'Desc'
-for qty, id, desc in records:
-    row_cells = table.add_row().cells
-    row_cells[0].text = str(qty)
-    row_cells[1].text = id
-    row_cells[2].text = desc
-
-document.add_page_break()
-
-document.save(DEFAULT_SAVE_FOLDER)
+    return slug_name
