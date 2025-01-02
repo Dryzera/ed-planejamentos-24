@@ -2,5 +2,36 @@
 
 {% block content %}
 
-sdas
+<div class="info-create-planning">
+    <h1>Criando planejamento para {{ day_planning|date:'d/m/Y' }} ({{ day_week }})</h1>
+    <span><i>(considere checar no calendário se o dia da semana e a data coincidem)</i></span>
+</div>
+<div class='warning-planning'>
+    <h2>Atenção!</h2>
+    <p>Nos campos de escrita abaixo, escreva o conteúdo da sua aula. <red>Lembre-se</red>, uma IA gerará um planejamento com base nas suas informações, seja específico para obter bons resultados.</p>
+</div>
+<form action="{% url "home:planning_generate" %}" method="post">
+    {% csrf_token %}
+    <div class="grid-planning">
+    {% for matter_selected in matters_selected_list %}
+        {% for matter in matter_selected %}
+            <div class="matter-create-planning">
+                <div class="info">
+                    <h3>Matéria: {{ matter.matter }}</h3>
+                    <span>({{ matter.hour }}h)</span>
+                </div>
+                <div class="form-area">
+                    <label for="term_for_ia">Escreva o conteúdo da aula:</label>
+                    <textarea rows='5' cols='30' name="term_for_ia-{{matter.pk}}" id='term_for_ia' placeholder='Nenhum texto no momento...'></textarea>
+                    <span><i>(deixe em branco caso não queira usar IA para essa aula)</i></span>
+                </div>
+            </div>   
+        {% endfor %}
+    {% endfor %}
+    </div>
+    <div class="btns-planning-create">
+        <button type="submit" class='btn btn-primary'>Gerar</button>
+        <a href={% url "home:planning" %} class='btn btn-secondary'>Voltar</a>
+    </div>
+</form>
 {% endblock content %}

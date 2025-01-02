@@ -129,3 +129,56 @@ red {
     color: white;
     text-decoration: none;
 }
+
+.info-create-planning {
+    margin: 0 0 2rem 2rem;
+    padding: 1rem;
+    width: 90vw;
+    border-radius: 1rem;
+    box-shadow: 4px 5px 9px black;
+}
+
+.warning-planning {
+    background-color: rgba(255, 255, 163, 0.407);
+    border: 1px solid rgb(243, 255, 12);
+    width: 50vw;
+    margin: .5rem auto;
+    padding: 1rem;
+    border-radius: 1rem;
+    text-align: center;
+}
+
+.grid-planning {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.matter-create-planning {
+    margin: 2rem;
+    background-color: #eee;
+    padding: .5rem;
+    border-radius: 1rem;
+}
+
+.info {
+    margin-bottom: 1rem;
+}
+
+.info h3 {
+    display: inline;
+    vertical-align: sub;
+}
+
+.form-area label,
+.form-area span {
+    display: block;
+}
+
+.form-area textarea {
+    padding: 1rem;
+}
+
+.btns-planning-create {
+    text-align: center;
+    margin: 2rem 0;
+}

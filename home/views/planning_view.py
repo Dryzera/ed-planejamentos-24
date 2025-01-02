@@ -4,6 +4,8 @@ from django.contrib.auth.decorators import login_required
 from django.views.generic import View
 from home.models import Matter, School
 from home.planejamento import gerador
+from home.utils.variables import WEEK_DAY_CHOICES
+from datetime import datetime
 
 @login_required(login_url='home:login')
 def planning(request):
@@ -22,22 +24,43 @@ class PlanningCreate(View):
             messages.error(request, 'Nenhuma aula para este dia da semana/escola foi encontrada.')
             return redirect('home:planning')
         
-        planning = gerador.init_generate_document(matters_available, data_planejamento)
-        print(planning)
         request.session['info_list'] = {
-        'matters_available': list((i.school.name, i.matter) for i in matters_available),  # Certifique-se de que seja serializável
+        'matters_available': list((i.pk) for i in matters_available),
         'data_planejamento': data_planejamento,
-        'planning': planning,
-        'day_week': dia_semana
+        'day_week': dia_semana,
+        'school_pk': school_pk
     }
         return redirect('home:planning_create')
     
     def get(self, request):
         info_list = self.request.session.get('info_list')
         print(info_list)
-        if info_list['planning']:
-            pass
-        else:
-            messages.error(request, 'Ocorreu um erro inesperado. O seu planejamento não foi gerado. Consulte os dados abaixo ou envie uma mensagem para os responsáveis.')
+        day_week = WEEK_DAY_CHOICES[int(info_list['day_week'])][1]
 
-        return render(request, self.template_name)
+        matters_selected_ids = info_list['matters_available']
+        matters_selected = []
+
+        for matter_id in matters_selected_ids:
+            matters_selected.append(Matter.objects.filter(pk=matter_id))
+
+        date_formated = datetime.strptime(info_list['data_planejamento'], '%Y-%M-%d')
+
+        context = {
+            'matters_selected_list': matters_selected,
+            'day_planning': date_formated,
+            'day_week': day_week,
+        }
+
+        return render(request, self.template_name, context=context)
+    
+class PlanningGenerate(View):
+    def post(self, request):
+        info_list = self.request.session.get('info_list')
+        term_for_ia = {}
+        for key, value in request.POST.items():
+            if key.startswith('term_for_ia-'):
+                matter_id = key.split('-')[1]
+                matters_available = Matter.objects.filter(pk=matter_id).order_by('hour')
+                term_for_ia[matter_id] = value
+
+        gerador.init_generate_document(matters_available, info_list['data_planejamento'], term_for_ia)

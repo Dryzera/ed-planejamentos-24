@@ -6,6 +6,7 @@ app_name = 'home'
 
 urlpatterns = [
     # planning urls
+    path('planning/generate-planning/', PlanningGenerate.as_view(), name='planning_generate'),
     path('planning/create/', PlanningCreate.as_view(), name='planning_create'),
     path('planning/', planning, name='planning'),
 

@@ -6,19 +6,23 @@ load_dotenv()
 
 client = InferenceClient(api_key=os.getenv('API_KEY'))
 
-messages = [
-	{
-		"role": "user",
-		"content": "Gere um planejamento extramemente resumido para uma aula de português para alunos com autismo, visando a condição dos alunos. Não se esqueça, os alunos possuem problemas neurológicos."
-	}
-]
+def generate_planning_ia(term, generate: bool):
 
-completion = client.chat.completions.create(
-    model="microsoft/Phi-3.5-mini-instruct", 
-	messages=messages, 
-	max_tokens=500,
-    temperature=0.2
-)
+	messages = [
+		{
+			"role": "user",
+			"content": f'{term} não se baseie em tópicos, insira tudo em apenas um parágrafo e seja bem resumido, é apenas uma ideia inicial.'
+		}
+	]
 
-print(completion)
-print(completion.choices[0].message.content)
+	completion = client.chat.completions.create(
+		model="microsoft/Phi-3.5-mini-instruct", 
+		messages=messages, 
+		max_tokens=1000,
+		temperature=0.2
+	)
+
+	print(completion)
+	print(completion.choices[0].message.content)
+
+# generate_planning_ia('crie um planejamento escolar para alunos com sindome de down para a matéria de matemática (numeros de 1 a 9)', True)

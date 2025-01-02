@@ -5,6 +5,8 @@ from project.settings import BASE_DIR
 import locale
 import string
 import random
+from api_ia.main_ia import generate_planning_ia
+
 locale.setlocale(locale.LC_TIME, 'pt_BR.UTF-8')
 
 DEFAULT_SAVE_FOLDER = BASE_DIR / 'files_docx_generated'
@@ -12,7 +14,7 @@ DEFAULT_SAVE_FOLDER = BASE_DIR / 'files_docx_generated'
 def generate_slug() -> str:
     return ''.join(random.choices(string.ascii_letters, k=15))
 
-def init_generate_document(matters: list, date: str):
+def init_generate_document(matters: list, date: str, term_for_ia):
     try:
         date_formated = datetime.strptime(date, '%Y-%M-%d')
         date_exibs = datetime.strftime(date_formated, '%d de %B de %Y')
