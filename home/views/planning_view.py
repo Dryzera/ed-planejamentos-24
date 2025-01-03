@@ -37,7 +37,6 @@ class PlanningCreate(View):
     
     def get(self, request):
         info_list = self.request.session.get('info_list')
-        print(info_list)
         day_week = WEEK_DAY_CHOICES[int(info_list['day_week'])][1]
 
         matters_selected_ids = info_list['matters_available']
@@ -62,13 +61,14 @@ class PlanningGenerate(View):
         info_list = self.request.session.get('info_list')
         list_matters = []
         term_for_ia = {}
+        aditional_content = request.POST.get('aditional_content')
         for key, value in request.POST.items():
             if key.startswith('term_for_ia-'):
                 matter_id = key.split('-')[1]
-                list_matters.append(Matter.objects.filter(pk=matter_id).order_by('hour'))
+                list_matters.append(Matter.objects.get(pk=matter_id))
                 term_for_ia[matter_id] = value
 
-        planning_generate = gerador.init_generate_document(list_matters, info_list['data_planejamento'], term_for_ia)
+        planning_generate = gerador.init_generate_document(list_matters, info_list['data_planejamento'], term_for_ia, aditional_content)
         request.session['info_list'] = {'response_planning': planning_generate}
 
         request.session.modified = True
@@ -89,15 +89,19 @@ class PlanningFinish(View):
             return render(request, self.template_name, context={'slug_file': response_planning, 'site_title': 'Download Planejamento - '})
 
     def post(self, request):
-        info_list = request.session.get('info_list')
-        response_planning = info_list['response_planning']
+        try:
+            info_list = request.session.get('info_list')
+            response_planning = info_list['response_planning']
 
-        file_name = f'planejamento_{response_planning}.docx'
-        file_path = os.path.join(settings.MEDIA_ROOT, "files_docx_generated", file_name)
+            file_name = f'planejamento_{response_planning}.docx'
+            file_path = os.path.join(settings.MEDIA_ROOT, "files_docx_generated", file_name)
 
-        del request.session['info_list']
-        if os.path.exists(file_path):
-            return FileResponse(open(file_path, 'rb'), as_attachment=True, filename=file_name)
-        else:
-            messages.error(request, 'Seu planejamento foi gerado, mas não foi encontrado no nosso banco de dados, tente novamente.')
-            return render(request, self.template_name)
+            del request.session['info_list']
+            if os.path.exists(file_path):
+                return FileResponse(open(file_path, 'rb'), as_attachment=True, filename=file_name)
+            else:
+                messages.error(request, 'Seu planejamento foi gerado, mas não foi encontrado no nosso banco de dados, tente novamente.')
+                return render(request, self.template_name)
+        except TypeError:
+            messages.error(request, 'Você já baixou o arquivo. Você não pode baixar duas vezes.')
+            return redirect('home:planning')

@@ -319,8 +319,15 @@ a:hover {
 
 .title-link {
     color: rgb(0, 0, 0);
+    font-weight: bold;
 }
 
 .description-link {
     color: rgb(74, 74, 74);
+}
+
+.wait {
+    font-size: 20px;
+    margin-top: 1rem;
+    color: red;
 }
