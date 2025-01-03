@@ -14,7 +14,6 @@ def generate_slug() -> str:
     return ''.join(random.choices(string.ascii_letters, k=15))
 
 def init_generate_document(matters: list, date: str, term_for_ia: str, extra: str):
-    print(term_for_ia)
     try:
         date_formated = datetime.strptime(date, '%Y-%M-%d')
         date_exibs = datetime.strftime(date_formated, '%d de %B de %Y')

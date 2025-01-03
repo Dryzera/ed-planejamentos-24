@@ -24,7 +24,7 @@ class PlanningCreate(View):
 
         matters_available = Matter.objects.filter(teacher=request.user, school=school_pk, day_week=dia_semana).order_by('hour')
         if not matters_available:
-            messages.error(request, 'Nenhuma aula para este dia da semana/escola foi encontrada.')
+            messages.error(request, 'Nenhuma aula para este dia da semana/escola foi encontrada. [603]')
             return redirect('home:planning')
         
         request.session['info_list'] = {
@@ -82,7 +82,7 @@ class PlanningFinish(View):
         response_planning = info_list['response_planning']
 
         if not response_planning:
-            messages.error(request, 'Ocorreu um erro inesperado ao gerar seu planejamento, tente novamente.')
+            messages.error(request, 'Ocorreu um erro inesperado ao gerar seu planejamento, tente novamente. [701]')
             return redirect('home:planning')
         else:
             messages.success(request, 'Seu planejamento foi gerado!')
@@ -100,8 +100,8 @@ class PlanningFinish(View):
             if os.path.exists(file_path):
                 return FileResponse(open(file_path, 'rb'), as_attachment=True, filename=file_name)
             else:
-                messages.error(request, 'Seu planejamento foi gerado, mas não foi encontrado no nosso banco de dados, tente novamente.')
+                messages.error(request, 'Seu planejamento foi gerado, mas não foi encontrado no nosso banco de dados, tente novamente. [702]')
                 return render(request, self.template_name)
         except TypeError:
-            messages.error(request, 'Você já baixou o arquivo. Você não pode baixar duas vezes.')
+            messages.error(request, 'Você já baixou o arquivo. Você não pode baixar duas vezes. [604]')
             return redirect('home:planning')

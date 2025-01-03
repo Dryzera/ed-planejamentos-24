@@ -37,7 +37,7 @@ class MatterAdd(View):
             messages.success(request, 'Aula adicionada!')
             return redirect('home:matter')
             
-        messages.error(request, 'Algo deu errado.')
+        messages.error(request, 'Algo deu errado. [603]')
         return render(request, self.template_name, context={'form': form})
 
 
@@ -87,6 +87,6 @@ class MatterDetail(DetailView):
 
                 messages.success(request, 'Aula editada.')
                 return redirect('home:matter_view', pk)
-            messages.error(request, 'Existe algum erro no formulário.')
+            messages.error(request, 'Algo deu errado. [602]')
             return redirect('home:matter_view', pk)
     

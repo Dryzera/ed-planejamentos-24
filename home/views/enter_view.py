@@ -37,5 +37,5 @@ class Login(View):
                 messages.success(request, 'Logado com sucesso!')
                 return redirect('home:home')
             
-        messages.error(request, 'O login falhou.')
+        messages.error(request, 'O login falhou. [601]')
         return render(request, self.template_name, context={'form': form})
