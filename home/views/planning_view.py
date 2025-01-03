@@ -12,7 +12,7 @@ from django.conf import settings
 
 @login_required(login_url='home:login')
 def planning(request):
-    return render(request, 'planning/planning.html', context={'schools': School.objects.all()})
+    return render(request, 'planning/planning.html', context={'schools': School.objects.all(), 'site_title': 'Planejamentos - '})
 
 class PlanningCreate(View):
     template_name = 'planning/create.html'
@@ -52,6 +52,7 @@ class PlanningCreate(View):
             'matters_selected_list': matters_selected,
             'day_planning': date_formated,
             'day_week': day_week,
+            'site_title': 'Gerar Planejamento - '
         }
 
         return render(request, self.template_name, context=context)
@@ -84,7 +85,7 @@ class PlanningFinish(View):
             messages.error(request, 'Ocorreu um erro inesperado ao gerar seu planejamento, tente novamente.')
         else:
             messages.success(request, 'Seu planejamento foi gerado!')
-            return render(request, self.template_name, context={'slug_file': response_planning})
+            return render(request, self.template_name, context={'slug_file': response_planning, 'site_title': 'Download Planejamento - '})
 
     def post(self, request):
         info_list = request.session.get('info_list')

@@ -21,7 +21,7 @@ class Login(View):
             return redirect('home:home')
 
         form = self.form_class()
-        return render(request, self.template_name, context={'form': form})
+        return render(request, self.template_name, context={'form': form, 'site_title': 'Login - '})
     
     def post(self, request, *args, **kwargs):
         form = self.form_class(request.POST)

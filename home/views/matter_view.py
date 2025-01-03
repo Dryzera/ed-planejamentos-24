@@ -12,7 +12,7 @@ class MatterRead(ListView):
 
     def get(self, request):
         matters = Matter.objects.filter(teacher=request.user).order_by('day_week', 'hour')
-        return render(request, self.template_name, context={'matters': matters})
+        return render(request, self.template_name, context={'matters': matters, 'site_title': 'Aulas - '})
 
 class MatterAdd(View):
     template_name = 'matter/add.html'
@@ -20,7 +20,7 @@ class MatterAdd(View):
 
     def get(self, request, *args, **kwargs):
         form = self.form_template()
-        return render(request, self.template_name, context={'form': form})
+        return render(request, self.template_name, context={'form': form, 'site_title': 'Adicionar Aula - '})
     
     def post(self, request, *args, **kwargs):
         form = self.form_template(request.POST)
@@ -62,6 +62,7 @@ class MatterDetail(DetailView):
         
         form = AddMatterForm(instance=context['matter'])
         context['form'] = form
+        context['site_title'] = f'Aula {object_matter.pk} - '
 
         return render(request, self.template_name, context)
     

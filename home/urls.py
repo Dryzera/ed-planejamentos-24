@@ -6,9 +6,9 @@ app_name = 'home'
 
 urlpatterns = [
     # planning urls
-    path('planning/finish/', PlanningFinish.as_view(), name='planning_finish'),
-    path('planning/generate-planning/', PlanningGenerate.as_view(), name='planning_generate'),
-    path('planning/create/', PlanningCreate.as_view(), name='planning_create'),
+    path('planning/finish/', login_required(PlanningFinish.as_view(), login_url='home:login'), name='planning_finish'),
+    path('planning/generate-planning/', login_required(PlanningGenerate.as_view(), login_url='home:login'), name='planning_generate'),
+    path('planning/create/', login_required(PlanningCreate.as_view(), login_url='home:login'), name='planning_create'),
     path('planning/', planning, name='planning'),
 
     # login urls
