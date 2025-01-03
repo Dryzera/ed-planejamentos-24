@@ -1,5 +1,5 @@
 :root {
-    --color-header-footer: #d0d0d0;
+    --color-header-footer: #d8dbe7;
 }
 
 html, body {
@@ -9,6 +9,7 @@ html, body {
     display: flex;
     flex-direction: column;
 }
+
 
 red {
     color: red;
@@ -40,6 +41,8 @@ a:hover {
     background-color: #eee;
     padding: 2rem;
     border-radius: 1rem;
+    box-shadow: 1px 1px 10px black;
+
 }
 
 .matter .aula {
@@ -101,7 +104,7 @@ a:hover {
 .principal_header {
     background-color: var(--color-header-footer);
     padding-bottom: 1.5rem;
-    border-radius: 0 0 30px 30px;
+    border-radius: 0 0 40px 40px;
     margin-bottom: 2rem;
 }
 
@@ -159,11 +162,15 @@ a:hover {
 }
 
 .info-create-planning {
-    margin: 2rem 0 2rem 2rem;
+    margin: 2rem auto;
     padding: 1rem;
     width: 90vw;
     border-radius: 1rem;
     box-shadow: 4px 5px 9px black;
+}
+
+.info-finish-planning-mt {
+    margin-top: 1rem;
 }
 
 .warning-planning {
@@ -261,7 +268,7 @@ a:hover {
     align-items: center;
     justify-content: space-around;
     background-color: var(--color-header-footer);
-    border-radius: 30px 30px 0 0;
+    border-radius: 40px 40px 0 0;
     padding: 2rem;
     margin-top: 2rem;
 }
@@ -295,6 +302,7 @@ a:hover {
     border-radius: 1rem;
     margin: 2rem;
     padding: 1rem;
+    box-shadow: 1px 1px 10px black;
 }
 
 .element-index a {

@@ -2,7 +2,7 @@
 
 {% block content %}
 <div class="info-create-planning">
-    <h1>Conseguimos gerar seu planejamento nº{{ slug_file }}</h1>
+    <h1>Conseguimos gerar seu planejamento de protocolo {{ slug_file }}</h1>
 </div>
 <div class='warning-planning'>
     <h2>Atenção!</h2>
@@ -15,6 +15,7 @@
         {% csrf_token %}
         <button type="submit" class='btn btn-primary'>Baixar</button>
     </form>
+    <p class='info-finish-planning-mt'>*Por segurança, não salvamos os planejamentos em nossos sistemas. Eles ficam disponíveis algumas horas após ser gerado e é apagado automáticamente.</p>
 </div>
 
 {% endblock content %}

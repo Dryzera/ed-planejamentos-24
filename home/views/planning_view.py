@@ -83,6 +83,7 @@ class PlanningFinish(View):
 
         if not response_planning:
             messages.error(request, 'Ocorreu um erro inesperado ao gerar seu planejamento, tente novamente.')
+            return redirect('home:planning')
         else:
             messages.success(request, 'Seu planejamento foi gerado!')
             return render(request, self.template_name, context={'slug_file': response_planning, 'site_title': 'Download Planejamento - '})
@@ -98,5 +99,5 @@ class PlanningFinish(View):
         if os.path.exists(file_path):
             return FileResponse(open(file_path, 'rb'), as_attachment=True, filename=file_name)
         else:
-            messages.error('Seu planejamento foi gerado, mas não foi encontrado no nosso banco de dados, tente novamente.')
+            messages.error(request, 'Seu planejamento foi gerado, mas não foi encontrado no nosso banco de dados, tente novamente.')
             return render(request, self.template_name)
