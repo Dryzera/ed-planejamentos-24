@@ -1,3 +1,4 @@
+// add loader 
 const btnGerar = document.getElementById('btnGerar')
 const wait = document.getElementById('wait')
 

@@ -331,3 +331,20 @@ a:hover {
     margin-top: 1rem;
     color: red;
 }
+
+.errors {
+    width: 70vw;
+    margin: 0 auto;
+}
+
+.info-errors {
+    margin: 3rem auto;
+    background-color: #eee;
+    text-align: left;
+    padding: 1rem;
+    border-radius: 1rem;
+}
+
+.title_errors {
+    text-align: center;
+}
