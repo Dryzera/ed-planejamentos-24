@@ -1,5 +1,4 @@
 from docx import Document
-from docx.shared import Inches
 from datetime import datetime
 from project.settings import MEDIA_ROOT
 import locale

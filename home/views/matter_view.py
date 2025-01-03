@@ -1,6 +1,5 @@
 from django.shortcuts import redirect, render
 from django.contrib import messages
-from django.contrib.auth.decorators import login_required
 from django.views.generic import View, ListView, DetailView
 from home.forms import AddMatterForm
 from home.models import Matter
@@ -18,11 +17,11 @@ class MatterAdd(View):
     template_name = 'matter/add.html'
     form_template = AddMatterForm
 
-    def get(self, request, *args, **kwargs):
+    def get(self, request):
         form = self.form_template()
         return render(request, self.template_name, context={'form': form, 'site_title': 'Adicionar Aula - '})
     
-    def post(self, request, *args, **kwargs):
+    def post(self, request):
         form = self.form_template(request.POST)
 
         if form.is_valid():

@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User
 from home.models import Matter, School
+from home.utils.variables import WEEK_DAY_CHOICES
 
 class LoginForm(forms.ModelForm):
     user = forms.CharField(
@@ -27,7 +28,7 @@ class LoginForm(forms.ModelForm):
         fields = ('user', 'password',)
 
 class AddMatterForm(forms.ModelForm):
-    school = forms.ModelChoiceField(queryset=School.objects.all(), empty_label='(Selecione)', label='Escola:')
+    school = forms.ModelChoiceField(queryset=School.objects.all(), empty_label='(selecione)', label='Escola:')
 
     matter = forms.CharField(
         widget=forms.TextInput(
@@ -39,7 +40,7 @@ class AddMatterForm(forms.ModelForm):
 
     day_week = forms.CharField(
         widget=forms.Select(
-            choices=Matter.WEEK_DAY_CHOICES
+            choices=WEEK_DAY_CHOICES
         ),
         label='Dia da aula:',
     )

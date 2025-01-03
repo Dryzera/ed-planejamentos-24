@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from home.utils.variables import WEEK_DAY_CHOICES
 
 # Create your models here.
 class School(models.Model):
@@ -11,15 +12,6 @@ class School(models.Model):
         return self.name
 
 class Matter(models.Model):
-    WEEK_DAY_CHOICES = [
-        ('0', 'Domingo'),
-        ('1', 'Segunda-Feira'),
-        ('2', 'Terça-Feira'),
-        ('3', 'Quarta-Feira'),
-        ('4', 'Quinta-Feira'),
-        ('5', 'Sexta-Feira'),
-        ('6', 'Sábado'),
-    ]
     teacher = models.ForeignKey(User, on_delete=models.CASCADE, blank=False, null=False, verbose_name='Professor')
     school = models.ForeignKey(School, on_delete=models.CASCADE, blank=False, verbose_name='Escola')
     matter = models.CharField(max_length=30, help_text='Nome da aula', verbose_name='Matéria')
