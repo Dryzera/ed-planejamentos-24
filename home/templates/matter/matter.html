@@ -11,6 +11,7 @@
       <div class="col-8">
         <h1 class="mt-2">Suas Aulas Cadastradas</h1>
         <div class="grid-matters">
+          {% if matters %}
         {% for matter in matters %}
             <div class='matter'>
                 <div class="aula"><a href="{% url "home:matter_view" matter.pk %}">{{ matter.matter }}</a></div>
@@ -24,6 +25,11 @@
                 </div>
             </div>
         {% endfor %}
+        {% else %}
+          <div class='not-matter-registred'>
+            <h3>Nenhuma aula cadastrada. Cadastre uma clicando <a href="{% url "home:matter_add" %}">aqui</a></h3>
+          </div>
+        {% endif %}
         </div>
       </div>
     </div>

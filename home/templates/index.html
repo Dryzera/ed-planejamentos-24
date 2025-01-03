@@ -1,4 +1,25 @@
 {% extends "global/base.html" %}
 
 {% block content %}
+<div class="align-itens-index">
+<h2>O que vamos fazer {{ user.first_name }}?</h2>
+<div class="grid-index">
+    <div class="element-index">
+        <a href="{% url "home:planning" %}">
+            <p class='title-link'>Criar Planejamento</p> 
+            <hr>
+            <p class='description-link'>Crie seus planejamentos com Inteligência Artificial, adaptando para o seu conteúdo desejado.</p>
+        </a>
+    </div>
+
+    <div class="element-index">
+        <a href="{% url "home:matter" %}">
+            <p class='title-link'>Gerenciar Aulas</p> 
+            <hr>
+            <p class='description-link'>Adicione, gerencie, edite ou apague suas aulas.</p>
+        </a>
+    </div>
+
+</div>
+</div>
 {% endblock content %}
