@@ -131,7 +131,7 @@ red {
 }
 
 .info-create-planning {
-    margin: 0 0 2rem 2rem;
+    margin: 2rem 0 2rem 2rem;
     padding: 1rem;
     width: 90vw;
     border-radius: 1rem;
@@ -156,7 +156,7 @@ red {
 .matter-create-planning {
     margin: 2rem;
     background-color: #eee;
-    padding: .5rem;
+    padding: 2rem;
     border-radius: 1rem;
 }
 
@@ -181,4 +181,18 @@ red {
 .btns-planning-create {
     text-align: center;
     margin: 2rem 0;
+}
+
+.info-finish-planning {
+    background-color: #eee;
+    width: 50vw;
+    margin: 1rem auto;
+    text-align: center;
+    padding: 3rem;
+    border-radius: 1rem;
+}
+
+.info-finish-planning p {
+    font-size: 20px;
+    font-weight: bold;
 }

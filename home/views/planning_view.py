@@ -6,6 +6,9 @@ from home.models import Matter, School
 from home.planejamento import gerador
 from home.utils.variables import WEEK_DAY_CHOICES
 from datetime import datetime
+from django.http import FileResponse
+import os
+from django.conf import settings
 
 @login_required(login_url='home:login')
 def planning(request):
@@ -69,3 +72,30 @@ class PlanningGenerate(View):
 
         request.session.modified = True
         return redirect('home:planning_finish')
+
+class PlanningFinish(View):
+    template_name = 'planning/finish.html'
+
+    def get(self, request):
+        info_list = request.session.get('info_list')
+        response_planning = info_list['response_planning']
+
+        if not response_planning:
+            messages.error(request, 'Ocorreu um erro inesperado ao gerar seu planejamento, tente novamente.')
+        else:
+            messages.success(request, 'Seu planejamento foi gerado!')
+            return render(request, self.template_name, context={'slug_file': response_planning})
+
+    def post(self, request):
+        info_list = request.session.get('info_list')
+        response_planning = info_list['response_planning']
+
+        file_name = f'planejamento_{response_planning}.docx'
+        file_path = os.path.join(settings.MEDIA_ROOT, "files_docx_generated", file_name)
+
+        del request.session['info_list']
+        if os.path.exists(file_path):
+            return FileResponse(open(file_path, 'rb'), as_attachment=True, filename=file_name)
+        else:
+            messages.error('Seu planejamento foi gerado, mas não foi encontrado no nosso banco de dados, tente novamente.')
+            return render(request, self.template_name)

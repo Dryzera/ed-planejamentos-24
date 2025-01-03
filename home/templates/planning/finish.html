@@ -1,6 +1,20 @@
 {% extends "global/base.html" %}
 
 {% block content %}
+<div class="info-create-planning">
+    <h1>Conseguimos gerar seu planejamento nº{{ slug_file }}</h1>
+</div>
+<div class='warning-planning'>
+    <h2>Atenção!</h2>
+    <p>Esta é apenas uma base, <red>considere revisar o texto gerado pela ia, </red>pode conter falhas.</p>
+</div>
 
-oi
+<div class="info-finish-planning">
+    <p>Baixe o planejamento em formato '.docx' (Word) clicando no botão abaixo:</p>
+    <form action="{% url "home:planning_finish" %}" method='post'>
+        {% csrf_token %}
+        <button type="submit" class='btn btn-primary'>Baixar</button>
+    </form>
+</div>
+
 {% endblock content %}

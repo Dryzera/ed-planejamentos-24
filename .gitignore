@@ -4,9 +4,8 @@
 *.pyc
 __pycache__
 db.sqlite3
-media
 static
-files_docx_generated
+media
 
 # Backup files # 
 *.bak 

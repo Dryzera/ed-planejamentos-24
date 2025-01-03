@@ -1,7 +1,7 @@
 from docx import Document
 from docx.shared import Inches
 from datetime import datetime
-from project.settings import BASE_DIR
+from project.settings import MEDIA_ROOT
 import locale
 import string
 import random
@@ -9,7 +9,7 @@ from api_ia.main_ia import generate_planning_ia
 
 locale.setlocale(locale.LC_TIME, 'pt_BR.UTF-8')
 
-DEFAULT_SAVE_FOLDER = BASE_DIR / 'files_docx_generated'
+DEFAULT_SAVE_FOLDER = MEDIA_ROOT / 'files_docx_generated'
 
 def generate_slug() -> str:
     return ''.join(random.choices(string.ascii_letters, k=15))
