@@ -29,7 +29,7 @@ class PlanningCreate(View):
         'data_planejamento': data_planejamento,
         'day_week': dia_semana,
         'school_pk': school_pk
-    }
+        }
         return redirect('home:planning_create')
     
     def get(self, request):
@@ -56,11 +56,16 @@ class PlanningCreate(View):
 class PlanningGenerate(View):
     def post(self, request):
         info_list = self.request.session.get('info_list')
+        list_matters = []
         term_for_ia = {}
         for key, value in request.POST.items():
             if key.startswith('term_for_ia-'):
                 matter_id = key.split('-')[1]
-                matters_available = Matter.objects.filter(pk=matter_id).order_by('hour')
+                list_matters.append(Matter.objects.filter(pk=matter_id).order_by('hour'))
                 term_for_ia[matter_id] = value
 
-        gerador.init_generate_document(matters_available, info_list['data_planejamento'], term_for_ia)
+        planning_generate = gerador.init_generate_document(list_matters, info_list['data_planejamento'], term_for_ia)
+        request.session['info_list'] = {'response_planning': planning_generate}
+
+        request.session.modified = True
+        return redirect('home:planning_finish')

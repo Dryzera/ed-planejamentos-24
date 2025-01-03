@@ -6,7 +6,7 @@ load_dotenv()
 
 client = InferenceClient(api_key=os.getenv('API_KEY'))
 
-def generate_planning_ia(term, generate: bool):
+def generate_planning_ia(term):
 
 	messages = [
 		{
@@ -22,7 +22,8 @@ def generate_planning_ia(term, generate: bool):
 		temperature=0.2
 	)
 
-	print(completion)
-	print(completion.choices[0].message.content)
+	response = completion.choices[0].message.content
+	return response
 
-# generate_planning_ia('crie um planejamento escolar para alunos com sindome de down para a matéria de matemática (numeros de 1 a 9)', True)
+if __name__ == '__main__':
+	generate_planning_ia('crie um planejamento escolar para alunos com sindome de down para a matéria de matemática (numeros de 1 a 9)')
