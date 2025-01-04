@@ -1,10 +1,13 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
+
 
 @login_required(login_url='home:login')
 def index(request):
     return render(request, template_name='index.html', context={'site_title': 'Home - '})
 
-@login_required(login_url='home:login')
 def error_codes(request):
+    if not request.user.is_authenticated:
+        messages.warning(request, 'Você não está autenticado. Você verá os demais códigos de erro quando fizer login.')
     return render(request, template_name='errors.html', context={'site_title': 'Códigos de Erros - '})

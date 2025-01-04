@@ -2,6 +2,7 @@
 {% load static %}
 
 {% block content %}
+{% if user.is_authenticated %}
 <div class="errors">
     <div class="info-errors">
         <h2 class='title_errors'>Erros</h2>
@@ -32,4 +33,25 @@
         </div>
     </div>
 </div>
+{% else %}
+<div class="errors">
+    <div class="info-errors">
+        <h2 class='title_errors'>Erros</h2>
+        <p>Aconteceu um erro com você? Sentimos muito pelo incoveniênte, mas aqui você encontrará informações mais precisas e poderá solucionar alguma dúvida.</p>
+        <p>A imagem abaixo exibe um erro que você poderá encontrar, ela sempre será vermelha e apresentará no final um número entre colchetes "[ ]":</p>
+        <img src="{% static "global/imgs/error_exemple.png" %}" alt="uma imagem de erro 603 para ilustrar um erro">
+        <p>É importante que você veja o número entre colchetes e que venha a esta página para entender o problema.</p>
+    </div>
+    <div class="info-errors">
+        <h2 class='title_errors'>Códigos de Erros</h2>
+        <div class="startsin6 error-div">
+            <h3>Inicia com o número "6":</h3>
+            <p><i>Representa um erro relacionado ao usuário (você).</i></p>
+            <ul class="errors-list">
+                <li><b>601: “O login falhou.”:</b> Provavelmente você errou suas credenciais ou não está com o login ativo (suspenso).</li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endif %}
 {% endblock content %}
