@@ -13,12 +13,14 @@ DEFAULT_SAVE_FOLDER = MEDIA_ROOT / 'files_docx_generated'
 def generate_slug() -> str:
     return ''.join(random.choices(string.ascii_letters, k=15))
 
-def init_generate_document(matters: list, date: str, term_for_ia: str, extra: str):
+def init_generate_document(matters: list, date: str, term_for_ia: str, extra: str, school, teacher):
     try:
         date_formated = datetime.strptime(date, '%Y-%M-%d')
         date_exibs = datetime.strftime(date_formated, '%d de %B de %Y')
         document = Document()
-        document.add_heading(f'Planejamento - {date_exibs}', 0)
+        font = document.styles['Normal'].font
+        font.name = 'Arial'
+        document.add_heading(f'{school}, {date_exibs} - {teacher.first_name} {teacher.last_name}', 0).alignment
 
         for matter in matters:
             hour_formated = datetime.strptime(str(matter.hour), '%H:%M:%S')

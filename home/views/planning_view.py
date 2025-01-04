@@ -65,10 +65,13 @@ class PlanningGenerate(View):
         for key, value in request.POST.items():
             if key.startswith('term_for_ia-'):
                 matter_id = key.split('-')[1]
-                list_matters.append(Matter.objects.get(pk=matter_id))
+                matter = Matter.objects.get(pk=matter_id)
+                list_matters.append(matter)
+                teacher = matter.teacher
+                school = matter.school
                 term_for_ia[matter_id] = value
 
-        planning_generate = gerador.init_generate_document(list_matters, info_list['data_planejamento'], term_for_ia, aditional_content)
+        planning_generate = gerador.init_generate_document(list_matters, info_list['data_planejamento'], term_for_ia, aditional_content, school, teacher)
         request.session['info_list'] = {'response_planning': planning_generate}
 
         request.session.modified = True
