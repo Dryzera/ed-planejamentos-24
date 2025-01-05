@@ -195,7 +195,7 @@ a:hover {
 }
 
 .warning-planning {
-    background-color: rgba(255, 255, 163, 0.407);
+    background-color: rgba(255, 255, 163, 0.233);
     border: 1px solid rgb(243, 255, 12);
     width: 50vw;
     margin: .5rem auto;
@@ -232,6 +232,7 @@ a:hover {
 
 .form-area textarea {
     padding: 1rem;
+    border-radius: 5px;
 }
 
 .btns-planning-create {
@@ -320,13 +321,24 @@ a:hover {
 
 .grid-index {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fill);
 }
+
+
+@media (min-width: 600px) {
+    .grid-index { grid-template-columns: repeat(2, 1fr); }
+  }
+  
+@media (min-width: 900px) {
+.grid-index { grid-template-columns: repeat(3, 1fr); }
+}
+
 
 .element-index {
     background-color: #f4f4f4;
     width: 25vw;
-    height: 30vh;
+    min-height: 30vh;
+    height: auto;
     border-radius: 1rem;
     margin: 2rem;
     padding: 1rem;
