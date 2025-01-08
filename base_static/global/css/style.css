@@ -1,6 +1,7 @@
 :root {
     --color-header-footer: #0052b1;
-    --default-text-color: #fff
+    --default-text-color: #fff;
+    --background-color-cards: #fff;
 }
 
 html, body {
@@ -53,11 +54,10 @@ a:hover {
 }
 
 .matter {
-    background-color: #eee;
+    background-color: var(--background-color-cards);
     padding: 2rem;
     border-radius: 1rem;
     box-shadow: 1px 1px 10px black;
-
 }
 
 .matter .aula {
@@ -265,6 +265,7 @@ a:hover {
     width: 50vw;
     margin: 0 auto;
     box-shadow: 3px 5px 19px black;
+    background-color: var(--background-color-cards);
 }
 
 
@@ -335,7 +336,7 @@ a:hover {
 
 
 .element-index {
-    background-color: #f4f4f4;
+    background-color: var(--background-color-cards);
     width: 25vw;
     min-height: 30vh;
     height: auto;

@@ -25,8 +25,7 @@ SECRET_KEY = 'django-insecure-v58b2zi+!u9ni*%ns@ye!m$tvoi=$v#p((hrpt240^@fmgn%2#
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -136,3 +135,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CRISPY_TEMPLATE_PACK = 'uni_form'
 CRISPY_TEMPLATE_PACK = "bootstrap4"
+
+SESSION_EXPIRE_AT_BROWSER_CLOSE = False
