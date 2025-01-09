@@ -288,8 +288,9 @@ a:hover {
 
 .principal_footer {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
     background-color: var(--color-header-footer);
     border-radius: 40px 40px 0 0;
     padding: 2rem;
@@ -304,6 +305,12 @@ a:hover {
 
 .list-links {
     list-style: none;
+}
+
+.list-links li {
+    display: inline;
+    margin: 0 2rem;
+    text-transform: uppercase;
 }
 
 .not-matter-registred {
