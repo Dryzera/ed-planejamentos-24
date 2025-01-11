@@ -12,8 +12,29 @@ html, body {
     flex-direction: column;
 }
 
+total-content {
+    display: flex;
+    height: 100%;
+    margin: 0;
+    flex-direction: column;
+}
+
 a {
     text-decoration: none;
+}
+
+.spinner {
+    display: block;
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    border: 8px solid rgba(0, 0, 0, .1);
+    border-bottom-color: #0052b1;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
 }
 
 .principal_body {
@@ -302,13 +323,18 @@ a:hover {
     font-weight: bold;
 }
 
+
+.links-owner-footer p {
+    text-align: center;
+}
+
 .list-links {
     list-style: none;
 }
 
 .list-links li {
     display: inline;
-    margin: 0 2rem;
+    margin: 0 1rem;
     text-transform: uppercase;
 }
 
