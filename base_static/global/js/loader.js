@@ -4,8 +4,6 @@ function loader() {
     const content = document.querySelector('total-content')
     const body = document.querySelector('body')
 
-    console.log(spinner, content)
-
     document.addEventListener('DOMContentLoaded', function() {
         if (content && spinner) {
             content.style.display = 'none'

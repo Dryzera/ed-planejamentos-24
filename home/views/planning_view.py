@@ -5,7 +5,7 @@ from django.views.generic import View
 from home.models import Matter, School
 from home.planejamento import gerador
 from home.utils.variables import WEEK_DAY_CHOICES
-from home.utils.check_weekday import weekday_check
+from home.utils.weekday import get_weekday
 from datetime import datetime
 from django.http import FileResponse
 import os
@@ -21,7 +21,7 @@ class PlanningCreate(View):
     def post(self, request, *args, **kwargs):
         school_pk = request.POST.get('school')
         data_planejamento = request.POST.get('data_planejamento')
-        dia_semana = weekday_check(data_planejamento)
+        dia_semana = get_weekday(data_planejamento)
 
         matters_available = Matter.objects.filter(teacher=request.user, school=school_pk, day_week=dia_semana).order_by('hour')
         if not matters_available:
@@ -90,7 +90,7 @@ class PlanningFinish(View):
             return redirect('home:planning')
         else:
             messages.success(request, 'Seu planejamento foi gerado!')
-            return render(request, self.template_name, context={'slug_file': response_planning, 'site_title': 'Download Planejamento - '})
+            return render(request, self.template_name, context={'slug_file': response_planning, 'site_title': 'Download do Planejamento - '})
 
     def post(self, request):
         try:

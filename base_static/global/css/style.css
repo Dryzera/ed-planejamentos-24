@@ -23,20 +23,6 @@ a {
     text-decoration: none;
 }
 
-.spinner {
-    display: block;
-    height: 60px;
-    width: 60px;
-    border-radius: 50%;
-    border: 8px solid rgba(0, 0, 0, .1);
-    border-bottom-color: #0052b1;
-    animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-    to { transform: rotate(360deg); }
-}
-
 .principal_body {
     background-color: #F5F5F5;
 
