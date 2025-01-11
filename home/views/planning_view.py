@@ -5,6 +5,7 @@ from django.views.generic import View
 from home.models import Matter, School
 from home.planejamento import gerador
 from home.utils.variables import WEEK_DAY_CHOICES
+from home.utils.check_weekday import weekday_check
 from datetime import datetime
 from django.http import FileResponse
 import os
@@ -18,13 +19,13 @@ class PlanningCreate(View):
     template_name = 'planning/create.html'
 
     def post(self, request, *args, **kwargs):
-        dia_semana = request.POST.get('dia_semana')
         school_pk = request.POST.get('school')
         data_planejamento = request.POST.get('data_planejamento')
+        dia_semana = weekday_check(data_planejamento)
 
         matters_available = Matter.objects.filter(teacher=request.user, school=school_pk, day_week=dia_semana).order_by('hour')
         if not matters_available:
-            messages.error(request, 'Nenhuma aula para este dia da semana/escola foi encontrada. [603]')
+            messages.error(request, 'Nenhuma aula para este dia/escola foi encontrada. [603]')
             return redirect('home:planning')
         
         request.session['info_list'] = {
