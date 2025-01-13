@@ -11,3 +11,6 @@ def error_codes(request):
     if not request.user.is_authenticated:
         messages.warning(request, 'Você não está autenticado. Você verá os demais códigos de erro quando fizer login.')
     return render(request, template_name='errors.html', context={'site_title': 'Códigos de Erros - '})
+
+def know_us(request):
+    return render(request, template_name='errors.html')
