@@ -13,4 +13,4 @@ def error_codes(request):
     return render(request, template_name='errors.html', context={'site_title': 'Códigos de Erros - '})
 
 def know_us(request):
-    return render(request, template_name='errors.html')
+    return render(request, template_name='know_us.html')

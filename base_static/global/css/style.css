@@ -414,3 +414,21 @@ a:hover {
 .list-links {
     font-size: 18px;
 }
+
+.know_us {
+    width: 90vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.know_us .video {
+    margin: 2rem 0;
+}
+
+.know_us .convite {
+    text-align: center;
+    font-size: 20px;
+}
