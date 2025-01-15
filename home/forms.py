@@ -27,6 +27,30 @@ class LoginForm(forms.ModelForm):
         model = User
         fields = ('user', 'password',)
 
+class EditProfileForm(forms.ModelForm):
+    first_name = forms.CharField(
+        widget=forms.TextInput(
+            attrs={
+                'placeholder': 'Digite seu primeiro nome',
+                }
+            ),
+            label='Primeiro Nome:'
+    )
+
+
+    last_name = forms.CharField(
+        widget=forms.TextInput(
+            attrs={
+                'placeholder': 'Digite seu último nome'
+            }
+        ),
+        label='Último Nome:'
+    )
+    
+    class Meta:
+        model = User
+        fields = ('first_name', 'last_name',)
+
 class AddMatterForm(forms.ModelForm):
     school = forms.ModelChoiceField(queryset=School.objects.all(), empty_label='(selecione)', label='Escola:')
 
