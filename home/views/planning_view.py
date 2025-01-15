@@ -46,7 +46,7 @@ class PlanningCreate(View):
         for matter_id in matters_selected_ids:
             matters_selected.append(Matter.objects.filter(pk=matter_id))
 
-        date_formated = datetime.strptime(info_list['data_planejamento'], '%Y-%M-%d')
+        date_formated = datetime.strptime(info_list['data_planejamento'], '%Y-%m-%d')
 
         context = {
             'matters_selected_list': matters_selected,

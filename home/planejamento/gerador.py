@@ -15,7 +15,7 @@ def generate_slug() -> str:
 
 def init_generate_document(matters: list, date: str, term_for_ia: str, extra: str, school, teacher):
     try:
-        date_formated = datetime.strptime(date, '%Y-%M-%d')
+        date_formated = datetime.strptime(date, '%Y-%m-%d')
         date_exibs = datetime.strftime(date_formated, '%d de %B de %Y')
         document = Document()
         font = document.styles['Normal'].font
