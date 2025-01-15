@@ -1,10 +1,14 @@
-<h2 class="site_title"><a href="{% url "home:home" %}">ED Planejamentos</a></h2>
+{% load static %}
+
+<div class="logo">
+    <h2 class="site_title"><a href="{% url "home:home" %}"><img class='img-logo-completa-header' src="{% static "global/imgs/logo_ed_planejamentos_completa.png" %}" alt="logo do site em formato completo escrito 'ed planejamentos'"></a></h2>
+</div>
 {% if user.is_authenticated %}
     <nav class="navigator">
-        <ul class="links">
-            <li><a href="{% url "home:planning" %}">Planejamento</a></li>
-            <li><a href="{% url "home:matter" %}">Aulas</a></li>
-            <li><a href="{% url "home:logout" %}"><red>Sair</red></a></li>
-        </ul>
+        <a href="{% url "home:planning" %}">Planejamento</a>
+        <div class='linha-vertical'></div>
+        <a href="{% url "home:matter" %}">Aulas</a>
+        <div class='linha-vertical'></div>
+        <a href="{% url "home:logout" %}"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="red"><path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h280v80H200Zm440-160-55-58 102-102H360v-80h327L585-622l55-58 200 200-200 200Z"/></svg></a>
     </nav>
 {% endif %}

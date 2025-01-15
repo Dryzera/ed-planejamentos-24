@@ -1,12 +1,30 @@
-<div class="map-site">
-    <ul class='list-links'>
-        <li><a href="{% url "home:tutorials" %}">Tutoriais</a></li>
-        <li><a href="{% url "home:errors" %}">Erros</a></li>
+{% load static %}
+<div class="grid-footer">
+    <div class="map-site">
         {% if user.is_authenticated %}
-            <li><a href="mailto:endryusdaniel6321@gmail.com?subject=Pedido%20de%20Suporte%20ED%20Planejamentos&body=*obs%3A%20n%C3%A3o%20altere%20o%20assunto%20(t%C3%ADtulo)%20do%20email." %}">Suporte</a></li>
+            <nav class='navigator-footer'>
+                <p class='title-map-site'>Geral</p>
+                <a href="{% url "home:planning" %}">Planejamentos</a>
+                <a href="{% url "home:matter" %}">Aulas</a>            
+            </nav>
         {% endif %}
-    </ul>
-</div>
-<div class="links-owner-footer">
-    <p>Desenvolvido por <a href="https://endryus-daniel.vercel.app" target="_blank">Endryus Daniel</a>. Todos os direitos reservados©</p>
+        <nav class='navigator-footer'>
+            <p class='title-map-site'>Ajuda</p>
+            <a href="{% url "home:tutorials" %}">Tutoriais</a>
+            <a href="{% url "home:errors" %}">Erros</a>
+            {% if user.is_authenticated %}
+                <a href="mailto:edplanejamentos1@gmail.com?subject=Pedido%20de%20Suporte%20ED%20Planejamentos&body=*obs%3A%20n%C3%A3o%20altere%20o%20assunto%20(t%C3%ADtulo)%20do%20email.">Suporte</a>
+            {% endif %}
+        </nav>
+        <nav class='navigator-footer'>
+            <p class='title-map-site'>Contribuintes</p>
+            <a href="{% url "home:planning" %}">Endryus Daniel</a>
+            <a href="{% url "home:matter" %}">Jeferson Kauan</a>            
+            <a href="{% url "home:matter" %}">Anna Giulia</a>            
+        </nav>
+    </div>
+    <div class="links-owner-footer">
+        <a href="{% url "home:home" %}"><img class='img-logo-completa-footer' src="{% static "global/imgs/logo_ed_planejamentos_completa.png" %}" alt="logo do site em formato completo escrito 'ed planejamentos'"></a>
+        <p>Todos os direitos reservados©</p>
+    </div>
 </div>
