@@ -40,11 +40,14 @@
             <span><i>(deixe em branco caso não queira adicionar um conteúdo extra)</i></span>
         </div>
     </div>
-    </div>
+</div>
+<div id='wait' class='wait'>
+    <p>Estamos Gerando seu Planejamento.</p>
+    <p class='animation-p'>Isso pode demorar, mas <red>NÃO</red> saia da página</p>
+</div>
     <div class="btns-planning-create">
-        <button type="submit" class='btn btn-primary' id='btnGerar'>Gerar</button>
+        <button type="submit" class='btn btn-primary'>Gerar</button>
         <a href={% url "home:planning" %} class='btn btn-secondary'>Voltar</a>
-        <p id='wait' class='wait'></p>
     </div>
 </form>
 {% endblock content %}

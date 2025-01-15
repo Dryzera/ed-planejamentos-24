@@ -1,6 +1,10 @@
 const btnGerar = document.getElementById('btnGerar')
 const wait = document.getElementById('wait')
+const p = document.querySelector('.animation-p')
 
 btnGerar.addEventListener('click', function() {
-    wait.innerText = 'Isso pode demorar, redirecionaremos você assim que estiver concluído. Não saia desta página.'
+    wait.style.display = 'block'
+    setInterval(function() {
+        p.innerHTML += '.'
+    }, 1800)
 })
