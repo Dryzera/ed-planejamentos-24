@@ -12,7 +12,7 @@ urlpatterns = [
     path('planning/', planning, name='planning'),
 
     # login urls
-    path('edit-profile/<int:pk>/', EditProfile.as_view(), name='edit_profile'),
+    path('edit-profile/<int:pk>/', login_required(EditProfile.as_view(), login_url='home:login'), name='edit_profile'),
     path('logout/', logout_view, name='logout'),
     path('login/', Login.as_view(), name='login'),
     

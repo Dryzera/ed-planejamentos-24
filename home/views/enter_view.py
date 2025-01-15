@@ -50,7 +50,7 @@ class EditProfile(DetailView):
 
     def get(self, request, *args, **kwargs):
         if not request.user.is_authenticated:
-            messages.error('Você não está autenticado. [605]')
+            messages.error(request, 'Você não está autenticado. [605]')
             return redirect('home:home')
         
         profile = get_object_or_404(User, pk=self.kwargs['pk'])
