@@ -11,14 +11,14 @@ def generate_planning_ia(term):
 	messages = [
 		{
 			"role": "user",
-			"content": f'{term} não se baseie em tópicos, insira tudo em apenas um parágrafo e seja bem resumido, é apenas uma ideia inicial.'
+			"content": f'{term}'
 		}
 	]
 
 	completion = client.chat.completions.create(
 		model="microsoft/Phi-3.5-mini-instruct", 
 		messages=messages, 
-		max_tokens=1000,
+		max_tokens=1500,
 		temperature=0.2
 	)
 

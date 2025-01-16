@@ -46,10 +46,19 @@ class EditProfileForm(forms.ModelForm):
         ),
         label='Último Nome:'
     )
+
+    email = forms.CharField(
+        widget=forms.TextInput(
+            attrs={
+                'placeholder': 'Digite seu email'
+            }
+        ),
+        label='Seu Email:'
+    )
     
     class Meta:
         model = User
-        fields = ('first_name', 'last_name',)
+        fields = ('first_name', 'last_name', 'email')
 
 class AddMatterForm(forms.ModelForm):
     school = forms.ModelChoiceField(queryset=School.objects.all(), empty_label='(selecione)', label='Escola:')

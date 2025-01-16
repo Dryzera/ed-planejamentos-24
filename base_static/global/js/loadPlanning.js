@@ -5,11 +5,11 @@ const p = document.querySelector('.animation-p')
 btnGerar.addEventListener('click', function() {
     wait.style.display = 'block'
     i = 0
-    const originalText = p.innerText
+    const originalText = p.innerHTML
     setInterval(function() {
         if (i === 3) {
             i = 0
-            p.innerText = originalText
+            p.innerHTML = originalText
         }
         p.innerHTML += '.'
         i++

@@ -68,6 +68,7 @@ class EditProfile(DetailView):
             profile = User.objects.get(pk=self.kwargs['pk'])
             profile.first_name=form.cleaned_data['first_name']
             profile.last_name=form.cleaned_data['last_name']
+            profile.email=form.cleaned_data['email']
             profile.save()
 
             messages.success(request, 'Dados editados com sucesso.')
