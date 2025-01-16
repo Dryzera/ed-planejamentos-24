@@ -127,7 +127,7 @@ a:hover {
 .principal_header {
     background: var(--color-header-footer);
     /* border-radius: 0 0 40px 40px; */
-    margin: 2rem 2rem 3rem 2rem;
+    margin: 1.2rem 1.2rem 3rem 1.2rem;
     border-radius: 2rem;
     padding: .5rem 0 1.5rem 0;
 
@@ -146,7 +146,7 @@ a:hover {
 }
 
 .img-logo-completa-header {
-    width: 20rem;
+    width: 5rem;
 }
 
 
@@ -311,7 +311,7 @@ a:hover {
     justify-content: center;
     background: #053b74;
     padding: 2rem;
-    margin: 3rem 2rem 2rem 2rem;
+    margin: 3rem 1.2rem 1.2rem 1.2rem;
     color: var(--default-text-color);
     border-radius: 2rem;
 }
@@ -335,7 +335,7 @@ a:hover {
 }
 
 .img-logo-completa-footer {
-    width: 25rem;
+    width: 7rem;
 }
 
 .map-site {
@@ -383,7 +383,7 @@ a:hover {
     grid-template-columns: 1fr 1fr;
     margin-top: 2rem;
     padding: 0;
-    gap: 6rem;
+    gap: 26vw;
 }
 
 .email-div-footer {
@@ -537,5 +537,5 @@ a:hover {
 
 .linha-vertical {
     height: 30px;/*Altura da linha*/
-    border-left: 1.5px solid;/* Adiciona borda esquerda na div como ser fosse uma linha.*/
+    border-left: 1.5px solid rgb(147, 147, 147);/* Adiciona borda esquerda na div como ser fosse uma linha.*/
   }
