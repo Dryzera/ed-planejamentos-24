@@ -4,7 +4,14 @@ const p = document.querySelector('.animation-p')
 
 btnGerar.addEventListener('click', function() {
     wait.style.display = 'block'
+    i = 0
+    const originalText = p.innerText
     setInterval(function() {
+        if (i === 3) {
+            i = 0
+            p.innerText = originalText
+        }
         p.innerHTML += '.'
-    }, 1800)
+        i++
+    }, 800)
 })

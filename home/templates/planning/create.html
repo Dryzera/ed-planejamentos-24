@@ -43,10 +43,11 @@
 </div>
 <div id='wait' class='wait'>
     <p>Estamos Gerando seu Planejamento.</p>
-    <p class='animation-p'>Isso pode demorar, mas <red>NÃO</red> saia da página</p>
+    <p class='animation-p'>Isso pode demorar, mas NÃO saia da página</p>
 </div>
     <div class="btns-planning-create">
-        <button type="submit" class='btn btn-primary' id='btnGerar'>Gerar</button>
+        <div id='btnGerar'>Gerar</div>
+        <button type="submit" class='btn btn-primary' id='s'>Gerar</button>
         <a href={% url "home:planning" %} class='btn btn-secondary'>Voltar</a>
     </div>
 </form>
