@@ -33,6 +33,11 @@ a {
     color: var(--default-text-color);
 }
 
+.player {
+    margin: 0 auto;
+    display: flex;
+}
+
 
 red {
     color: red;
@@ -324,7 +329,7 @@ a:hover {
 .grid-footer {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 15vw;
+    gap: 18vw;
 }
 
 .title-map-site {
@@ -538,4 +543,146 @@ a:hover {
 .linha-vertical {
     height: 30px;/*Altura da linha*/
     border-left: 1.5px solid rgb(147, 147, 147);/* Adiciona borda esquerda na div como ser fosse uma linha.*/
+}
+
+
+/* table plann */
+  .table {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    padding: 2rem 0rem 0rem 0rem;
+    max-width: 1100px;
   }
+  
+  .table-cell {
+    box-sizing: border-box;
+    flex-grow: 1;
+    width: 100%;
+    padding: 0.8em 1.2em;
+    overflow: hidden;
+    list-style-type: none;
+    outline: 1px solid #ddd;
+    text-align: center;
+    font-weight: 300;
+    &:nth-child(3) {
+      outline: 1px solid #30305b;
+    }
+    > h3 {
+      font-size: 26px;
+    }
+    &.cell-feature {
+        text-align: left;
+      font-size: 18px;
+    }
+    &.plattform {
+      color: limegreen;
+      a.btn {
+        color: limegreen;
+        &:hover {
+          background-color: limegreen;
+          border-color: limegreen;
+          color: white;
+        }
+      }
+    }
+    &.enterprise {
+      background-color: #30305b;
+      color: #85bafc;
+      a.btn {
+        color: #85bafc;
+        &:hover {
+          background-color: #85bafc;
+          border-color: #85bafc;
+          color: #30305b;
+        }
+      }
+    }
+  }
+  
+  /* Table columns
+  ================================== */
+  .table-cell  {
+    width: calc(33.33% - 1px);
+    &.cell-feature {
+        @media only screen and (max-width : 768px) {
+            width: 100%;
+            text-align: center;
+        }
+    }
+  }
+  
+  svg.enterprise-check path {
+    fill: #30305b !important;
+  }
+  
+  a.btn {
+    border: 2px solid;
+    padding: .6rem .9rem .6rem .9rem;
+    font-weight: 400;
+  }
+
+
+  /* tutorials page */
+
+
+  .accordion{
+    margin: 40px 0;
+  }
+  .accordion .item {
+      border: none;
+      margin-bottom: 50px;
+      background: none;
+  }
+  .t-p{
+    color: rgb(193 206 216);
+    padding: 40px 30px 0px 30px;
+  }
+  .accordion .item .item-header h2 button.btn.btn-link {
+      background: #0360bc;
+      color: white;
+      border-radius: 0px;
+      font-family: 'Outfit';
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 2.5;
+      text-decoration: none;
+  }
+  .accordion .item .item-header {
+      border-bottom: none;
+      background: transparent;
+      padding: 0px;
+      margin: 2px;
+  }
+  
+  .accordion .item .item-header h2 button {
+      color: white;
+      font-size: 20px;
+      padding: 15px;
+      display: block;
+      width: 100%;
+      text-align: left;
+  }
+  
+  .accordion .item .item-header h2 i {
+      float: right;
+      font-size: 30px;
+      color: #eca300;
+      background-color: rgb(0, 1, 62);
+      width: 60px;
+      height: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 5px;
+  }
+  
+  button.btn.btn-link.collapsed i {
+      transform: rotate(0deg);
+  }
+  
+  button.btn.btn-link i {
+      transform: rotate(180deg);
+      transition: 0.5s;
+  }
+  

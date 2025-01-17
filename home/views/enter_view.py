@@ -59,7 +59,7 @@ class EditProfile(DetailView):
         
         form = self.form_class(instance=profile)
 
-        return render(request, self.template_name, context={'form': form, 'site_title': 'Editar Perfil - '})
+        return render(request, self.template_name, context={'form': form, 'site_title': 'Editar Perfil - ', 'profile': profile})
     
     def post(self, request, *args, **kwargs):
         form = self.form_class(request.POST)

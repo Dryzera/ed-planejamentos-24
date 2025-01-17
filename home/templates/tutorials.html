@@ -1,7 +1,91 @@
 {% extends "global/base.html" %}
 
 {% block content %}
-
-oi
-
+<div class="container">
+    <div class="accordion" id="accordionExample">
+      <div class="item">
+         <div class="item-header" id="headingOne">
+            <h2 class="mb-0">
+               <button class="btn btn-link" type="button" data-toggle="collapse"
+                  data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                Como cadastrar e gerenciar aulas?
+               <i class="fa fa-angle-down"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M480-200 240-440l56-56 184 183 184-183 56 56-240 240Zm0-240L240-680l56-56 184 183 184-183 56 56-240 240Z"/></svg></i>
+               </button>
+            </h2>
+         </div>
+         <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
+            data-parent="#accordionExample">
+            <div class="t-p">
+                <div id='matterHelp' class='player'></div>
+            </div>
+         </div>
+      </div>
+      <div class="item">
+         <div class="item-header" id="headingTwo">
+            <h2 class="mb-0">
+               <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                  data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                Como criar planejamentos?
+               <i class="fa fa-angle-down"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M480-200 240-440l56-56 184 183 184-183 56 56-240 240Zm0-240L240-680l56-56 184 183 184-183 56 56-240 240Z"/></svg></i>
+               </button>
+            </h2>
+         </div>
+         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
+            data-parent="#accordionExample">
+            <div class="t-p">
+                <div id='planningHelp' class='player'></div>
+            </div>
+         </div>
+      </div>
+    </div>
+    </div>
+    
+    <script>
+    var tag = document.createElement('script');
+        
+    tag.src = "https://www.youtube.com/iframe_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    
+    var player;
+    function onYouTubeIframeAPIReady() {
+      const larguraTela = window.innerWidth;
+      let height = '360'
+      let width = '640'
+    
+      if (larguraTela < 600) {
+          height = '240'
+          width = '340'
+      }
+      player = new YT.Player('matterHelp', {
+        height: height,
+        width: width,
+        videoId: '9e8NdD9mM-Y',
+        events: {
+          'onReady': onPlayerReady,
+          'onStateChange': onPlayerStateChange
+        }
+      });
+    }
+    
+    // 4. The API will call this function when the video player is ready.
+    function onPlayerReady(event) {
+      event.target.playVideo();
+    }
+    
+    // 5. The API calls this function when the player's state changes.
+    //    The function indicates that when playing a video (state=1),
+    //    the player should play for six seconds and then stop.
+    var done = true;
+    function onPlayerStateChange(event) {
+      if (event.data == YT.PlayerState.PLAYING && !done) {
+        setTimeout(stopVideo, 6000);
+        done = true;
+      }
+    }
+    function stopVideo() {
+      player.stopVideo();
+    }
+    </script>
 {% endblock content %}
+
