@@ -14,4 +14,4 @@ btnGerar.addEventListener('click', function() {
         p.innerHTML += '.'
         i++
     }, 800)
-})
+});

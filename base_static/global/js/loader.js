@@ -1,4 +1,4 @@
-function loader() {
+(function() {
 
     const spinner = document.querySelector('.spinner')
     const content = document.querySelector('total-content')
@@ -21,6 +21,4 @@ function loader() {
             body.style.alignItems = 'stretch'
         };
     });
-};
-
-loader()
+})();
