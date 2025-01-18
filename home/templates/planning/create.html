@@ -12,6 +12,13 @@
 </div>
 <form action="{% url "home:planning_generate" %}" method="post">
     {% csrf_token %}
+    <div class="general-configs">
+        <h2>Configurações do Documento:</h2>
+        <div class="ordering">
+            <label for="checkHourBased">Ordenar aulas por hora </label>
+            <input type="checkbox" name="hourBased" id="checkHourBased" checked>
+        </div>
+    </div>
     <div class="grid-planning">
     {% for matter_selected in matters_selected_list %}
         {% for matter in matter_selected %}

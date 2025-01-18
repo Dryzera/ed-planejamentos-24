@@ -13,20 +13,25 @@ DEFAULT_SAVE_FOLDER = MEDIA_ROOT / 'files_docx_generated'
 def generate_slug() -> str:
     return ''.join(random.choices(string.ascii_letters, k=15))
 
-def init_generate_document(matters: list, date: str, term_for_ia: str, extra: str, school, teacher):
+def init_generate_document(matters: list, date: str, term_for_ia: str, extra: str, school, teacher, basedSep):
     try:
         date_formated = datetime.strptime(date, '%Y-%m-%d')
         date_exibs = datetime.strftime(date_formated, '%d de %B de %Y')
+        ids = 0
         document = Document()
         font = document.styles['Normal'].font
         font.name = 'Arial'
         document.add_heading(f'{school}, {date_exibs} - {teacher.first_name} {teacher.last_name}', 0).alignment
 
         for matter in matters:
-            hour_formated = datetime.strptime(str(matter.hour), '%H:%M:%S')
-            hour_exibs = datetime.strftime(hour_formated, '%Hh%M')
+            if basedSep:
+                hour_formated = datetime.strptime(str(matter.hour), '%H:%M:%S')
+                sep_exibs = datetime.strftime(hour_formated, '%Hh%M')
+            else:
+                ids += 1
+                sep_exibs = f'{ids}ª Aula'
 
-            info_aula = document.add_paragraph(f'{hour_exibs} - ')
+            info_aula = document.add_paragraph(f'{sep_exibs} - ')
             info_aula.add_run(matter.matter).bold = True
 
             term = term_for_ia[f'{matter.pk}']
@@ -43,6 +48,7 @@ def init_generate_document(matters: list, date: str, term_for_ia: str, extra: st
 
         document.save(file_name)
         return slug_name
-    except:
+    except Exception as e:
         # if raise any error, return False (this is treated on view)
+        print(e)
         return False
