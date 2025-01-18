@@ -15,5 +15,6 @@ def error_codes(request):
 def know_us(request):
     return render(request, template_name='know_us.html')
 
+@login_required(login_url='home:login')
 def tutorials(request):
     return render(request, 'tutorials.html', context={'site_title': 'Tutoriais - '})

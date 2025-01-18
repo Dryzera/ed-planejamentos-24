@@ -547,7 +547,7 @@ a:hover {
 
 
 /* table plann */
-  .table {
+.table {
     display: flex;
     flex-wrap: wrap;
     margin: 0 auto;
@@ -613,15 +613,8 @@ a:hover {
   }
   
   svg.enterprise-check path {
-    fill: #30305b !important;
+    fill: #30305b !important
   }
-  
-  a.btn {
-    border: 2px solid;
-    padding: .6rem .9rem .6rem .9rem;
-    font-weight: 400;
-  }
-
 
   /* tutorials page */
 

@@ -10,9 +10,9 @@
         {% endif %}
         <nav class='navigator-footer'>
             <p class='title-map-site'>Suporte</p>
-            <a href="{% url "home:tutorials" %}">Tutoriais</a>
             <a href="{% url "home:errors" %}">Erros</a>
             {% if user.is_authenticated %}
+                <a href="{% url "home:tutorials" %}">Tutoriais</a>
                 <a href="mailto:edplanejamentos1@gmail.com?subject=Pedido%20de%20Suporte%20ED%20Planejamentos&body=*obs%3A%20n%C3%A3o%20altere%20o%20assunto%20(t%C3%ADtulo)%20do%20email.">Contato</a>
             {% endif %}
         </nav>
