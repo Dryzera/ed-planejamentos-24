@@ -218,7 +218,7 @@ a:hover {
     margin-top: 1rem;
 }
 
-.general-configs {
+.general-configs-card {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -230,14 +230,15 @@ a:hover {
     border-radius: 1rem;
 }
 
-.ordering {
-    margin: 1rem 0;
+.config {
+    margin: .2rem 0;
 }
-.ordering label {
+.config label {
     font-weight: 400;
     font-size: 18px;
+    text-align: left;
 }
-.ordering input{
+.config input{
     width: 20px;
     height: 20px;
     cursor: pointer;

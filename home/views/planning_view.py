@@ -62,19 +62,23 @@ class PlanningGenerate(View):
         info_list = self.request.session.get('info_list')
         list_matters = []
         term_for_ia = {}
+        
         aditional_content = request.POST.get('aditional_content')
         base_sep_matter = True if request.POST.get('hourBased') == 'on' else False # aula sera separada por 1º etc...
-        print(base_sep_matter)
+        insert_name = True if request.POST.get('insertMyName') == 'on' else False
+        insert_school = True if request.POST.get('insertSchoolName') == 'on' else False
+
         for key, value in request.POST.items():
             if key.startswith('term_for_ia-'):
                 matter_id = key.split('-')[1]
                 matter = Matter.objects.get(pk=matter_id)
                 list_matters.append(matter)
-                teacher = matter.teacher
-                school = matter.school
+                
+                teacher = matter.teacher if insert_name else False
+                school = matter.school if insert_school else False
                 term_for_ia[matter_id] = value
 
-        planning_generate = gerador.init_generate_document(list_matters, info_list['data_planejamento'], term_for_ia, aditional_content, school, teacher, base_sep_matter)
+        planning_generate = gerador.init_generate_document(list_matters, info_list['data_planejamento'], term_for_ia, aditional_content, base_sep_matter, school, teacher)
         request.session['info_list'] = {'response_planning': planning_generate}
 
         request.session.modified = True

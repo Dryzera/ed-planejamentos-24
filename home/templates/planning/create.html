@@ -12,11 +12,19 @@
 </div>
 <form action="{% url "home:planning_generate" %}" method="post">
     {% csrf_token %}
-    <div class="general-configs">
+    <div class="general-configs-card">
         <h2>Configurações do Documento:</h2>
-        <div class="ordering">
-            <label for="checkHourBased">Ordenar aulas por hora </label>
+        <div class="config">
+            <label for="checkHourBased">Ordenar aulas por hora</label>
             <input type="checkbox" name="hourBased" id="checkHourBased" checked>
+        </div>
+        <div class="config">
+            <label for="insertMyName">Inserir meu nome</label>
+            <input type="checkbox" name="insertMyName" id="insertMyName" checked>
+        </div>
+        <div class="config">
+            <label for="insertSchoolName">Inserir nome da escola</label>
+            <input type="checkbox" name="insertSchoolName" id="insertSchoolName" checked>
         </div>
     </div>
     <div class="grid-planning">

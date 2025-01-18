@@ -13,15 +13,26 @@ DEFAULT_SAVE_FOLDER = MEDIA_ROOT / 'files_docx_generated'
 def generate_slug() -> str:
     return ''.join(random.choices(string.ascii_letters, k=15))
 
-def init_generate_document(matters: list, date: str, term_for_ia: str, extra: str, school, teacher, basedSep):
+def init_generate_document(matters: list, date: str, term_for_ia: str, extra: str, basedSep: bool, school, teacher):
     try:
+        ids = 0
         date_formated = datetime.strptime(date, '%Y-%m-%d')
         date_exibs = datetime.strftime(date_formated, '%d de %B de %Y')
-        ids = 0
+        
         document = Document()
         font = document.styles['Normal'].font
         font.name = 'Arial'
-        document.add_heading(f'{school}, {date_exibs} - {teacher.first_name} {teacher.last_name}', 0).alignment
+
+        # verifica a escolha do usuário e adicona no cabeçalho o que ele quiser
+        if school and teacher:
+            document.add_heading(f'{school}, {date_exibs} - {teacher.first_name} {teacher.last_name}', 0)
+        elif school:
+            document.add_heading(f'{school}, {date_exibs}', 0)
+        elif teacher:
+            document.add_heading(f'{date_exibs} - {teacher.first_name} {teacher.last_name}', 0)
+        else:
+            document.add_heading(f'{date_exibs}', 0)
+
 
         for matter in matters:
             if basedSep:
