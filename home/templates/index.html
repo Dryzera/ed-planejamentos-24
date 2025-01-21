@@ -2,13 +2,13 @@
 
 {% block content %}
 <div class="align-itens-index">
-<h2><span class='cumprimento'>Olá</span> professor(a) {{ user.first_name }}, o que vamos fazer?</h2>
+<h2><span class='cumprimento'>Olá</span> {{ user.first_name }}, o que vamos fazer?</h2>
 <div class="grid-index">
     <div class="element-index">
         <a href="{% url "home:planning" %}">
             <p class='title-link'>Criar Planejamento</p> 
             <hr>
-            <p class='description-link'>Crie seus planejamentos com Inteligência Artificial, adaptando para o seu conteúdo desejado.</p>
+            <p class='description-link'>Crie seus planejamentos com Inteligência Artificial, e adapte para o seu conteúdo desejado.</p>
         </a>
     </div>
 
@@ -24,7 +24,7 @@
         <a href="{% url "home:tutorials" %}">
             <p class='title-link'>Nossos Tutoriais</p>
             <hr>
-            <p class='description-link'>Aprenda a usar o site da melhor forma com videos rápidos e muito explicativos.</p>
+            <p class='description-link'>Aprenda a usar o site da melhor forma com vídeos rápidos e explicativos.</p>
         </a>
     </div>
 </div>

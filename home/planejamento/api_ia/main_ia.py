@@ -5,6 +5,7 @@ import os
 load_dotenv()
 
 client = InferenceClient(api_key=os.getenv('API_KEY'))
+# client = InferenceClient(api_key=os.getenv('API_KEY2'))
 
 def generate_planning_ia(term):
 

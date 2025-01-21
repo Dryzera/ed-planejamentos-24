@@ -34,7 +34,7 @@ class EditProfileForm(forms.ModelForm):
                 'placeholder': 'Digite seu primeiro nome',
                 }
             ),
-            label='Primeiro Nome:'
+            label='Nome:'
     )
 
 
@@ -44,7 +44,7 @@ class EditProfileForm(forms.ModelForm):
                 'placeholder': 'Digite seu último nome'
             }
         ),
-        label='Último Nome:'
+        label='Sobrenome:'
     )
 
     email = forms.CharField(

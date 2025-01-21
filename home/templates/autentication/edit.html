@@ -2,27 +2,18 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-  <h2>Seus Dados</h2>
-  <dl class="row">
-      <dt class="col-lg-2">Nome:</dt>
-      <dd class="col-lg-4">{{ profile.first_name }}</dd>
-      <dt class="col-lg-2">Sobrenome:</dt>
-      <dd class="col-lg-4">{{ profile.last_name }}</dd>
-      <dt class="col-lg-2">E-mail:</dt>
-      <dd class="col-lg-4">{{ profile.email }}</dd>
-  </dl>
-  <div class="blocked">
-    <form action="" method='post'>
+    <form method='post'>
         {% csrf_token %}
         <div class="container">
             <div class="row justify-content-center">
               <div class="col-8">
                 <h1 class="mt-2">Editar Perfil</h1>
-                {{ form|crispy }}
+                <div class="blocked">
+                  {{ form|crispy }}
+                </div>
                 <button type="submit" class='btn btn-secondary'>Salvar</button>
               </div>
             </div>
           </div>
     </form>
-  </div>
 {% endblock content %}

@@ -42,6 +42,17 @@ class Login(View):
         messages.error(request, 'O login falhou. [601]')
         return render(request, self.template_name, context={'form': form})
 
+@login_required(login_url='home:login')
+def view_profile(request, pk):
+    if not request.user.is_authenticated:
+        messages.error(request, 'Você não está autenticado. [605]')
+        return redirect('home:home')
+    
+    profile = get_object_or_404(User, pk=pk)
+    if profile.pk != request.user.pk:
+        return redirect('home:view_profile', request.user.pk)
+
+    return render(request, 'autentication/view_profile.html', context={'site_title': 'Ver Perfil - ', 'profile': profile})
 
 class EditProfile(DetailView):
     template_name = 'autentication/edit.html'
@@ -72,7 +83,7 @@ class EditProfile(DetailView):
             profile.save()
 
             messages.success(request, 'Dados editados com sucesso.')
-            return redirect('home:edit_profile', request.user.pk)
+            return redirect('home:view_profile', request.user.pk)
             
         messages.error(request, 'Dados inválidos. [606]')
         return render(request, self.template_name, context={'form': form})

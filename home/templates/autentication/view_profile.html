@@ -1,0 +1,13 @@
+{% extends "global/base.html" %}
+{% block content %}
+<div class="dados-pessoais col">
+    <h2>Seus Dados</h2>
+    <div>
+        <p><b>Usuário: </b>{{ profile.username }}</p>
+        <p><b>Nome: </b>{{ profile.first_name }}</p>
+        <p><b>Sobrenome: </b>{{ profile.last_name }}</p>
+        <p><b>Email: </b>{{ profile.email }}</p>
+        <a href='{% url "home:edit_profile" user.pk %}' class='btn btn-secondary'>Editar</a>
+    </div>
+</div>
+{% endblock content %}

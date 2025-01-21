@@ -12,7 +12,8 @@ urlpatterns = [
     path('planning/', planning, name='planning'),
 
     # login urls
-    path('edit-profile/<int:pk>/', login_required(EditProfile.as_view(), login_url='home:login'), name='edit_profile'),
+    path('profile/<int:pk>/edit/', login_required(EditProfile.as_view(), login_url='home:login'), name='edit_profile'),
+    path('profile/<int:pk>/', view_profile, name='view_profile'),
     path('logout/', logout_view, name='logout'),
     path('login/', Login.as_view(), name='login'),
     
