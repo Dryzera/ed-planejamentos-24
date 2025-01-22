@@ -38,9 +38,12 @@ a {
     display: flex;
 }
 
-
 red {
     color: red;
+}
+
+green {
+    color: rgb(8, 168, 0);
 }
 
 a:hover {

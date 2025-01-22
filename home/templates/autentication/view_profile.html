@@ -7,6 +7,11 @@
         <p><b>Nome: </b>{{ profile.first_name }}</p>
         <p><b>Sobrenome: </b>{{ profile.last_name }}</p>
         <p><b>Email: </b>{{ profile.email }}</p>
+        {% if profile.is_active %}
+        <p><b>Status:</b> <green>Ativo</green></p>
+        {% else %}
+        <p><b>Status:</b> <red>Pendente</red></p>
+        {% endif %}
         <a href='{% url "home:edit_profile" user.pk %}' class='btn btn-secondary'>Editar</a>
     </div>
 </div>
