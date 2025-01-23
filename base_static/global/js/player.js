@@ -44,7 +44,7 @@ function onYouTubeIframeAPIReady() {
   planningPlayer = new YT.Player('knowUs', {
     height: height,
     width: width,
-    videoId: 'BYJlLYDZDw',
+    videoId: 'VvsjdWDsiew',
     playerVars: {
       autoplay: 0,
     },

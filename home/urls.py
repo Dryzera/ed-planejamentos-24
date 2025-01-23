@@ -22,7 +22,6 @@ urlpatterns = [
     path('matter/add/', login_required(MatterAdd.as_view(), login_url='home:login'), name='matter_add'),
     path('matter/', login_required(MatterRead.as_view(), login_url='home:login'), name='matter'),
 
-
     path('nos-conheca/', know_us, name='signin'),
     path('tutorials/', tutorials, name='tutorials'),
     path('error-codes/', error_codes, name='errors'),
