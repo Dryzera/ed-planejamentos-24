@@ -6,7 +6,7 @@ import random
 from home.planejamento.api_ia.main_ia import generate_planning_ia
 import locale
 
-locale.setlocale(locale.LC_ALL, '')
+locale.setlocale(locale.LC_TIME, "pt_BR.utf8")
 
 DEFAULT_SAVE_FOLDER = MEDIA_ROOT / 'files_docx_generated'
 
