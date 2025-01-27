@@ -138,4 +138,24 @@ CRISPY_TEMPLATE_PACK = "bootstrap4"
 
 SESSION_EXPIRE_AT_BROWSER_CLOSE = False
 
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'root': {
+        'handlers': ['console'],
+        'level': 'ERROR',
+    },
+    'django': {
+        'handlers': ['console'],
+        'level': 'ERROR',
+        'propagate': True,
+    },
+}
+
+
 from project.local_settings import *
