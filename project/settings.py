@@ -137,3 +137,5 @@ CRISPY_TEMPLATE_PACK = 'uni_form'
 CRISPY_TEMPLATE_PACK = "bootstrap4"
 
 SESSION_EXPIRE_AT_BROWSER_CLOSE = False
+
+from project.local_settings import *
