@@ -13,8 +13,8 @@ function onYouTubeIframeAPIReady() {
   let width = '640';
 
   if (larguraTela < 600) {
-    height = '240';
-    width = '340';
+    height = '220';
+    width = '320';
   }
 
   matterPlayer = new YT.Player('matterHelp', {

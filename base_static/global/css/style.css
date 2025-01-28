@@ -142,19 +142,22 @@ a:hover {
 }
 
 .site_title {
-    position: relative;
-    top: 15px;
-    left: 15px;
     font-size: 25px;
+    text-align: center;
+    margin: 0 auto;
 }
 
 .logo {
     display: block;
     text-align: center;
+    margin: 0 auto;
+    margin-top: .5rem;
 }
 
 .img-logo-completa-header {
     width: 5rem;
+    text-align: center;
+    margin: 0 auto;
 }
 
 
@@ -188,6 +191,12 @@ a:hover {
 
 .nav-profile-links a {
     margin: 0 .5rem;
+}
+
+@media (max-width: 500px) {
+    .nav-profile-links {
+        display: none;
+    }
 }
 
 .title-matters {
@@ -411,7 +420,7 @@ a:hover {
 
 .principal_footer hr {
     border: 1px solid rgba(190, 190, 190, 0.658);
-    width: 80vw;
+    width: 70vw;
 }
 
 .info-contact {
@@ -433,6 +442,29 @@ a:hover {
     text-transform: uppercase;
     font-weight: bold;
     text-align: left;
+}
+
+@media (max-width: 500px) {
+    .img-logo-completa-footer {
+        display: none;
+    }
+    .info-contact {
+        display: block;
+        margin-top: 2rem;
+        padding: 0;
+        text-align: center;
+    }
+
+    .links-owner-footer {
+        font-size: 14px;
+    }
+    .title-map-site {
+        font-size: 16px;
+    }
+    .email-div-footer{
+        font-size: 14px;
+    }
+    
 }
 
 .list-links {
@@ -564,6 +596,23 @@ a:hover {
 
 .know_us .title {
     margin-bottom: 1rem;
+    text-align: center;
+}
+
+.logo-contact-us {
+    width: 1.5rem;
+    vertical-align: text-top;
+    margin-right: .5rem;
+}
+
+.contact {
+    display: block;
+}
+.contact a {
+    display: block;
+    margin-bottom: .5rem;
+    font-size: 1rem;
+    text-align: center;
 }
 
 .know_us .video {
@@ -571,7 +620,7 @@ a:hover {
 }
 
 .know_us .convite {
-    text-align: center;
+    text-align: left;
     font-size: 20px;
 }
 

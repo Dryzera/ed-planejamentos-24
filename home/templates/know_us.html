@@ -1,4 +1,5 @@
 {% extends "global/base.html" %}
+{% load static %}
 
 {% block content %}
 <section class="know_us">
@@ -15,8 +16,11 @@
     </div>
     <div class="convite">
         <p>Gostaria de receber maiores informações ou até nos contratar?</p>
-        <p>Entre em contato clicando no email abaixo, ou escreva para nós no mesmo.</p>
-        <a href="mailto:edplanejamentos1@gmail.com">edplanejamentos1@gmail.com</a>
+        <p>Entre em contato conosco nas redes abaixo.</p>
+        <div class="contact">
+            <a href="mailto:edplanejamentos1@gmail.com"><img class='logo-contact-us' src="{% static "global/imgs/email.svg" %}" alt="logo do email para entrar em contato">edplanejamentos1@gmail.com</a>
+            <a href="https://api.whatsapp.com/send?phone=5543984117588&text=Ol%C3%A1%2C%20gostaria%20de%20receber%20mais%20informa%C3%A7%C3%B5es%20sobre%20a%20ED%20Planejamentos."><img class='logo-contact-us' src="{% static "global/imgs/whatsapp.svg" %}" alt="logo do whatsapp para entrar em contato">Clique aqui</a>
+        </div>
     </div>
     {% endblock content %}
 </section>
