@@ -444,29 +444,6 @@ a:hover {
     text-align: left;
 }
 
-@media (max-width: 500px) {
-    .img-logo-completa-footer {
-        display: none;
-    }
-    .info-contact {
-        display: block;
-        margin-top: 2rem;
-        padding: 0;
-        text-align: center;
-    }
-
-    .links-owner-footer {
-        font-size: 14px;
-    }
-    .title-map-site {
-        font-size: 16px;
-    }
-    .email-div-footer{
-        font-size: 14px;
-    }
-    
-}
-
 .list-links {
     list-style: none;
 }
@@ -576,6 +553,11 @@ a:hover {
     padding: 1rem;
     border-radius: 1rem;
 }
+
+.info-errors img {
+    width: 500px;
+}
+
 
 .title_errors {
     text-align: center;
@@ -786,3 +768,24 @@ a:hover {
       transition: 0.5s;
   }
   
+
+  @media (max-width: 500px) {
+    .img-logo-completa-footer {display: none;}
+    .info-contact {
+        display: block;
+        margin-top: 2rem;
+        padding: 0;
+        text-align: center;
+    }
+    .links-owner-footer {font-size: 14px;}
+    .title-map-site {font-size: 16px;}
+    .email-div-footer{font-size: 14px;}
+    .message { max-width: 300px;}
+    .errors{width: 85vw;}
+    .info-errors img {width: 280px;}
+    .element-index {
+        width: 75vw;
+        margin: .8rem 0;
+    }
+    .align-itens-index h2 {text-align: center; font-size: 25px;}
+}
