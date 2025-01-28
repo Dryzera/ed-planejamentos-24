@@ -1,4 +1,4 @@
-﻿# ED Planejamentos  
+﻿# 📑📚 ED Planejamentos  
 
 Bem-vindo ao **ED Planejamentos**, uma ferramenta inovadora desenvolvida para ajudar professores a organizarem suas aulas e planejamentos de maneira prática, eficiente e com o suporte de inteligência artificial.  
 
@@ -29,7 +29,7 @@ Facilitar a rotina de professores, permitindo que eles economizem tempo e se con
 
 ## 📞 Contato  
 - **Email**: [edplanejamentos1@gmail.com](mailto:edplanejamentos1@gmail.com)  
-- **WhatsApp**: [Número de WhatsApp]  
+- **WhatsApp**: [Número de WhatsApp](https://api.whatsapp.com/send?phone=5543984117588&text=Ol%C3%A1%2C%20gostaria%20de%20receber%20mais%20informa%C3%A7%C3%B5es%20sobre%20a%20ED%20Planejamentos.) 
 
 ---
 
