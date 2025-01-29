@@ -1,6 +1,9 @@
 {% extends "global/base.html" %}
 
 {% block content %}
+<div class="message warning alert-mobile">
+    Não recomendamos que acesse nosso site por um dispositivo móvel. A sua experiência pode ser afetada. Considere utilizar um computador.
+</div>
 <div class="align-itens-index">
 <h2><span class='cumprimento'>Olá</span> {{ user.first_name }}, o que vamos fazer?</h2>
 <div class="grid-index">
@@ -29,4 +32,11 @@
     </div>
 </div>
 </div>
+
+<script>
+    const larguraTela = window.innerWidth;
+    if (larguraTela <= 500) {
+        const elementDisplay = document.querySelector('.alert-mobile').style.display = 'block'
+    }
+</script>
 {% endblock content %}
