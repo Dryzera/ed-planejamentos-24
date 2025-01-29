@@ -28,6 +28,10 @@ a {
 
 }
 
+.alert-mobile {
+    display: none;
+}
+
 .btn-cadastrar {
     background-color: rgb(0, 150, 0);
     color: var(--default-text-color);
@@ -568,7 +572,7 @@ a:hover {
 }
 
 .know_us {
-    width: 70vw;
+    width: 80vw;
     display: flex;
     flex-direction: column;
     justify-content: center;
