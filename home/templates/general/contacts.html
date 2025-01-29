@@ -1,0 +1,21 @@
+{% extends "global/base.html" %}
+{% load static %}
+
+{% block content %}
+<h2 class='title-contacts mgb-3'>Entre em contato conosco nos canais abaixo:</h2>
+<div class="mgb-3 message info">
+    Para melhor lhe ajudar, assim que você entrar em contato conosco, especifique o que você precisa, assim, o contato fica mais agíl e dinâmico.
+</div>
+<div class="contacts">
+    <div class="contacts-ul">
+        <li>
+            <img class='logo-contact-us' src="{% static "global/imgs/email.svg" %}" alt="imagem de uma carta simbolizando o contato de email">
+            <a href="mailto:edplanejamentos1@gmail.com">edplanejamentos1@gmail.com</a>
+        </li>
+        <li>
+            <img class='logo-contact-us' src="{% static "global/imgs/whatsapp.svg" %}" alt="imagem da logo do whatsapp simbolizando o numero de telefone">
+            <a href="https://api.whatsapp.com/send?phone=5543984117588">Clique aqui</a>
+        </li>
+    </div>
+</div>
+{% endblock content %}

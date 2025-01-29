@@ -7,6 +7,9 @@ from django.contrib import messages
 def index(request):
     return render(request, template_name='index.html', context={'site_title': 'Home - '})
 
+def contact(request):
+    return render(request, template_name='general/contacts.html', context={'site_title': 'Contatos - '})
+
 def error_codes(request):
     if not request.user.is_authenticated:
         messages.warning(request, 'Você não está autenticado. Você verá os demais códigos de erro quando fizer login.')
