@@ -28,6 +28,10 @@ a {
 
 }
 
+.mgb-3.message {
+    margin-bottom: 3rem;
+}
+
 .alert-mobile {
     display: none;
 }
@@ -638,6 +642,24 @@ a:hover {
     border-left: 1.5px solid rgb(147, 147, 147);/* Adiciona borda esquerda na div como ser fosse uma linha.*/
 }
 
+.title-contacts {
+    text-align: center;
+    margin: 0 1rem 3rem 1rem;
+} 
+
+.contacts {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.contacts-ul {
+    list-style: none;
+}
+
+.contacts-ul li {
+    margin-bottom: .5rem;
+    font-size: 20px;
+}
 
 /* table plann */
 .table {
