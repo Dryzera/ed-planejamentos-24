@@ -25,6 +25,7 @@ function onYouTubeIframeAPIReady() {
       autoplay: 0,
     },
     events: {
+      'onReady': onPlayerReady,
       'onStateChange': onPlayerStateChange,
     },
   });
@@ -37,6 +38,7 @@ function onYouTubeIframeAPIReady() {
       autoplay: 0,
     },
     events: {
+      'onReady': onPlayerReady,
       'onStateChange': onPlayerStateChange,
     },
   });
@@ -49,6 +51,7 @@ function onYouTubeIframeAPIReady() {
       autoplay: 0,
     },
     events: {
+      'onReady': onPlayerReady,
       'onStateChange': onPlayerStateChange,
     },
   });
