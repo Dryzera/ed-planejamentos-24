@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
-from home.models import Matter, School
+from home.models import Matter, School, UserProfile
 from home.utils.variables import WEEK_DAY_CHOICES
 
 class LoginForm(forms.ModelForm):
@@ -61,6 +61,13 @@ class EditProfileForm(forms.ModelForm):
         fields = ('first_name', 'last_name', 'email')
 
 class AddMatterForm(forms.ModelForm):
+    def __init__(self, *args, user=None, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.user = user
+
+        if user:
+            self.fields['school'].queryset = UserProfile.objects.get(user=self.user).schools.all()
+
     school = forms.ModelChoiceField(queryset=School.objects.all(), empty_label='(selecione)', label='Escola:')
 
     matter = forms.CharField(

@@ -1,8 +1,8 @@
-from django.shortcuts import redirect, render
+from django.shortcuts import redirect, get_object_or_404, render
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.views.generic import View
-from home.models import Matter, School
+from home.models import Matter, School, UserProfile
 from home.planejamento import gerador
 from home.utils.variables import WEEK_DAY_CHOICES
 from home.utils.weekday import get_weekday
@@ -13,7 +13,8 @@ from django.conf import settings
 
 @login_required(login_url='home:login')
 def planning(request):
-    return render(request, 'planning/planning.html', context={'schools': School.objects.all(), 'site_title': 'Planejamentos - '})
+    schools = get_object_or_404(UserProfile, user=request.user).schools.all()
+    return render(request, 'planning/planning.html', context={'schools': schools, 'site_title': 'Planejamentos - '})
 
 class PlanningCreate(View):
     template_name = 'planning/create.html'

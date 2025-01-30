@@ -18,7 +18,7 @@ class MatterAdd(View):
     form_template = AddMatterForm
 
     def get(self, request):
-        form = self.form_template()
+        form = self.form_template(user=self.request.user)
         return render(request, self.template_name, context={'form': form, 'site_title': 'Adicionar Aula - '})
     
     def post(self, request):
@@ -59,7 +59,7 @@ class MatterDetail(DetailView):
         if object_matter.teacher != self.request.user:
             raise Http404()
         
-        form = AddMatterForm(instance=context['matter'])
+        form = AddMatterForm(user=request.user, instance=context['matter'])
         context['form'] = form
         context['site_title'] = f'Aula {object_matter.pk} - '
 
