@@ -23,7 +23,7 @@ class Matter(models.Model):
     
 class UserProfile(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    schools = models.ManyToManyField(School, blank=False, null=False)
+    schools = models.ManyToManyField(School, blank=False)
     date_payment = models.DateField(blank=False, null=True)
     date_expiration = models.DateField(blank=False, null=True)
 
