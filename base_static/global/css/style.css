@@ -661,6 +661,23 @@ a:hover {
     font-size: 20px;
 }
 
+.filter {
+    background-color: #eee;
+    padding: 1rem;
+    border-radius: 5px;
+    box-shadow: 3px 4px 9px black;
+    margin-left: 3rem;
+}
+
+.label_for_field {
+    font-weight: bold;
+}
+
+.btn-filter {
+    cursor: pointer;
+    margin-left: 4px;
+}
+
 /* table plann */
 .table {
     display: flex;

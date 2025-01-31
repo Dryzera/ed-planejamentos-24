@@ -7,7 +7,36 @@
 </div>
 
 <div class="container">
-    <div class="row justify-content-center">
+  <div class="col-8">
+    <div class="row justify-content-center mb-3">
+      <div class="filter">
+        <h4>Filtros</h4>
+        <form method='GET'>
+          {% csrf_token %}
+          <label for="school" class='label_for_field'>Escola:</label>
+          <select name="school" id="school">
+            <option value="">(todas)</option>
+            {% for school in schools %}
+            <option value="{{ school.pk }}" {% if request.GET.school == school.pk|slugify %}selected{% endif %}>{{ school.name }}</option>
+            {% endfor %}
+          </select>
+          <label for="day_week" class='label_for_field'>Dia:</label>
+        <select name="day_week" id="day_week">
+          <option value="">(todos)</option>
+          <option value="0" {% if request.GET.day_week == '0' %}selected{% endif %}>Domingo</option>
+          <option value="1" {% if request.GET.day_week == '1' %}selected{% endif %}>Segunda-Feira</option>
+          <option value="2" {% if request.GET.day_week == '2' %}selected{% endif %}>Terça-Feira</option>
+          <option value="3" {% if request.GET.day_week == '3' %}selected{% endif %}>Quarta-Feira</option>
+          <option value="4" {% if request.GET.day_week == '4' %}selected{% endif %}>Quinta-Feira</option>
+          <option value="5" {% if request.GET.day_week == '5' %}selected{% endif %}>Sexta-Feira</option>
+          <option value="6" {% if request.GET.day_week == '6' %}selected{% endif %}>Sábado</option>
+        </select>
+        <button type='submit' class="btn-secondary btn-filter">Filtrar</button>
+      </form>
+      </div>
+    </div>
+  </div>
+      <div class="row justify-content-center">
       <div class="col-8">
         <h1 class="mt-2 title-matters">Suas Aulas Cadastradas:</h1>
         <div class="grid-matters">
@@ -27,7 +56,7 @@
         {% endfor %}
         {% else %}
           <div class='not-matter-registred'>
-            <h3>Nenhuma aula cadastrada. Cadastre uma clicando <a href="{% url "home:matter_add" %}">aqui</a>.</h3>
+            <h3>Nenhuma aula encontrada.</h3>
           </div>
         {% endif %}
         </div>
