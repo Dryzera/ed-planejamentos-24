@@ -5,8 +5,8 @@ from django.contrib.auth.decorators import login_required
 from django.views.generic import View, DetailView
 from home.forms import LoginForm, EditProfileForm
 from django.contrib.auth import authenticate, login
-from django.contrib.auth.models import User
 from django.shortcuts import get_object_or_404
+from home.models import UserProfile, User
 
 @login_required(login_url='home:login')
 def logout_view(request):
@@ -48,7 +48,7 @@ def view_profile(request, pk):
         messages.error(request, 'Você não está autenticado. [605]')
         return redirect('home:home')
     
-    profile = get_object_or_404(User, pk=pk)
+    profile = get_object_or_404(UserProfile, pk=pk)
     if profile.pk != request.user.pk:
         return redirect('home:view_profile', request.user.pk)
 

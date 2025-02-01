@@ -2,16 +2,36 @@ from django.shortcuts import redirect, render
 from django.contrib import messages
 from django.views.generic import View, ListView, DetailView
 from home.forms import AddMatterForm
-from home.models import Matter
+from home.models import Matter, UserProfile
 from django.http import Http404
+from django.db.models import Q
 
 class MatterRead(ListView):
     template_name = 'matter/matter.html'
     model = Matter
 
     def get(self, request):
-        matters = Matter.objects.filter(teacher=request.user).order_by('day_week', 'hour')
-        return render(request, self.template_name, context={'matters': matters, 'site_title': 'Aulas - '})
+        user = request.user
+
+        school = request.GET.get("school")
+        day_week = request.GET.get("day_week")
+
+        school = int(school) if school else None
+        day_week = int(day_week) if day_week else None
+        query = Q(teacher=user)
+
+        if school is not None or day_week is not None:
+            subquery = Q()
+            if school is not None:
+                subquery &= Q(school=school)
+            if day_week is not None:
+                subquery &= Q(day_week=day_week)
+            query &= subquery
+
+        matters = Matter.objects.filter(query).order_by('day_week', 'hour')
+
+        schools_filter = UserProfile.objects.get(user=user).schools.all()
+        return render(request, self.template_name, context={'matters': matters, 'schools': schools_filter, 'site_title': 'Aulas - '})
 
 class MatterAdd(View):
     template_name = 'matter/add.html'
