@@ -25,7 +25,6 @@ function onYouTubeIframeAPIReady() {
       autoplay: 0,
     },
     events: {
-      'onReady': onPlayerReady,
       'onStateChange': onPlayerStateChange,
     },
   });
@@ -33,17 +32,16 @@ function onYouTubeIframeAPIReady() {
   planningPlayer = new YT.Player('plannerHelp', {
     height: height,
     width: width,
-    videoId: 'BYJlLYDZrDw',
+    videoId: 'G1slO_P_aYQ',
     playerVars: {
       autoplay: 0,
     },
     events: {
-      'onReady': onPlayerReady,
       'onStateChange': onPlayerStateChange,
     },
   });
   
-  planningPlayer = new YT.Player('knowUs', {
+  knowUsPlayer = new YT.Player('knowUs', {
     height: height,
     width: width,
     videoId: 'VvsjdWDsiew',
