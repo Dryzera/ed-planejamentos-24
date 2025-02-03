@@ -48,10 +48,6 @@ function onYouTubeIframeAPIReady() {
     playerVars: {
       autoplay: 0,
     },
-    events: {
-      'onReady': onPlayerReady,
-      'onStateChange': onPlayerStateChange,
-    },
   });
 }
 
