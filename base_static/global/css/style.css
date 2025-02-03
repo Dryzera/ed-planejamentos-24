@@ -748,6 +748,14 @@ a:hover {
     fill: #30305b !important
   }
 
+  .table {
+    margin-bottom: 3rem;
+  }
+
+  @media (max-width: 500px) {
+    .table {display: none;}
+  }
+
   /* tutorials page */
 
 
