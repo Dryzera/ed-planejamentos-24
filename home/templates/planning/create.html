@@ -56,10 +56,13 @@
         </div>
     </div>
 </div>
-<div id='wait' class='wait'>
-    <p>Estamos Gerando seu Planejamento.</p>
-    <p class='animation-p'>Isso pode demorar, mas <red>NÃO</red> saia da página</p>
+<div id='wait' class='modal-page'>
+    <div class="wait modal-content">
+        <p>Estamos Gerando seu Planejamento.</p>
+        <p class='animation-p'>Isso pode demorar, mas <red>NÃO</red> saia da página</p>
+    </div>
 </div>
+
     <div class="btns-planning-create">
         <button type="submit" class='btn btn-primary' id='btnGerar'>Gerar</button>
         <a href={% url "home:planning" %} class='btn btn-secondary'>Voltar</a>

@@ -2,19 +2,24 @@
 {% block content %}
 <div class="dados-pessoais col">
     <h2>Seus Dados</h2>
-    <div>
-        <p><b>Usuário: </b>{{ profile.user.username }}</p>
-        <p><b>Nome: </b>{{ profile.user.first_name }}</p>
-        <p><b>Sobrenome: </b>{{ profile.user.last_name }}</p>
-        <p><b>Email: </b>{{ profile.user.email }}</p>
-        <p><b>Data de Pagamento: </b>{{ profile.date_payment }}</p>
-        <p><b>Data de Expiração: </b><red>{{ profile.date_expiration }}</red></p>
-        {% if profile.user.is_active %}
-        <p><b>Pagamento:</b> <green>OK</green></p>
-        {% else %}
-        <p><b>Pagamento:</b> <red>pendente</red></p>
-        {% endif %}
-        <a href='{% url "home:edit_profile" user.pk %}' class='btn btn-secondary'>Editar</a>
+    <div class='grid-profile'>
+        <div class="personal-infos">
+            <p><b>Usuário: </b>{{ profile.user.username }}</p>
+            <p><b>Nome: </b>{{ profile.user.first_name }}</p>
+            <p><b>Sobrenome: </b>{{ profile.user.last_name }}</p>
+            <p><b>Email: </b>{{ profile.user.email }}</p>
+        </div>
+        <div class="other-datas">
+            <p><b>Plano: </b>{{ plann }}</p>
+            <p><b>Data de Pagamento: </b>{{ profile.date_payment }}</p>
+            <p><b>Data de Expiração: </b><red>{{ profile.date_expiration }}</red></p>
+            {% if profile.user.is_active %}
+            <p><b>Pagamento:</b> <green>OK</green></p>
+            {% else %}
+            <p><b>Pagamento:</b> <red>pendente</red></p>
+            {% endif %}
+        </div>
+        <a href='{% url "home:edit_profile" user.pk %}' class='btn btn-secondary btn-profile-view'>Editar</a>
     </div>
 </div>
 {% endblock content %}

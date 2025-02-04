@@ -52,7 +52,7 @@ def view_profile(request, pk):
     if profile.user.pk != request.user.pk:
         return redirect('home:view_profile', request.user.pk)
 
-    return render(request, 'autentication/view_profile.html', context={'site_title': 'Ver Perfil - ', 'profile': profile})
+    return render(request, 'autentication/view_profile.html', context={'site_title': 'Ver Perfil - ', 'profile': profile, 'plann': profile.user.groups.first()})
 
 class EditProfile(DetailView):
     template_name = 'autentication/edit.html'
