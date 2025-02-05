@@ -1,32 +1,30 @@
-import torch
-from transformers import AutoModelForCausalLM, AutoTokenizer, pipeline
+from huggingface_hub import InferenceClient
+from dotenv import load_dotenv
+import os
 
-torch.random.manual_seed(0)
+load_dotenv()
 
-model = AutoModelForCausalLM.from_pretrained(
-    "microsoft/Phi-3.5-mini-instruct",
-    device_map='auto',
-    torch_dtype="float16", 
-    trust_remote_code=True, 
-)
-tokenizer = AutoTokenizer.from_pretrained("microsoft/Phi-3.5-mini-instruct")
+client = InferenceClient(api_key=os.getenv('API_KEY'))
+# client = InferenceClient(api_key=os.getenv('API_KEY2'))
 
-messages = [
-    {"role": "user", "content": "What about solving an 2x + 3 = 7 equation?"},
-]
+def generate_planning_ia(term):
 
-pipe = pipeline(
-    "text-generation",
-    model=model,
-    tokenizer=tokenizer,
-)
+	messages = [
+		{
+			"role": "user",
+			"content": f'{term}'
+		}
+	]
 
-generation_args = {
-    "max_new_tokens": 500,
-    "return_full_text": False,
-    "temperature": 0.2,
-    "do_sample": True,
-}
+	completion = client.chat.completions.create(
+		model="microsoft/Phi-3.5-mini-instruct", 
+		messages=messages, 
+		max_tokens=1500,
+		temperature=0.2
+	)
 
-output = pipe(messages, **generation_args)
-print(output[0]['generated_text'])
+	response = completion.choices[0].message.content
+	return response
+
+if __name__ == '__main__':
+	generate_planning_ia('crie um planejamento escolar para alunos com sindome de down para a matéria de matemática (numeros de 1 a 9)')
