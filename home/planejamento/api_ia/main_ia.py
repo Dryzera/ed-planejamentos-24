@@ -5,6 +5,8 @@ model_name = "microsoft/Phi-3.5-mini-instruct"
 model = AutoModelForCausalLM.from_pretrained(model_name)
 tokenizer = AutoTokenizer.from_pretrained(model_name)
 
+model.use_multiprocessing = False
+
 def generate_planning_ia(term):
 
     messages = [
