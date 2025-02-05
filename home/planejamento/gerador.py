@@ -13,7 +13,7 @@ DEFAULT_SAVE_FOLDER = MEDIA_ROOT / 'files_docx_generated'
 def generate_slug() -> str:
     return ''.join(random.choices(string.ascii_letters, k=15))
 
-def init_generate_document(matters: list, date: str, term_for_ia: str, extra: str, basedSep: bool, school, teacher):
+def init_generate_document(matters: list, date: str, term_for_ia: dict, extra: str, basedSep: bool, school, teacher):
     try:
         ids = 0
         date_formated = datetime.strptime(date, '%Y-%m-%d')
