@@ -1,14 +1,35 @@
-from transformers import pipeline
+import torch
+from transformers import AutoModelForCausalLM, AutoTokenizer, pipeline
 
-gerador = pipeline("text-generation", model="deepseek-ai/DeepSeek-R1-Zero")
+torch.random.manual_seed(0)
 
-prompt = """
-Crie um planejamento de aula de Matemática para alunos do ensino fundamental, com foco nos números de 1 a 9.
-Inclua atividades interativas como:
-1. Exercícios para identificar e escrever os números de 1 a 9.
-2. Jogos de contagem e associação de números com objetos.
-3. Desafios práticos de soma e subtração utilizando os números de 1 a 9.
-"""
-resposta = gerador(prompt, max_length=1500, temperature=0.2, do_sample=False)
+model = AutoModelForCausalLM.from_pretrained(
+    "microsoft/Phi-3.5-mini-instruct", 
+    device_map="cuda", 
+    torch_dtype="auto", 
+    trust_remote_code=True, 
+)
+tokenizer = AutoTokenizer.from_pretrained("microsoft/Phi-3.5-mini-instruct")
 
-print(resposta[0]['generated_text'])
+messages = [
+    {"role": "system", "content": "You are a helpful AI assistant."},
+    {"role": "user", "content": "Can you provide ways to eat combinations of bananas and dragonfruits?"},
+    {"role": "assistant", "content": "Sure! Here are some ways to eat bananas and dragonfruits together: 1. Banana and dragonfruit smoothie: Blend bananas and dragonfruits together with some milk and honey. 2. Banana and dragonfruit salad: Mix sliced bananas and dragonfruits together with some lemon juice and honey."},
+    {"role": "user", "content": "What about solving an 2x + 3 = 7 equation?"},
+]
+
+pipe = pipeline(
+    "text-generation",
+    model=model,
+    tokenizer=tokenizer,
+)
+
+generation_args = {
+    "max_new_tokens": 500,
+    "return_full_text": False,
+    "temperature": 0.0,
+    "do_sample": False,
+}
+
+output = pipe(messages, **generation_args)
+print(output[0]['generated_text'])
