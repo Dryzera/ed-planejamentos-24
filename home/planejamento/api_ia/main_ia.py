@@ -1,6 +1,6 @@
 from transformers import pipeline
 
-gerador = pipeline("text-generation", model="EleutherAI/gpt-neo-125M")
+gerador = pipeline("text-generation", model="deepseek-ai/DeepSeek-R1-Zero")
 
 prompt = """
 Crie um planejamento de aula de Matemática para alunos do ensino fundamental, com foco nos números de 1 a 9.
