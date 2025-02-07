@@ -30,6 +30,7 @@ class Login(View):
 
         if form.is_valid():
             user = authenticate(
+                request=request,
                 username=form.cleaned_data['user'],
                 password=form.cleaned_data['password'],
             )
