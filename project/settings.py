@@ -39,9 +39,11 @@ INSTALLED_APPS = [
     'home',
     'crispy_forms',
     "crispy_bootstrap4",
+    'axes',
 ]
 
 MIDDLEWARE = [
+    "axes.middleware.AxesMiddleware",
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -103,6 +105,10 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTHENTICATION_BACKENDS = [
+    "axes.backends.AxesStandaloneBackend",
+    "django.contrib.auth.backends.ModelBackend", 
+]
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
@@ -157,5 +163,8 @@ LOGGING = {
     },
 }
 
+AXES_FAILURE_LIMIT = 5
+AXES_COOLOFF_TIME = 0.5
+AXES_LOCKOUT_PARAMETERS = ['ip_address', 'user_agent']
 
 from project.local_settings import *
