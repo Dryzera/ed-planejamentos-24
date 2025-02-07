@@ -7,3 +7,8 @@ WEEK_DAY_CHOICES = [
     ('5', 'Sexta-Feira'),
     ('6', 'Sábado'),
 ]
+
+STATUS_STUDENTS_CHOICE = [
+    ('1', 'Normal'),
+    ('2', 'Especial'),
+]

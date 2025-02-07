@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-from home.utils.variables import WEEK_DAY_CHOICES
+from home.utils.variables import WEEK_DAY_CHOICES, STATUS_STUDENTS_CHOICE
 
 # Create your models here.
 class School(models.Model):
@@ -33,3 +33,18 @@ class UserProfile(models.Model):
     class Meta:
         verbose_name = 'User Profile'
         verbose_name_plural = 'User Profiles'
+
+class Activities(models.Model):
+    user_upload = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    title = models.CharField(max_length=64, blank=False, null=False)
+    description = models.TextField(blank=True, max_length=300)
+    keywords = models.CharField(max_length=256, blank=True)
+    url_image = models.FileField(upload_to='activities/%Y/%m', blank=False, null=False)
+    status_student = models.CharField(choices=STATUS_STUDENTS_CHOICE, blank=False, null=False, max_length=20)
+    licence = models.BooleanField(default=False, null=False, blank=False, help_text='Você confirma que a imagem enviada esta livre de direitos autorais e/ou autoriza o uso dela?')
+    upload_date = models.DateField(auto_now_add=True)
+
+    def save(self, *args, **kwargs):
+        if self.licence == False:
+            raise TypeError('Autorize o uso da imagem, ou se certifique de que ela está livre de direitos autorais.')
+        return super().save(*args, **kwargs)
