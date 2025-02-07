@@ -30,6 +30,7 @@ class Login(View):
 
         if form.is_valid():
             user = authenticate(
+                request=request,
                 username=form.cleaned_data['user'],
                 password=form.cleaned_data['password'],
             )
@@ -48,11 +49,11 @@ def view_profile(request, pk):
         messages.error(request, 'Você não está autenticado. [605]')
         return redirect('home:home')
     
-    profile = get_object_or_404(UserProfile, pk=pk)
-    if profile.pk != request.user.pk:
+    profile = get_object_or_404(UserProfile, user=pk)
+    if profile.user.pk != request.user.pk:
         return redirect('home:view_profile', request.user.pk)
 
-    return render(request, 'autentication/view_profile.html', context={'site_title': 'Ver Perfil - ', 'profile': profile})
+    return render(request, 'autentication/view_profile.html', context={'site_title': 'Ver Perfil - ', 'profile': profile, 'plann': profile.user.groups.first()})
 
 class EditProfile(DetailView):
     template_name = 'autentication/edit.html'
