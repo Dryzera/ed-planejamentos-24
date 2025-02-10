@@ -1,4 +1,5 @@
 from docx import Document
+from docx.shared import Pt
 from datetime import datetime
 from project.settings import MEDIA_ROOT
 import string
@@ -20,7 +21,9 @@ def init_generate_document(matters: list, date: str, term_for_ia: dict, extra: s
         date_exibs = datetime.strftime(date_formated, '%d de %B de %Y')
         
         document = Document()
-        font = document.styles['Normal'].font
+        style = document.styles['Normal']
+        style.paragraph_format.line_spacing = 1
+        font = style.font
         font.name = 'Arial'
 
         # verifica a escolha do usuário e adicona no cabeçalho o que ele quiser

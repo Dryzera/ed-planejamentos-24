@@ -5,6 +5,10 @@ from home.views import *
 app_name = 'home'
 
 urlpatterns = [
+    # activity urls
+    path('activity/<slug:slug>/', login_required(PlanningFinish.as_view(), login_url='home:login'), name='activity_view'),
+    path('activities/', login_required(PlanningFinish.as_view(), login_url='home:login'), name='activities'),
+
     # planning urls
     path('planning/finish/', login_required(PlanningFinish.as_view(), login_url='home:login'), name='planning_finish'),
     path('planning/generate-planning/', login_required(PlanningGenerate.as_view(), login_url='home:login'), name='planning_generate'),
