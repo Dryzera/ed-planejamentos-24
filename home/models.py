@@ -44,7 +44,14 @@ class Activities(models.Model):
     licence = models.BooleanField(default=False, null=False, blank=False, help_text='Você confirma que a imagem enviada esta livre de direitos autorais e/ou autoriza o uso dela?')
     upload_date = models.DateField(auto_now_add=True)
 
+    def __str__(self):
+        return f'{self.title}'
+    
+    class Meta:
+        verbose_name = 'Activity'
+        verbose_name_plural = 'Activities'
+
     def save(self, *args, **kwargs):
         if self.licence == False:
-            raise TypeError('Autorize o uso da imagem, ou se certifique de que ela está livre de direitos autorais.')
+            raise ValueError('Você precisa concordar com a licença para enviar a imagem.')
         return super().save(*args, **kwargs)

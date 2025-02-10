@@ -9,6 +9,6 @@ WEEK_DAY_CHOICES = [
 ]
 
 STATUS_STUDENTS_CHOICE = [
-    ('1', 'Normal'),
-    ('2', 'Especial'),
+    ('1', 'PSD'),
+    ('2', 'PCD'),
 ]
