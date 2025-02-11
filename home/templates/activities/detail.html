@@ -1,0 +1,14 @@
+{% extends "global/base.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="activity-detail">
+        <h2>{{ activity.title }}</h2> - <i>{{ activity.upload_date }}</i>
+        <p>{{ activity.description }}</p>
+        <p>Condição do Aluno: {{ activity.get_status_student_display }}</p>
+        <a href="{{ activity.url_image.url }}" download="{{ activity.url_image.url }}"><img src="{{ activity.url_image.url }}" alt=""></a>
+    </div>
+</div>
+{% endblock content %}
+
+

@@ -712,6 +712,16 @@ a:hover {
     text-align: center;
 }
 
+.activity-detail h2 {
+    display: inline;
+    vertical-align: baseline;
+}
+
+.activity-detail img {
+    width: 70vw;
+    height: auto;
+}
+
 /* table plann */
 .table {
     display: flex;
