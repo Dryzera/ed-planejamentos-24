@@ -1,13 +1,15 @@
 from django.urls import path
 from django.contrib.auth.decorators import login_required
 from home.views import *
+from django.conf import settings
+from django.conf.urls.static import static
 
 app_name = 'home'
 
 urlpatterns = [
     # activity urls
-    path('activity/<slug:slug>/', login_required(PlanningFinish.as_view(), login_url='home:login'), name='activity_view'),
-    path('activities/', login_required(PlanningFinish.as_view(), login_url='home:login'), name='activities'),
+    path('activity/<slug:slug>/', login_required(ActivityView.as_view(), login_url='home:login'), name='activity_view'),
+    path('activities/', login_required(ActivityRead.as_view(), login_url='home:login'), name='activities'),
 
     # planning urls
     path('planning/finish/', login_required(PlanningFinish.as_view(), login_url='home:login'), name='planning_finish'),
@@ -31,4 +33,4 @@ urlpatterns = [
     path('tutorials/', tutorials, name='tutorials'),
     path('error-codes/', error_codes, name='errors'),
     path('', index, name='home'),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

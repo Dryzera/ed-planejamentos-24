@@ -1,0 +1,18 @@
+{% extends "global/base.html" %}
+
+{% block content %}
+<div class="container">
+    <h2>Repositório de Atividades</h2>
+
+    <div class="grid-activities">
+        {% for activity in activities %}
+            <a href="{% url "home:activity_view" activity.slug %}">
+                <div class="activity">
+                    <img src="{{ activity.url_image.url }}">
+                    <h5>{{ activity.title }}</h5>
+                </div>
+            </a>
+        {% endfor %}
+    </div>
+</div>
+{% endblock content %}
