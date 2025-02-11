@@ -10,7 +10,7 @@ def _remove_special_caracteres(text):
 
 def generate_slug(k, text='') -> str:
     if text:
-        return _remove_special_caracteres(text) + ''.join(random.choices(string.ascii_lowercase + string.digits, k=k))
+        return _remove_special_caracteres(text) + ''.join(random.choices(string.ascii_lowercase + string.digits, k=k))[:32]
     return ''.join(random.choices(string.ascii_lowercase + string.digits, k=k))
 
 if __name__ == '__main__':
