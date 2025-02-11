@@ -1,16 +1,10 @@
 import string
 import random
-import unicodedata
-
-def _remove_special_caracteres(text):
-    return ''.join(
-        c for c in unicodedata.normalize('NFKD', text)
-        if unicodedata.category(c) != 'Mn'
-    ).lower().replace(' ', '-') + '-'
+from django.utils.text import slugify
 
 def generate_slug(k, text='') -> str:
     if text:
-        slug_field = _remove_special_caracteres(text) + ''.join(random.choices(string.ascii_lowercase + string.digits, k=k))
+        slug_field = slugify(text) + ''.join(random.choices(string.ascii_lowercase + string.digits, k=k))
         return slug_field[:64]
     return ''.join(random.choices(string.ascii_lowercase + string.digits, k=k))
 
