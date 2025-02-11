@@ -10,8 +10,9 @@ def _remove_special_caracteres(text):
 
 def generate_slug(k, text='') -> str:
     if text:
-        return _remove_special_caracteres(text) + ''.join(random.choices(string.ascii_lowercase + string.digits, k=k))[:32]
+        slug_field = _remove_special_caracteres(text) + ''.join(random.choices(string.ascii_lowercase + string.digits, k=k))
+        return slug_field[:64]
     return ''.join(random.choices(string.ascii_lowercase + string.digits, k=k))
 
 if __name__ == '__main__':
-    print(generate_slug(16))
+    print(generate_slug(16, 'Teste de slug grande com acentuação')) 

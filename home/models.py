@@ -43,7 +43,7 @@ class Activities(models.Model):
     url_image = models.FileField(upload_to='activities/%Y/%m', blank=False, null=False)
     status_student = models.CharField(choices=STATUS_STUDENTS_CHOICE, blank=False, null=False, max_length=20)
     licence = models.BooleanField(default=False, null=False, blank=False, help_text='Você confirma que a imagem enviada esta livre de direitos autorais e/ou autoriza o uso dela?')
-    slug = models.SlugField(max_length=32, blank=True, null=False, unique=False)
+    slug = models.SlugField(max_length=64, blank=True, null=False, unique=False)
     upload_date = models.DateField(auto_now_add=True)
 
     def __str__(self):
