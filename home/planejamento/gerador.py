@@ -6,13 +6,11 @@ import string
 import random
 from home.planejamento.api_ia.main_ia import generate_planning_ia
 import locale
+from home.utils.unique_slugify import generate_slug
 
 locale.setlocale(locale.LC_TIME, "pt_BR.utf8")
 
 DEFAULT_SAVE_FOLDER = MEDIA_ROOT / 'files_docx_generated'
-
-def generate_slug() -> str:
-    return ''.join(random.choices(string.ascii_letters, k=15))
 
 def init_generate_document(matters: list, date: str, term_for_ia: dict, extra: str, basedSep: bool, school, teacher):
     try:
@@ -57,7 +55,7 @@ def init_generate_document(matters: list, date: str, term_for_ia: dict, extra: s
         if extra:
             document.add_paragraph(extra)
 
-        slug_name = generate_slug()
+        slug_name = generate_slug(15)
         file_name = DEFAULT_SAVE_FOLDER / f'planejamento_{slug_name}.docx'
 
         document.save(file_name)

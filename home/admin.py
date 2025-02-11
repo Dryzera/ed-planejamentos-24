@@ -15,4 +15,4 @@ class UserProfileAdmin(admin.ModelAdmin):
 class ActivitiesAdmin(admin.ModelAdmin):
     list_display = ('title', 'upload_date')
     ordering = ('upload_date',)
-    readonly_fields = ['upload_date']
+    readonly_fields = ['upload_date', 'slug']

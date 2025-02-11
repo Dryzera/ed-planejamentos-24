@@ -11,4 +11,5 @@ WEEK_DAY_CHOICES = [
 STATUS_STUDENTS_CHOICE = [
     ('1', 'PSD'),
     ('2', 'PCD'),
+    ('3', 'Não Definido'),
 ]

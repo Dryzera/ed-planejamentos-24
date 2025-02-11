@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from home.utils import unique_slugify
 from home.utils.variables import WEEK_DAY_CHOICES, STATUS_STUDENTS_CHOICE
 
 # Create your models here.
@@ -42,6 +43,7 @@ class Activities(models.Model):
     url_image = models.FileField(upload_to='activities/%Y/%m', blank=False, null=False)
     status_student = models.CharField(choices=STATUS_STUDENTS_CHOICE, blank=False, null=False, max_length=20)
     licence = models.BooleanField(default=False, null=False, blank=False, help_text='Você confirma que a imagem enviada esta livre de direitos autorais e/ou autoriza o uso dela?')
+    slug = models.SlugField(max_length=32, blank=True, null=False, unique=True)
     upload_date = models.DateField(auto_now_add=True)
 
     def __str__(self):
@@ -52,6 +54,9 @@ class Activities(models.Model):
         verbose_name_plural = 'Activities'
 
     def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = unique_slugify.generate_slug(8, self.title)
+
         if self.licence == False:
             raise ValueError('Você precisa concordar com a licença para enviar a imagem.')
         return super().save(*args, **kwargs)
