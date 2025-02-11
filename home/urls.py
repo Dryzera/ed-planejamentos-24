@@ -33,4 +33,7 @@ urlpatterns = [
     path('tutorials/', tutorials, name='tutorials'),
     path('error-codes/', error_codes, name='errors'),
     path('', index, name='home'),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
