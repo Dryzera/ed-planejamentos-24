@@ -6,7 +6,7 @@
 
     <div class="grid-activities">
         {% for activity in activities %}
-            <a href="{% url "home:activity_view" activity.slug %}">
+            <a href="{% url "home:activity_view" activity.slug %}" class='div-activity'>
                 <div class="activity">
                     <img src="{{ activity.url_image.url }}">
                     <h5>{{ activity.title }}</h5>

@@ -685,6 +685,33 @@ a:hover {
     margin-left: 4px;
 }
 
+.grid-activities {
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.div-activity {
+    width: auto;
+    background-color: #eee;
+    margin: 0 1rem;
+    padding: 1rem;
+    text-align: center;
+    border-radius: 5px;
+    border: 1px solid black;
+} 
+
+
+.activity img {
+    width: 10rem;
+}
+
+.activity h5 {
+    padding-top: 1rem;
+    font-size: 20px;
+    text-align: center;
+}
+
 /* table plann */
 .table {
     display: flex;
