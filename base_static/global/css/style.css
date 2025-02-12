@@ -694,7 +694,7 @@ a:hover {
 .div-activity {
     width: auto;
     background-color: #eee;
-    margin: 0 1rem;
+    margin: .8rem 1rem;
     padding: 1rem;
     text-align: center;
     border-radius: 5px;
@@ -703,7 +703,7 @@ a:hover {
 
 
 .activity img {
-    width: 10rem;
+    width: 8rem;
 }
 
 .activity h5 {
