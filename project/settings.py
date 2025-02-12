@@ -166,5 +166,6 @@ LOGGING = {
 AXES_FAILURE_LIMIT = 5
 AXES_COOLOFF_TIME = 0.5
 AXES_LOCKOUT_PARAMETERS = ['ip_address', 'user_agent']
+AXES_RESET_ON_SUCCESS = True
 
 from project.local_settings import *

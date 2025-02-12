@@ -1,5 +1,5 @@
 {% extends "global/base.html" %}
-
+{% load static %}
 {% block content %}
 <div class="message warning alert-mobile">
     Não recomendamos que acesse nosso site por um dispositivo móvel. A sua experiência pode ser afetada. Considere utilizar um computador.
@@ -24,10 +24,10 @@
     </div>
 
     <div class="element-index">
-        <a href="#">
+        <a href="{% url "home:activities" %}">
             <p class='title-link'>Repositório de Atividades</p> 
             <hr>
-            <p class='description-link'>Em desenvolvimento.</p>
+            <p class='description-link'>Encontre diferentes atividades para inserir no seu planejamento.</p>
         </a>
     </div>
 
@@ -40,11 +40,5 @@
     </div>
 </div>
 </div>
-
-<script>
-    const larguraTela = window.innerWidth;
-    if (larguraTela <= 500) {
-        const elementDisplay = document.querySelector('.alert-mobile').style.display = 'block'
-    }
-</script>
+<script src="{% static "global/js/script.js" %}"></script>   
 {% endblock content %}

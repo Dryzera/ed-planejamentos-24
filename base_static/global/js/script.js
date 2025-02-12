@@ -1,4 +1,9 @@
 (function() {
+    const larguraTela = window.innerWidth;
+    if (larguraTela <= 500) {
+        const elementDisplay = document.querySelector('.alert-mobile').style.display = 'block'
+    }
+
     const span = document.querySelector('.cumprimento')
 
     const atualDate = new Date().getHours()

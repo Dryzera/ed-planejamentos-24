@@ -1,5 +1,5 @@
 {% extends "global/base.html" %}
-
+{% load static %}
 {% block content %}
 
 <div class="info-create-planning">
@@ -68,4 +68,5 @@
         <a href={% url "home:planning" %} class='btn btn-secondary'>Voltar</a>
     </div>
 </form>
+<script src="{% static "global/js/loadPlanning.js" %}"></script>
 {% endblock content %}
