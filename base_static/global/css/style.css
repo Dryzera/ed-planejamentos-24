@@ -389,7 +389,7 @@ a:hover {
 }
 
 .img-logo-completa-footer {
-    width: 7rem;
+    width: 3rem;
 }
 
 .map-site {
@@ -408,12 +408,13 @@ a:hover {
     text-align: left;
 }
 
-.navigator-footer a {
+.navigator-footer-a {
     display: block;
     font-size: 15px;
     font-family: 'Noto Sans' sans-serif;
     font-weight: 100;
-    color: #ffffff;
+    color: #dfdfdf;
+    text-decoration: none;
 }
 
 
@@ -440,15 +441,8 @@ a:hover {
     gap: 26vw;
 }
 
-.email-div-footer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-size: 18px;
-}
 
-.email-div-footer span {
-    text-transform: uppercase;
+.email-div-footer {
     font-weight: bold;
     text-align: left;
 }
