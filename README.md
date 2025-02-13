@@ -29,7 +29,7 @@ Facilitar a rotina de professores, permitindo que eles economizem tempo e se con
 
 ## 📞 Contato  
 - **Email**: [edplanejamentos1@gmail.com](mailto:edplanejamentos1@gmail.com)  
-- **WhatsApp**: [Número de WhatsApp](https://api.whatsapp.com/send?phone=5543988344293&text=Ol%C3%A1%2C%20gostaria%20de%20receber%20mais%20informa%C3%A7%C3%B5es%20sobre%20a%20ED%20Planejamentos.) 
+- **WhatsApp**: [+55 (43) 9 8834-4293](https://api.whatsapp.com/send?phone=5543988344293&text=Ol%C3%A1%2C%20gostaria%20de%20receber%20mais%20informa%C3%A7%C3%B5es%20sobre%20a%20ED%20Planejamentos.) 
 
 ---
 
