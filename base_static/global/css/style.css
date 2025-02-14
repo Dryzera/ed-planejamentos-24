@@ -685,6 +685,29 @@ a:hover {
     grid-template-columns: repeat(3, 1fr);
 }
 
+.input-group {
+    position: relative;
+    width: 100%;
+}
+
+.form-control {
+    width: 100%;
+    padding-right: 30px;
+}
+
+.input-group i {
+    position: absolute;
+    right: 90px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgb(135, 135, 135); 
+    cursor: pointer;
+}
+
+.input-group i:hover {
+    color: rgba(135, 135, 135, .7);
+}
+
 .div-activity {
     width: auto;
     background-color: #eee;

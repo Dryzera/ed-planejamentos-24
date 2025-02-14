@@ -1,18 +1,37 @@
 from django.views.generic import ListView, DetailView
 from home.models import Activities
 from django.shortcuts import get_object_or_404
+from django.db.models import Q
 
 
 class ActivityRead(ListView):
     template_name = 'activities/activities.html'
     model = Activities
+    context_object_name = 'activities'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['activities'] = Activities.objects.all()
         context['site_title'] = 'Atividades - '
+        context['search'] = self.request.GET.get('q', '').lower()
         return context
-    
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        search = self.request.GET.get('q', '')
+
+        if search:
+            terms = search.lower().split()
+            query = Q()
+
+            for term in terms:
+                query |= Q(title__icontains=term) | Q(keywords__icontains=term)
+
+            queryset = queryset.filter(query)
+        else:
+            queryset = queryset.all()
+
+        return queryset
+
 class ActivityView(DetailView):
     template_name = 'activities/detail.html'
     model = Activities
