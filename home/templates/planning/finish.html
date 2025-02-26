@@ -1,4 +1,5 @@
 {% extends "global/base.html" %}
+{% load static %}
 
 {% block content %}
 <div class="info-create-planning">
@@ -10,6 +11,14 @@
     <p>Protocolo: {{ slug_file }}</p>
 </div>
 
+<div class="choice my-3">
+    <p class="text-center lead">Escolha abaixo:</p>
+    <div class="choices text-center">
+        <div class="btn btn-outline-primary ver-docx">Baixar</div>
+        <div class="btn btn-outline-danger ver-pdf">Ver em PDF</div>
+    </div>
+</div>
+
 <div class="info-finish-planning">
     <p>Baixe o planejamento em formato '.docx' (Word) clicando no botão abaixo:</p>
     <form action="{% url "home:planning_finish" %}" method='post'>
@@ -18,5 +27,13 @@
     </form>
     <p class='info-finish-planning-mt'>*Por segurança, não salvamos os planejamentos em nossos sistemas. Eles ficam disponíveis algumas horas após ser gerado e é apagado automáticamente.</p>
 </div>
+
+<div class="info-finish-planning-pdf">
+    <object data="{{ MEDIA_URL }}files_docx_generated/planejamento_{{ slug_file }}.pdf" type="application/pdf" width="100%" height="600px">
+        <p>Seu navegador não suporta exibição de PDF. <a href="{{ MEDIA_URL }}files_docx_generated/planejamento_{{ slug_file }}.pdf">Veja o PDF</a></p>
+    </object>
+</div>
+
+<script src="{% static "global/js/showPlanning.js" %}"></script>
 
 {% endblock content %}

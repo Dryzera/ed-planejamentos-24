@@ -290,6 +290,14 @@ a:hover {
     width: 40vw;
 }
 
+.choice {
+    width: 50vw;
+    background-color: #e3e3e3;
+    margin: 0 auto;
+    padding: 2rem;
+    border-radius: 1rem;
+}
+
 .info {
     margin-bottom: 1rem;
 }
@@ -314,7 +322,18 @@ a:hover {
     margin: 2rem 0;
 }
 
+.info-finish-planning-pdf {
+    display: none;
+    background-color: #eee;
+    width: 50vw;
+    margin: 1rem auto;
+    text-align: center;
+    padding: 3rem;
+    border-radius: 1rem;
+}
+
 .info-finish-planning {
+    display: none;
     background-color: #eee;
     width: 50vw;
     margin: 1rem auto;

@@ -6,6 +6,7 @@ from home.models import Matter, School, UserProfile
 from home.planejamento import gerador
 from home.utils.variables import WEEK_DAY_CHOICES
 from home.utils.weekday import get_weekday
+from home.utils.convert import convert_to_docx
 from datetime import datetime
 from django.http import FileResponse
 import os
@@ -81,6 +82,12 @@ class PlanningGenerate(View):
 
         planning_generate = gerador.init_generate_document(list_matters, info_list['data_planejamento'], term_for_ia, aditional_content, base_sep_matter, school, teacher)
         request.session['info_list'] = {'response_planning': planning_generate}
+         
+        try:
+            if(planning_generate):
+                convert_to_docx(planning_generate)
+        except Exception as e:
+            print(e)
 
         request.session.modified = True
         return redirect('home:planning_finish')
