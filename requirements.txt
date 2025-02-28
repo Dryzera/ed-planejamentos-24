@@ -34,6 +34,7 @@ tqdm==4.67.1
 transformers==4.48.2
 typing_extensions==4.12.2
 urllib3==2.3.0
+wheel==0.45.1
 
 # for install torch use this command:
 # pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
