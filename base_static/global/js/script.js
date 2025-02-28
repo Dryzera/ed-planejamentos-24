@@ -12,3 +12,6 @@
     else if (atualDate >= 18 && atualDate < 24 || atualDate < 6) span.innerHTML = 'Boa noite'
     else span.innerHTML = 'Olá'
 })()
+
+
+

@@ -23,6 +23,11 @@ a {
     text-decoration: none;
 }
 
+.closeMessage {
+    color: red;
+    cursor: pointer;
+}
+
 .principal_body {
     background-color: #f5f5f5;
 
@@ -109,6 +114,7 @@ a:hover {
     border-radius: 7px;
     font-size: 18px;
     margin-bottom: 1rem;
+    transition: all 100ms ease-in-out;
 }
 
 .message.success {

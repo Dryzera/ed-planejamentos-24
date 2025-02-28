@@ -30,10 +30,10 @@ setuptools==70.0.0
 sqlparse==0.5.3
 sympy==1.13.1
 tokenizers==0.21.0
-torch==2.6.0+cpu
-torchaudio==2.6.0+cpu
-torchvision==0.21.0+cpu
 tqdm==4.67.1
 transformers==4.48.2
 typing_extensions==4.12.2
 urllib3==2.3.0
+
+# for install torch use this command:
+# pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
