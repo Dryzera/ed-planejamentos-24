@@ -6,7 +6,8 @@
         <h2>{{ activity.title }}</h2> - <i>{{ activity.upload_date }}</i>
         <p>{{ activity.description|safe }}</p>
         <p>Condição do Aluno: {{ activity.get_status_student_display }}</p>
-        <a href="{{ activity.url_image.url }}" download="{{ activity.url_image.url }}"><img src="{{ activity.url_image.url }}" alt=""></a>
+        <a href="{{ activity.url_image.url }}" download="{{ activity.url_image.url }}"><img src="{{ activity.url_image.url }}" alt="imagem da atividade"></a>
+        <p class='my-2'><i>clique na imagem para baixar</i></p>
     </div>
 </div>
 {% endblock content %}

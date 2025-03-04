@@ -39,7 +39,6 @@
                     <label for="term_for_ia">Escreva o conteúdo da aula (para IA):</label>
                     <textarea rows='7' cols='30' maxlength='700' class='textarea-create-planning' name="term_for_ia-{{matter.pk}}" id='term_for_ia' placeholder='Nenhum texto no momento...'></textarea>
                     <div class="d-flex">
-                        <span class='btn-add-activitie-planning openModal'>&#10133;</span>
                         <span class='ml-auto count-caracteres'>0/700 caracteres</span>
                     </div>
                     <span><i>(deixe em branco caso não queira usar a IA para essa aula)</i></span>
@@ -59,6 +58,7 @@
             <span><i>(deixe em branco caso não queira adicionar um conteúdo extra)</i></span>
         </div>
     </div>
+    <span class='btn-add-activitie-planning openModal'>&#10133;</span>
 </div>
 <div id='wait' class='modal-page'>
     <div class="wait modal-content">
@@ -73,9 +73,6 @@
     </div>
 </form>
 
-
-<!-- Botão para abrir o modal -->
-<button id="openModal">Adicionar Atividade</button>
 
 <!-- Overlay e Modal (sem conteúdo inicialmente) -->
 <div id="overlay" style="display: none;"></div>
