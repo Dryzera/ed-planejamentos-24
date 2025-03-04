@@ -1,6 +1,6 @@
 from django.views.generic import ListView, DetailView
 from home.models import Activities
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, render
 from django.db.models import Q
 
 
@@ -44,3 +44,6 @@ class ActivityView(DetailView):
         context['site_title'] = 'Atividade - '
         context['activity'] = self.get_object()
         return context
+    
+def load_activities(request):
+    return render(request, 'activities/load_activities.html', {'activities': Activities.objects.all()})

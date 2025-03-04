@@ -1,0 +1,16 @@
+{% for atividade in activities %}
+    <div class="atividade">
+        <img src="{{ atividade.url_image.url }}" alt="Imagem da atividade">
+        <button class="useActivityButton" data-id="{{ atividade.id }}">Use</button>
+    </div>
+{% endfor %}
+
+<script>
+    btn = document.querySelectorAll(".useActivityButton")
+    btn.forEach(value => 
+        value.addEventListener("click", function() {
+            window.opener.postMessage("id_image", this.getAttribute('data-id')); 
+            window.close();
+        });
+    });
+</script>

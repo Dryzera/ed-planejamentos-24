@@ -39,6 +39,7 @@
                     <label for="term_for_ia">Escreva o conteúdo da aula (para IA):</label>
                     <textarea rows='7' cols='30' maxlength='700' class='textarea-create-planning' name="term_for_ia-{{matter.pk}}" id='term_for_ia' placeholder='Nenhum texto no momento...'></textarea>
                     <div class="d-flex">
+                        <span class='btn-add-activitie-planning openModal'>&#10133;</span>
                         <span class='ml-auto count-caracteres'>0/700 caracteres</span>
                     </div>
                     <span><i>(deixe em branco caso não queira usar a IA para essa aula)</i></span>
@@ -71,6 +72,19 @@
         <a href={% url "home:planning" %} class='btn btn-secondary'>Voltar</a>
     </div>
 </form>
+
+
+<!-- Botão para abrir o modal -->
+<button id="openModal">Adicionar Atividade</button>
+
+<!-- Overlay e Modal (sem conteúdo inicialmente) -->
+<div id="overlay" style="display: none;"></div>
+<div id="modal" style="display: none;">
+    <button id="closeModal">Fechar</button>
+    <div id="modalContent">Carregando...</div>
+</div>
+
 <script src="{% static "global/js/loadPlanning.js" %}"></script>
+<script src="{% static "global/js/loadActivities.js" %}"></script>
 <script src="{% static "global/js/caracteresCount.js" %}"></script>
 {% endblock content %}

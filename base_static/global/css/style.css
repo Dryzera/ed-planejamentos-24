@@ -951,3 +951,7 @@ a:hover {
     .align-itens-index h2 {text-align: center; font-size: 25px;}
     .grid-profile {display: block;}
 }
+
+.btn-add-activitie-planning {
+    cursor: pointer;
+}
