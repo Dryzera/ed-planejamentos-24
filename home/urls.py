@@ -9,7 +9,7 @@ app_name = 'home'
 urlpatterns = [
     
     # ia question urls
-    path('ed/', login_required(ActivityView.as_view(), login_url='home:login'), name='ia_question'),
+    # path('ed/', login_required(IAView.as_view(), login_url='home:login'), name='ia_question'),
 
     # activity urls
     path('activity/<slug:slug>/', login_required(ActivityView.as_view(), login_url='home:login'), name='activity_view'),

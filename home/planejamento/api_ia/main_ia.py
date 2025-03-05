@@ -1,5 +1,6 @@
 from huggingface_hub import InferenceClient
 from dotenv import load_dotenv
+from home.models import PromptIa
 import os
 
 load_dotenv()
@@ -23,6 +24,34 @@ def generate_planning_ia(term):
 	)
 
 	response = completion.choices[0].message.content
+	return response
+
+# not implemented
+def question_ia(term, user):
+	prompt_ia = PromptIa.objects.get(user=user)
+	messages = prompt_ia.context
+
+	messages.append({
+		'role': 'user',
+		'content': term
+	})
+
+	completion = client.chat.completions.create(
+		model="microsoft/Phi-3.5-mini-instruct", 
+		messages=messages, 
+		max_tokens=1500,
+		temperature=0.8
+	)
+
+	response = completion.choices[0].message.content
+	messages.append({
+		'role': 'assistant',
+		'content': response
+	})
+
+	prompt_ia.context = messages
+	prompt_ia.save()
+
 	return response
 
 if __name__ == '__main__':

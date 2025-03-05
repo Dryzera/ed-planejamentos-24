@@ -1,0 +1,10 @@
+Desabafo livre
+
+Sério, se você encontrou isso reflete:
+
+    Eu iniciei com o projeto da ED a menos de 3 meses (que por acaso funciona totalmente em torno de uma
+ia), está sendo um projeto muito legal e tudo mais, porém acho que não dá mais.
+    Quando eu começei, a hf disponibilizava 1000 consultas POR DIA! Sério, era o paraíso.
+    Hoje quis implementar uma nova ferramenta no meu site, um chatbot para meus clientes. Mas quando fiz
+duas consultas, fui na hf e vi que ja havia usado 1/6 do limite MENSAL. É muito bom desenvolver, mas 
+desse jeito não dá.

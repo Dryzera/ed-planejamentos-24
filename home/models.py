@@ -60,3 +60,8 @@ class Activities(models.Model):
         if self.licence == False:
             raise ValueError('Você precisa concordar com a licença para enviar a imagem.')
         return super().save(*args, **kwargs)
+    
+class PromptIa(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    context = models.JSONField(blank=True, null=True)
+    updated_at = models.DateTimeField(auto_now=True)
