@@ -1,3 +1,4 @@
+
 <div class="container">
     <div class="grid">
         {% for atividade in activities %}
@@ -8,13 +9,3 @@
         {% endfor %}
     </div>
 </div>
-
-<script>
-    btn = document.querySelectorAll(".useActivityButton")
-    btn.forEach(value =>
-        value.addEventListener("click", function() {
-            window.opener.postMessage("id_image", this.getAttribute('data-id')); 
-            window.close();
-        });
-    });
-</script>

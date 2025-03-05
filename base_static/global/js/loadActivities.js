@@ -4,9 +4,19 @@ const modalContent = document.getElementById('modalContent');
 const openModal = document.querySelector('.openModal');
 const closeModal = document.getElementById('closeModal');
 
-window.addEventListener("message", function(event) {
-    console.log(`Dado recebido: ${event.data}`);
-});
+
+function captureClick() {
+    btnUse = document.querySelectorAll('.useActivityButton')
+    inputActivity = document.querySelector('.activityInput')
+    
+    btnUse.forEach(element => {
+        element.addEventListener('click', e => {
+            let atribute = element.getAttribute('data-id')
+            console.log(atribute)
+            inputActivity.setAttribute('value', atribute)
+        })
+    });
+}
 
 openModal.addEventListener('click', async () => {
     modal.style.display = 'block';
@@ -16,6 +26,7 @@ openModal.addEventListener('click', async () => {
         const response = await fetch('/load_activities/');
         const html = await response.text();
         modalContent.innerHTML = html;
+        captureClick()
     } catch (error) {
         modalContent.innerHTML = "Erro ao carregar atividades.";
     }

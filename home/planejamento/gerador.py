@@ -2,18 +2,20 @@ from docx import Document
 from docx.shared import Pt
 from datetime import datetime
 from project.settings import MEDIA_ROOT
-import string
-import random
+from pathlib import Path
 from home.planejamento.api_ia.main_ia import generate_planning_ia
 import locale
 from home.utils.unique_slugify import generate_slug
+from django.core.files import File
+import os
 
 locale.setlocale(locale.LC_TIME, "pt_BR.utf8")
 
 DEFAULT_SAVE_FOLDER = MEDIA_ROOT / 'files_docx_generated'
+DEFAULT_MEDIA_FOLDER = MEDIA_ROOT
 
-def init_generate_document(matters: list, date: str, term_for_ia: dict, extra: str, basedSep: bool, school, teacher):
-    try:
+def init_generate_document(matters: list, date: str, term_for_ia: dict, extra: str, basedSep: bool, school, teacher, url_image):
+
         ids = 0
         date_formated = datetime.strptime(date, '%Y-%m-%d')
         date_exibs = datetime.strftime(date_formated, '%d de %B de %Y')
@@ -55,12 +57,11 @@ def init_generate_document(matters: list, date: str, term_for_ia: dict, extra: s
         if extra:
             document.add_paragraph(extra)
 
+        image_path = Path(DEFAULT_MEDIA_FOLDER) / str(url_image)
+        document.add_picture(str(image_path))
+
         slug_name = generate_slug(15)
         file_name = DEFAULT_SAVE_FOLDER / f'planejamento_{slug_name}.docx'
 
         document.save(file_name)
         return slug_name
-    except Exception as e:
-        # if raise any error, return False (this is treated on view)
-        print(e)
-        return False
