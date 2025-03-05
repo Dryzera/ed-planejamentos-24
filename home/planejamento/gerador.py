@@ -15,7 +15,7 @@ DEFAULT_SAVE_FOLDER = MEDIA_ROOT / 'files_docx_generated'
 DEFAULT_MEDIA_FOLDER = MEDIA_ROOT
 
 def init_generate_document(matters: list, date: str, term_for_ia: dict, extra: str, basedSep: bool, school, teacher, url_image):
-
+    try:
         ids = 0
         date_formated = datetime.strptime(date, '%Y-%m-%d')
         date_exibs = datetime.strftime(date_formated, '%d de %B de %Y')
@@ -65,3 +65,7 @@ def init_generate_document(matters: list, date: str, term_for_ia: dict, extra: s
 
         document.save(file_name)
         return slug_name
+    except Exception as e:
+        # if raise any error, return False (this is treated on view)
+        print(e)
+        return False
