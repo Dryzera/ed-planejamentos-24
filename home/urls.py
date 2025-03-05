@@ -14,7 +14,6 @@ urlpatterns = [
     # activity urls
     path('activity/<slug:slug>/', login_required(ActivityView.as_view(), login_url='home:login'), name='activity_view'),
     path('activities/', login_required(ActivityRead.as_view(), login_url='home:login'), name='activities'),
-    path("load_activities/", load_activities, name="load_activities"),
 
     # planning urls
     path('planning/finish/', login_required(PlanningFinish.as_view(), login_url='home:login'), name='planning_finish'),

@@ -45,5 +45,3 @@ class ActivityView(DetailView):
         context['activity'] = self.get_object()
         return context
     
-def load_activities(request):
-    return render(request, 'activities/load_activities.html', {'activities': Activities.objects.all()})

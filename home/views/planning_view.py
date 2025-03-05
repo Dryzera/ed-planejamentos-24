@@ -69,9 +69,6 @@ class PlanningGenerate(View):
         base_sep_matter = True if request.POST.get('hourBased') == 'on' else False # aula sera separada por 1º etc...
         insert_name = True if request.POST.get('insertMyName') == 'on' else False
         insert_school = True if request.POST.get('insertSchoolName') == 'on' else False
-        activity_id = request.POST.get('activity')
-
-        url_image = Activities.objects.get(pk=activity_id).url_image
 
         for key, value in request.POST.items():
             if key.startswith('term_for_ia-'):
@@ -83,11 +80,11 @@ class PlanningGenerate(View):
                 school = matter.school if insert_school else False
                 term_for_ia[matter_id] = value
 
-        planning_generate = gerador.init_generate_document(list_matters, info_list['data_planejamento'], term_for_ia, aditional_content, base_sep_matter, school, teacher, url_image)
+        planning_generate = gerador.init_generate_document(list_matters, info_list['data_planejamento'], term_for_ia, aditional_content, base_sep_matter, school, teacher)
         request.session['info_list'] = {'response_planning': planning_generate}
          
         try:
-            if(planning_generate):
+            if planning_generate:
                 convert_to_docx(planning_generate)
         except Exception as e:
             print(e)

@@ -68,21 +68,11 @@
 </div>
 
     <div class="btns-planning-create">
-        <input type="hidden" name="activity" class='activityInput'>
         <button type="submit" class='btn btn-primary' id='btnGerar'>Gerar</button>
         <a href={% url "home:planning" %} class='btn btn-secondary'>Voltar</a>
     </div>
 </form>
 
-
-<!-- Overlay e Modal (sem conteúdo inicialmente) -->
-<div id="overlay" style="display: none;"></div>
-<div id="modal" style="display: none;">
-    <button id="closeModal">Fechar</button>
-    <div id="modalContent">Carregando...</div>
-</div>
-
 <script src="{% static "global/js/loadPlanning.js" %}"></script>
-<script src="{% static "global/js/loadActivities.js" %}"></script>
 <script src="{% static "global/js/caracteresCount.js" %}"></script>
 {% endblock content %}
