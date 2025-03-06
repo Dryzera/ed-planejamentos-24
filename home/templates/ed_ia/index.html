@@ -17,7 +17,8 @@
     {% csrf_token %}
     <div class="input-group mb-3">
         <input name='prompt' type="text" class="form-control" placeholder="escreva aqui">
-        <button class="btn btn-outline-secondary" type="button" id="button-addon2">Enviar</button>
+        <button class="btn btn-outline-secondary" type="submit">Enviar</button> 
+        {% comment %} validar se tem caracteres no campo {% endcomment %}
     </div>
 </form>
 </div>
