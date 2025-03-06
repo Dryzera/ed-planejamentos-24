@@ -29,6 +29,7 @@ safetensors==0.5.2
 setuptools==70.0.0
 sqlparse==0.5.3
 sympy==1.13.1
+together==1.4.1
 tokenizers==0.21.0
 tqdm==4.67.1
 transformers==4.48.2

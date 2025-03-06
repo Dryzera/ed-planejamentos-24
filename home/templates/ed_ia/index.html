@@ -1,14 +1,24 @@
-{% block content %}
+{% extends "global/base.html" %}
 
+{% block content %}
+<div class="container">
 <form action="{% url "home:ia_question" %}" method="post">
     {% for query_prompts in prompt_model.context %}
+        {% if query_prompts.role == 'user' %}
+            <div class="flex">
+                <div class='user-prompt'>{{ query_prompts.content }}</div><br>
+            </div>
+        {% endif %}
         {% if query_prompts.role == 'assistant' %}
-            <div>{{ query_prompts.content }}</div><br>
+            <div class='ia-response'>{{ query_prompts.content }}</div><br>
         {% endif %}
     {% endfor %} 
 
     {% csrf_token %}
-    <input type="text" name="prompt" id="prompt">
-    <button type="submit">Perguntar</button>
+    <div class="input-group mb-3">
+        <input name='prompt' type="text" class="form-control" placeholder="escreva aqui">
+        <button class="btn btn-outline-secondary" type="button" id="button-addon2">Enviar</button>
+    </div>
 </form>
+</div>
 {% endblock content %}

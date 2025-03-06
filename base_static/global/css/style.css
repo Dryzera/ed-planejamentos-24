@@ -960,3 +960,26 @@ a:hover {
 .btn-add-activitie-planning {
     cursor: pointer;
 }
+
+.flex {
+    display: flex;
+    justify-content: end;
+    margin-bottom: 1rem;
+}
+
+.user-prompt {
+    text-align: right;
+    background-color: #a6a6a6;
+    padding: 1rem;
+    border-radius: 1rem;
+    font-weight: bold;
+    width: fit-content;
+    
+}
+.ia-response {
+    text-align: left;
+    background-color: #e2e2e2;
+    padding: 1rem;
+    border-radius: 1rem;
+    font-weight: bold;
+}
