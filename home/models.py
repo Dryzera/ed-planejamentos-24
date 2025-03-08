@@ -64,4 +64,11 @@ class Activities(models.Model):
 class PromptIa(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     context = models.JSONField(blank=True, null=True)
-    updated_at = models.DateTimeField(auto_now=True)
+    updated_at = models.DateTimeField(name='Atualizado em', auto_now=True)
+
+    def __str__(self):
+        return f'{self.user}'
+    
+    class Meta:
+        verbose_name = 'Prompt Ia'
+        verbose_name_plural = 'Prompts Ia'
