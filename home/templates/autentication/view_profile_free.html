@@ -1,0 +1,21 @@
+{% extends "global/base.html" %}
+{% block content %}
+<div class="dados-pessoais col">
+    <h2>Seus Dados</h2>
+    <div class='grid-profile'>
+        <div class="personal-infos">
+            <p><b>Usuário: </b>{{ profile.username }}</p>
+            <p><b>Nome: </b>{{ profile.first_name }}</p>
+            <p><b>Sobrenome: </b>{{ profile.last_name }}</p>
+            <p><b>Email: </b>{{ profile.email }}</p>
+        </div>
+        <div class="other-datas">
+            <p><b>Plano: </b>{{ plann }}</p>
+            <p><b>Data de Pagamento: </b>Nunca Pago</p>
+            <p><b>Data de Expiração: </b>Nunca Pago</p>
+            <p><b>Pagamento:</b> <red>pendente</red></p>
+        </div>
+        <a href='{% url "home:edit_profile" user.pk %}' class='btn btn-secondary btn-profile-view'>Editar</a>
+    </div>
+</div>
+{% endblock content %}

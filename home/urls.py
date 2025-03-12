@@ -25,6 +25,7 @@ urlpatterns = [
     path('profile/<int:pk>/edit/', login_required(EditProfile.as_view(), login_url='home:login'), name='edit_profile'),
     path('profile/<int:pk>/', view_profile, name='view_profile'),
     path('logout/', logout_view, name='logout'),
+    path('cadastro/', Register.as_view(), name='register'),
     path('logar/', Login.as_view(), name='login'),
     
     # matter urls

@@ -3,10 +3,13 @@ from django.shortcuts import redirect, render
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.views.generic import View, DetailView
-from home.forms import LoginForm, EditProfileForm
+from home.forms import LoginForm, EditProfileForm, RegisterForm
 from django.contrib.auth import authenticate, login
 from django.shortcuts import get_object_or_404
 from home.models import UserProfile, User
+from django.contrib.auth.models import Group
+
+free_group = Group.objects.get(name='Free')
 
 @login_required(login_url='home:login')
 def logout_view(request):
@@ -42,12 +45,56 @@ class Login(View):
             
         messages.error(request, 'O login falhou. [601]')
         return render(request, self.template_name, context={'form': form})
+    
+class Register(View):
+    template_name = 'autentication/cadastro.html'
+    form_class = RegisterForm
+
+    def get(self, request, *args, **kwargs):
+        form = self.form_class(user=request.user)
+        return render(request, self.template_name, context={'form': form, 'site_title': 'Cadastro - '})
+    
+    def post(self, request, *args, **kwargs):
+        form = self.form_class(request.POST, instance=User())
+
+        if form.is_valid():
+            user = form.cleaned_data['user']
+            password = form.cleaned_data['password']
+
+            form_register = form.save(commit=False)
+            form_register.username = user
+            form_register.set_password(password)
+
+            form_register.save()
+
+            form_register.groups.add(free_group) # this need stay here, because the user is created before this line
+
+            messages.success(request, 'Cadastro realizado com sucesso.')
+            user = authenticate(
+                request=request,
+                username=form.cleaned_data['user'],
+                password=form.cleaned_data['password'],
+            )
+            if user is not None:
+                login(request, user)
+            return redirect('home:home')
+            
+        messages.error(request, 'O login falhou. [601]')
+        return render(request, self.template_name, context={'form': form})
 
 @login_required(login_url='home:login')
 def view_profile(request, pk):
     if not request.user.is_authenticated:
         messages.error(request, 'Você não está autenticado. [605]')
         return redirect('home:home')
+    
+    if not UserProfile.objects.filter(user=pk).exists():
+        profile = User.objects.get(pk=pk)
+
+        if profile.pk != request.user.pk:
+            return redirect('home:view_profile', request.user.pk)
+        
+        return render(request, 'autentication/view_profile_free.html', context={'site_title': 'Ver Perfil - ', 'profile': profile, 'plann': profile.groups.first()})
     
     profile = get_object_or_404(UserProfile, user=pk)
     if profile.user.pk != request.user.pk:

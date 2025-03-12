@@ -16,9 +16,9 @@ def generate_planning_ia(term):
 			"content": f'{term}'
 		}
 	]
-
+	# microsoft/Phi-3.5-mini-instruct
 	completion = client.chat.completions.create(
-		model="microsoft/Phi-3.5-mini-instruct", 
+		model="google/gemma-2-2b-it", 
 		messages=messages, 
 		max_tokens=1500,
 		temperature=0.2
@@ -31,9 +31,10 @@ def generate_response_ia(messages):
 	client = Together(api_key=os.getenv('API_KEY_TOGETHER'))
 
 	response = client.chat.completions.create(
-		model="meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+		# cheap: meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo
+		model="meta-llama/Llama-3.3-70B-Instruct-Turbo-Free",
 		messages=messages,
-		max_tokens=500,
+		max_tokens=1500,
 		temperature=0.8,
 		top_p=0.9,
 	)
