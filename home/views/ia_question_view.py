@@ -1,7 +1,11 @@
+from django.contrib import messages
 from home.planejamento.api_ia.main_ia import question_ia
 from django.views.generic import View
 from django.shortcuts import redirect, render
 from home.models import PromptIa
+from home.utils.verify_inferences import verify_inferences
+from django.utils.timezone import localtime
+from datetime import datetime
 
 class IAView(View):
     template_name = 'ed_ia/index.html'
@@ -21,9 +25,16 @@ class IAView(View):
         return render(request, self.template_name, context)
     
     def post(self, request, *args, **kwargs):
-        prompt = request.POST.get('prompt')
+        prompt_model_ia = PromptIa.objects.get(user=request.user)
+        prompt_text = request.POST.get('prompt')
+        inference_allowed = verify_inferences(request.user)
 
-        question_ia(prompt, request.user)
+        if inference_allowed:
+            question_ia(prompt_text, request.user)
+            return redirect('home:ia_question')
         
+        datetime_local = datetime.strftime(localtime(prompt_model_ia.updated_at), '%d/%m/%Y - %H:%M')
+
+        messages.error(request, f'Seu limite expirou. Aguarde até {datetime_local} para usar novamente ou assine um plano pago.')
         return redirect('home:ia_question')
     

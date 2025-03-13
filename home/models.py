@@ -1,3 +1,5 @@
+from ast import mod
+from pyexpat import model
 from django.db import models
 from django.contrib.auth.models import User
 from home.utils import unique_slugify
@@ -64,7 +66,8 @@ class Activities(models.Model):
 class PromptIa(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     context = models.JSONField(blank=True, null=True)
-    updated_at = models.DateTimeField(name='Atualizado em', auto_now=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    inference_counts = models.IntegerField(default=0, blank=False, null=False) 
 
     def __str__(self):
         return f'{self.user}'

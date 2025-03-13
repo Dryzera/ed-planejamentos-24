@@ -56,7 +56,8 @@ def question_ia(term, user):
 		'content': response
 	})
 
-	prompt_ia.context = messages
+	prompt_ia.context = messages            
+	prompt_ia.inference_counts += 1
 	prompt_ia.save()
 
 	return response
