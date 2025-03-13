@@ -10,7 +10,6 @@ class RestrictAccessMiddleware:
             "/planning/generate-planning/",
             "/planning/create/",
             '/planning/',
-            '/contacts/',
             '/matter/add/',
             '/matter/',
             '/matter/<int:pk>/',
@@ -25,7 +24,7 @@ class RestrictAccessMiddleware:
                 return redirect(reverse("home:login"))
             
             if request.user.groups.filter(name=self.required_group).exists():
-                messages.error(request, 'Você não possui acesso a essa página com o plano free. [607]')
+                messages.error(request, 'Você não possui acesso a essa página com o plano Free. [607]')
                 return redirect(reverse("home:home"))
 
         return self.get_response(request)

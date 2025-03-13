@@ -6,8 +6,14 @@
 </div>
 <div class="align-itens-index">
 <h2><span class='cumprimento'>Olá</span> {{ user.first_name }}, o que vamos fazer?</h2>
+
+
 <div class="grid-index">
-    <div class="element-index">
+    {% if user.groups.all.0.name == "Free" %}
+        <div class="element-index not-allowed">
+    {% else %}  
+        <div class="element-index">
+    {% endif %}
         <a href="{% url "home:planning" %}">
             <p class='title-link'>Criar Planejamento</p> 
             <hr>
@@ -15,7 +21,11 @@
         </a>
     </div>
 
-    <div class="element-index">
+    {% if user.groups.all.0.name == "Free" %}
+        <div class="element-index not-allowed">
+    {% else %}  
+        <div class="element-index">
+    {% endif %}
         <a href="{% url "home:matter" %}">
             <p class='title-link'>Gerenciar Aulas</p> 
             <hr>
@@ -24,6 +34,18 @@
     </div>
 
     <div class="element-index">
+        <a href="{% url "home:ia_question" %}">
+            <p class='title-link'>Converse com a IA</p> 
+            <hr>
+            <p class='description-link'>Se você tem dúvidas sobre algum tema, converse com a Inteligência Artificial.</p>
+        </a>
+    </div>
+
+    {% if user.groups.all.0.name == "Free" %}
+        <div class="element-index not-allowed">
+    {% else %}  
+        <div class="element-index">
+    {% endif %}
         <a href="{% url "home:activities" %}">
             <p class='title-link'>Repositório de Atividades</p> 
             <hr>
@@ -31,11 +53,19 @@
         </a>
     </div>
 
-    <div class="element-index">
+        <div class="element-index">
         <a href="{% url "home:tutorials" %}">
             <p class='title-link'>Nossos Tutoriais</p>
             <hr>
             <p class='description-link'>Aprenda a usar o site da melhor forma com vídeos rápidos e explicativos.</p>
+        </a>
+    </div>
+
+    <div class="element-index">
+        <a href="{% url "home:contact" %}">
+            <p class='title-link'>Contato</p>
+            <hr>
+            <p class='description-link'>Caso você tenha dúvidas relacionadas a plataforma, clique aqui para entrar na página de contato.</p>
         </a>
     </div>
 </div>
