@@ -5,7 +5,6 @@
 }
 
 html, body {
-    overflow-x: hidden;
     height: 100%;
     margin: 0;
     display: flex;
@@ -981,7 +980,7 @@ a:hover {
     background-color: #e2e2e2;
     padding: 1rem;
     border-radius: 1rem;
-    font-weight: bold;
+    color: #2e2e2e;
 }
 
 .not-allowed {

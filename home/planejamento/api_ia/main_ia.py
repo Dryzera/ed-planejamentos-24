@@ -1,3 +1,4 @@
+from math import trunc
 from huggingface_hub import InferenceClient
 from dotenv import load_dotenv
 from home.models import PromptIa
@@ -21,7 +22,7 @@ def generate_planning_ia(term):
 		model="google/gemma-2-2b-it", 
 		messages=messages, 
 		max_tokens=1500,
-		temperature=0.2
+		temperature=0.2,
 	)
 
 	response = completion.choices[0].message.content
@@ -30,6 +31,9 @@ def generate_planning_ia(term):
 def generate_response_ia(messages):
 	client = Together(api_key=os.getenv('API_KEY_TOGETHER'))
 
+	if len(messages) > 10:
+		messages = messages[-10:]
+
 	response = client.chat.completions.create(
 		# cheap: meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo
 		model="meta-llama/Llama-3.3-70B-Instruct-Turbo-Free",
@@ -37,6 +41,7 @@ def generate_response_ia(messages):
 		max_tokens=1500,
 		temperature=0.8,
 		top_p=0.9,
+		truncation="end",
 	)
 	return response.choices[0].message.content
 
