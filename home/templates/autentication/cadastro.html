@@ -8,10 +8,9 @@
         {% csrf_token %}
         <div class="row justify-content-center">
             <div class="col-8">
-              <h1 class="mt-2">Crie sua conta</h1>
+              <h1 class="mt-2 form-check-inline">Crie sua conta</h1> <span>caso você já tenha uma conta, <a href="{% url "home:login" %}">faça login</a>.</span>
               {{ form|crispy }}
               <button type="submit" class='btn btn-primary'>Cadastrar</button>
-              <a class='btn btn-cadastrar' href='{% url "home:login" %}'>Login</a>
             </div>
           </div>
         </div>

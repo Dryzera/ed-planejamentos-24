@@ -7,7 +7,7 @@
         <div class="container">
             <div class="row justify-content-center">
               <div class="col-8">
-                <h1 class="mt-2">Faça login</h1>
+                <h1 class="mt-2 form-check-inline">Faça login</h1> <span>caso você não tenha uma conta, <a href="{% url "home:register" %}">crie uma</a>.</span>
                 {{ form|crispy }}
                 <button type="submit" class='btn btn-primary'>Logar</button>
                 <a class='btn btn-cadastrar' href='{% url "home:signin" %}'>Conheça</a>

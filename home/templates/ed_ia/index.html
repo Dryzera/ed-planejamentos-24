@@ -14,10 +14,10 @@
     {% endif %}
     {% endfor %} 
     
-    <form action="{% url "home:ia_question" %}" method="post">
+    <form action="{% url "home:ia_question" %}" method="post" class='form-ia'>
     {% csrf_token %}
-    <div class="input-group mb-3 form-ia">
-        <input name='prompt' type="text" class="form-control" placeholder="escreva aqui">
+    <div class="input-group mb-3">
+        <input id="input-prompt" name='prompt' type="text" class="form-control" placeholder="escreva aqui">
         <button class="btn btn-outline-secondary" type="submit">Enviar</button> 
         {% comment %} validar se tem caracteres no campo {% endcomment %}
     </div>

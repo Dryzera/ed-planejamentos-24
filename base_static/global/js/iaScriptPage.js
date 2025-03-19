@@ -19,27 +19,43 @@ function transcriptIaReponses(text) {
     return `<p>${texto}</p>`
 }
 
-const form = document.querySelector('.form-ia')
+function checkFields() {
+    const form = document.querySelector('.form-ia')
 
-form.addEventListener('submit', e => {
-    e.preventDefault()
-    const prompt = form.querySelector('[name="prompt"]')
+    return new Promise(resolve => {
+        form.addEventListener('submit', e => {
+            e.preventDefault()
+            const prompt = document.querySelector('#input-prompt')
 
-    let errors = []
+            let errors = []
 
-    if(prompt.value.lenght <= 1) errors.push('Você precisa inserir mais alguns caracteres')
+            if(prompt.value.length <= 1) errors.push('Você precisa inserir mais alguns caracteres')
 
-    if(errors) return
-    e.submit()
-})
-
-document.addEventListener('DOMContentLoaded', () => {
-    const iaResponses = document.querySelectorAll('.ia-response')
-
-    iaResponses.forEach(el => {
-        const responseTranscripted = transcriptIaReponses(el.innerText)
-        el.innerHTML = responseTranscripted
+            if(errors.length !== 0) return
+            form.submit();
+            resolve()
+        });
     })
+};
 
-    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-})
+function autoScollBottom() {
+    return new Promise(resolve => {
+        document.addEventListener('DOMContentLoaded', () => {
+            const iaResponses = document.querySelectorAll('.ia-response')
+
+            iaResponses.forEach(el => {
+                const responseTranscripted = transcriptIaReponses(el.innerText)
+                el.innerHTML = responseTranscripted
+            })
+
+            window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+        });
+        resolve();
+    });
+};
+
+async function runFunctions() {
+    await Promise.all([autoScollBottom(), checkFields()]);
+}
+
+runFunctions()
