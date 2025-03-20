@@ -32,6 +32,7 @@ class RegisterForm(forms.ModelForm):
         widget=forms.TextInput(
             attrs={
                 'placeholder': 'Digite seu Nome',
+                'class': 'input-validate',
                 }
             ),
             label='Nome:'
@@ -41,6 +42,7 @@ class RegisterForm(forms.ModelForm):
         widget=forms.TextInput(
             attrs={
                 'placeholder': 'Digite sobrenome',
+                'class': 'input-validate',
                 }
             ),
             label='Sobrenome:',
@@ -51,6 +53,7 @@ class RegisterForm(forms.ModelForm):
         widget=forms.TextInput(
             attrs={
                 'placeholder': 'Digite seu email',
+                'class': 'input-validate',
                 }
             ),
             label='E-Mail:'
@@ -60,6 +63,7 @@ class RegisterForm(forms.ModelForm):
         widget=forms.TextInput(
             attrs={
                 'placeholder': 'Crie seu usúario',
+                'class': 'input-validate',
                 }
             ),
             label='Usuário:'
@@ -69,7 +73,8 @@ class RegisterForm(forms.ModelForm):
     password = forms.CharField(
         widget=forms.PasswordInput(
             attrs={
-                'placeholder': 'Crie sua senha'
+                'placeholder': 'Crie sua senha',
+                'class': 'input-validate',
             }
         ),
         label='Senha:'
@@ -78,7 +83,8 @@ class RegisterForm(forms.ModelForm):
     password2 = forms.CharField(
         widget=forms.PasswordInput(
             attrs={
-                'placeholder': 'Digite novamente sua senha'
+                'placeholder': 'Digite novamente sua senha',
+                'class': 'input-validate',
             }
         ),
         label='Confirme a Senha:'
