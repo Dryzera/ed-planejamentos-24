@@ -10,9 +10,16 @@
     </div>
     {% endif %}
     {% if query_prompts.role == 'assistant' %}
-    <div class='ia-response'><pre>{{ query_prompts.content }}</pre></div><br>
+        <div class='ia-response'><pre>{{ query_prompts.content }}</pre></div><br>
     {% endif %}
     {% endfor %} 
+    <div class="generateAnwser">
+        <h1>Gerando uma Reposta</h1>
+        <div class="spinner"></div>
+        <div class="text-explaine">
+            <p>Nossa IA está formando a melhor resposta para a sua pergunta!</p>
+        </div>
+    </div>
     
     <form action="{% url "home:ia_question" %}" method="post" class='form-ia'>
     {% csrf_token %}

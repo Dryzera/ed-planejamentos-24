@@ -21,6 +21,7 @@ function transcriptIaReponses(text) {
 
 function checkFields() {
     const form = document.querySelector('.form-ia')
+    const loader = document.querySelector('.generateAnwser')
 
     return new Promise(resolve => {
         form.addEventListener('submit', e => {
@@ -32,6 +33,7 @@ function checkFields() {
             if(prompt.value.length <= 1) errors.push('Você precisa inserir mais alguns caracteres')
 
             if(errors.length !== 0) return
+            loader.style.display = 'flex'
             form.submit();
             resolve()
         });

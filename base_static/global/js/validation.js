@@ -1,7 +1,7 @@
 function fieldsValidate(field) {
     if (!field) return false
     if (field.value.length < 3) {
-        if(field.name === 'last_name') return
+        if(field.name === 'last_name') return true
         return 'Todos os campos devem ser preenchidos.'
     }
     if (field.name === 'email') {
@@ -12,17 +12,25 @@ function fieldsValidate(field) {
 }
 
 function registerValidation() {
-    const errorsOnValidation = []
     form = document.querySelector('.register-form')
-
+    
     form.addEventListener('submit', e => {
         e.preventDefault()
+        const errorsOnValidation = []
         
         inputs = form.querySelectorAll('.input-validate')
         inputs.forEach(element => {
             const validationResponses = fieldsValidate(element)
             errorsOnValidation.push(validationResponses)
         });
+
+        let checkExistsErrors = errorsOnValidation.filter(result => result !== true)
+        if(checkExistsErrors.length !== 0) {
+            let errorMessage = ''
+            checkExistsErrors.forEach(err => errorMessage += err + '\n')
+            alert(errorMessage)
+            return
+        }
         form.submit()
     });
 
