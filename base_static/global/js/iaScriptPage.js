@@ -43,6 +43,9 @@ function checkFields() {
 function autoScollBottom() {
     return new Promise(resolve => {
         document.addEventListener('DOMContentLoaded', () => {
+            const message = document.querySelector('.message')
+            if(message) return
+            
             const iaResponses = document.querySelectorAll('.ia-response')
 
             iaResponses.forEach(el => {

@@ -622,7 +622,8 @@ a:hover {
 .contact {
     display: block;
 }
-.contact a {
+.contact a, 
+.contact span {
     display: block;
     margin-bottom: .5rem;
     font-size: 1rem;
