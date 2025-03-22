@@ -1,5 +1,6 @@
 from django.contrib.auth import logout
 from django.shortcuts import redirect, render
+from django.http.response import JsonResponse
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.views.generic import View, DetailView
@@ -81,6 +82,13 @@ class Register(View):
             
         messages.error(request, 'O login falhou. [601]')
         return render(request, self.template_name, context={'form': form})
+    
+class SendMail(View):
+    def get(self, request):
+        return JsonResponse({"error": "Method not allowed"}, status=405)
+
+    def post(self, request, *args, **kwargs):
+        email = request.POST.get('email')
 
 @login_required(login_url='home:login')
 def view_profile(request, pk):
