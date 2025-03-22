@@ -1,4 +1,3 @@
-from math import trunc
 from huggingface_hub import InferenceClient
 from dotenv import load_dotenv
 from home.models import PromptIa
