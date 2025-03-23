@@ -57,10 +57,14 @@ class Register(View):
     
     def post(self, request, *args, **kwargs):
         form = self.form_class(request.POST, instance=User())
+        register = request.POST.get('register')
 
         if form.is_valid():
             user = form.cleaned_data['user']
             password = form.cleaned_data['password']
+
+            if register != 'on':
+                return render(request, self.template_name, context={'execute_js': True, 'form': form})
 
             form_register = form.save(commit=False)
             form_register.username = user

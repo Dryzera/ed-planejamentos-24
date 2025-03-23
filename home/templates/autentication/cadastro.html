@@ -15,7 +15,21 @@
             </div>
           </div>
         </div>
+        {% if execute_js %}
+          <input type="hidden" name="register" value='on'>
+        {% endif %}
     </form>
-</div>
-<script src="{% static "global/js/validation.js" %}"></script>
+
+  </div>
+  <div class="modal-page">
+    <div class="modal-content">
+      <p>Insira o código que você recebeu no seu email!</p>
+      <input type="text" class='code' required>
+      <button class='verifyCode'>Verificar</button>
+    </div>
+  </div>
+  <script src="{% static "global/js/validation.js" %}"></script>
+{% if execute_js %}
+  <script src="{% static "global/js/codeVerify.js" %}"></script>
+{% endif %}
 {% endblock content %}
