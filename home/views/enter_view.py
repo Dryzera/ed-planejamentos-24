@@ -9,6 +9,7 @@ from django.contrib.auth import authenticate, login
 from django.shortcuts import get_object_or_404
 from home.models import UserProfile, User
 from django.contrib.auth.models import Group
+from django.core.cache import cache 
 
 free_group = Group.objects.get(name='Free')
 
@@ -62,10 +63,18 @@ class Register(View):
         if form.is_valid():
             user = form.cleaned_data['user']
             password = form.cleaned_data['password']
+            email = form.cleaned_data['email']
 
             if register != 'on':
                 return render(request, self.template_name, context={'execute_js': True, 'form': form})
+            
+            code_validated = cache.get(f'validated_{email}')
 
+            if not code_validated:
+                messages.error(request, 'Código não validado.')
+                return redirect('home:register')
+
+            cache.delete(f'validated_{email}')
             form_register = form.save(commit=False)
             form_register.username = user
             form_register.set_password(password)
@@ -84,8 +93,8 @@ class Register(View):
                 login(request, user)
             return redirect('home:home')
             
-        messages.error(request, 'O login falhou. [601]')
-        return render(request, self.template_name, context={'form': form})
+        messages.error(request, 'O cadastro falhou. [703]')
+        return render(request, self.template_name, context={'form': form, 'site_title': 'Cadastro -'})
     
 class SendMail(View):
     def get(self, request):

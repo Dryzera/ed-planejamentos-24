@@ -11,21 +11,26 @@
             <div class="col-8">
               <h1 class="mt-2 form-check-inline">Crie sua conta</h1> <span>caso você já tenha uma conta, <a href="{% url "home:login" %}">faça login</a>.</span>
               {{ form|crispy }}
-              <button type="submit" class='btn btn-primary'>Cadastrar</button>
+              {% if execute_js %}
+                <input type="hidden" name="register" value='on'>
+                <input type="button" class='btn btn-primary' value='Cadastrar' disabled>
+              {% else %}
+                <button type="submit" class='btn btn-primary'>Cadastrar</button>
+              {% endif %}
             </div>
           </div>
         </div>
-        {% if execute_js %}
-          <input type="hidden" name="register" value='on'>
-        {% endif %}
     </form>
 
   </div>
   <div class="modal-page">
     <div class="modal-content">
-      <p>Insira o código que você recebeu no seu email!</p>
-      <input type="text" class='code' required>
-      <button class='verifyCode'>Verificar</button>
+      <h5>Insira o código que você recebeu no seu e-mail</h5>
+      <span>*considere checar a caixa de span</span>
+      <input type="number" class='code' required>
+      <button id='verifyCode' class='btnVerifyCode btn btn-primary'>Verificar</button>
+      <button id='resendCode' class='btnVerifyCode btn btn-danger'>Reenviar Código</button>
+      <a class='btnVerifyCode btn btn-secondary' href='{% url "home:register" %}'>Preencher Novamente</a>
     </div>
   </div>
   <script src="{% static "global/js/validation.js" %}"></script>

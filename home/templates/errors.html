@@ -32,6 +32,7 @@
             <ul class="errors-list">
                 <li><b>701: “Ocorreu um erro inesperado ao gerar seu planejamento, tente novamente.”:</b> Erro interno. Entre em contato com o administrador.</li>
                 <li><b>702: “Seu planejamento foi gerado, mas não foi encontrado no nosso banco de dados, tente novamente.”:</b> Houve um erro ao buscar seu arquivo no nosso sistema, tente criar outro em "Planejamento" ou <a href="{% url "home:planning" %}">clique aqui</a>. Caso aconteça novamente, entre em contato com o administrador.</li>
+                <li><b>703: “O cadastro falhou.”:</b> Houve um erro ao te cadastrar em nossos sistemas. Tente novamente, se persistir, entre em contato com o suporte.</li>
             </ul>
         </div>
     </div>
@@ -52,6 +53,13 @@
             <p><i>Representa um erro relacionado ao usuário (você).</i></p>
             <ul class="errors-list">
                 <li><b>601: “O login falhou.”:</b> Provavelmente você errou suas credenciais ou não está com o login ativo (suspenso).</li>
+            </ul>
+        </div>
+        <div class="startsin7 error-div">
+            <h3>Inicia com o número "7":</h3>
+            <p><i>Representa um erro relacionado ao site (nós).</i></p>
+            <ul class="errors-list">
+                <li><b>703: “O cadastro falhou.”:</b> Houve um erro ao te cadastrar em nossos sistemas. Tente novamente, se persistir, entre em contato com o suporte.</li>
             </ul>
         </div>
     </div>

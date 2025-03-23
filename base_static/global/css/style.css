@@ -4,6 +4,16 @@
     --background-color-cards: #fff;
 }
 
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
 html, body {
     height: 100%;
     margin: 0;
@@ -933,7 +943,20 @@ a:hover {
     text-align: center;
     box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
 }
-  
+
+.modal-content .code,
+.modal-content .btnVerifyCode {
+    width: 50%;
+    margin: .5rem auto;
+    text-align: center;
+}
+
+.modal-content .code {
+    padding: .8rem;
+    border-radius: 1rem;
+    font-size: 26px;
+}
+
 
   @media (max-width: 500px) {
     .img-logo-completa-footer {display: none;}

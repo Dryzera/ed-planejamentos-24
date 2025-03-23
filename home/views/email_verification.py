@@ -39,6 +39,7 @@ class VerifyCode(View):
         correct_code = cache.get(f'code_{email}')
 
         if correct_code and str(correct_code) == code:
+            cache.set(f'validated_{email}', True, timeout=1440)
             cache.delete(f'code_{email}')
             return JsonResponse({"valid": True})
         
