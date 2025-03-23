@@ -173,7 +173,7 @@ AXES_COOLOFF_TIME = 0.5
 AXES_LOCKOUT_PARAMETERS = ['ip_address', 'user_agent']
 AXES_RESET_ON_SUCCESS = True
 
-EMAIL_HOST = os.getenv('EMAIL_HOST')
+EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
