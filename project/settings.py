@@ -57,6 +57,13 @@ MIDDLEWARE = [
     'project.middleware.RestrictAccessMiddleware',
 ]
 
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+        'LOCATION': 'unique-snowflake',
+    }
+}
+
 ROOT_URLCONF = 'project.urls'
 
 TEMPLATES = [
