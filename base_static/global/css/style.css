@@ -32,11 +32,6 @@ a {
     text-decoration: none;
 }
 
-.closeMessage {
-    color: red;
-    cursor: pointer;
-}
-
 .principal_body {
     background-color: #f5f5f5;
 
@@ -112,38 +107,6 @@ a:hover {
     width: 20px;
     vertical-align: text-top;
     margin-right: 5px;
-}
-
-.message {
-    max-width: 500px;
-    margin: 0 auto;
-    margin-top: calc(7px * 2);
-    padding: 0.5rem;
-    text-align: center;
-    border-radius: 7px;
-    font-size: 18px;
-    margin-bottom: 1rem;
-    transition: all 100ms ease-in-out;
-}
-
-.message.success {
-    background: rgba(0, 255, 0, 0.3);
-    border: 1px solid rgba(0, 255, 0, 90%);
-}
-
-.message.error {
-    background: rgba(255, 0, 0, 0.207);
-    border: 1px solid rgba(255, 0, 0, 90%);
-}
-
-.message.warning {
-    background: rgba(242, 242, 140, 0.3);
-    border: 1px solid rgb(255, 255, 0);
-}
-
-.message.info {
-    background: rgba(85, 88, 255, 0.3);
-    border: 1px solid rgba(79, 146, 255, 0.9);
 }
 
 .confirm_apagar {

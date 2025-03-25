@@ -19,8 +19,8 @@ function transcriptIaReponses(text) {
     return `<p>${texto}</p>`
 }
 
+const form = document.querySelector('.form-ia')
 function checkFields() {
-    const form = document.querySelector('.form-ia')
     const loader = document.querySelector('.generateAnwser')
 
     return new Promise(resolve => {
@@ -40,27 +40,34 @@ function checkFields() {
     })
 };
 
-function autoScollBottom() {
+function styleIaResponse() {
+    const message = document.querySelector('.message')
+    if(message) return
+    
+    const iaResponses = document.querySelectorAll('.ia-response')
+
+    iaResponses.forEach(el => {
+        const responseTranscripted = transcriptIaReponses(el.innerText)
+        el.innerHTML = responseTranscripted
+    })
+}
+
+function scrollBottom() {
+    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+}
+
+function domLoaded() {
     return new Promise(resolve => {
         document.addEventListener('DOMContentLoaded', () => {
-            const message = document.querySelector('.message')
-            if(message) return
-            
-            const iaResponses = document.querySelectorAll('.ia-response')
-
-            iaResponses.forEach(el => {
-                const responseTranscripted = transcriptIaReponses(el.innerText)
-                el.innerHTML = responseTranscripted
-            })
-
-            window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+            styleIaResponse();
+            scrollBottom();
         });
         resolve();
     });
 };
 
 async function runFunctions() {
-    await Promise.all([autoScollBottom(), checkFields()]);
+    await Promise.all([domLoaded(), checkFields()]);
 }
 
 runFunctions()
