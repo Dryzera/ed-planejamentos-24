@@ -1,9 +1,9 @@
 from docx import Document
 from datetime import datetime
 from project.settings import MEDIA_ROOT
-from home.planejamento.api_ia.main_ia import generate_planning_ia
+from apis.planejamento.api_ia.main_ia import generate_planning_ia
 import locale
-from home.utils.unique_slugify import generate_slug
+from apis.utils.unique_slugify import generate_slug
 
 locale.setlocale(locale.LC_TIME, "pt_BR.utf8")
 

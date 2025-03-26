@@ -7,7 +7,7 @@ async function sendCode() {
     const resendButton = document.querySelector('#resendCode')
 
     try {
-        const response = await fetch("/send-mail/", {
+        const response = await fetch("/api/send-mail/", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -48,7 +48,7 @@ async function sendCode() {
         if(code.length < 6) return message('O código deve ter 6 caracteres', 'error')
 
         try {
-            const response = await fetch("/check-code/", {
+            const response = await fetch("/api/check-code/", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

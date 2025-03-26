@@ -1,4 +1,4 @@
-from home.models import PromptIa
+from apis.models import PromptIa
 from datetime import datetime
 
 def verify_inferences(user):

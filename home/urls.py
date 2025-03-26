@@ -7,10 +7,6 @@ from django.conf.urls.static import static
 app_name = 'home'
 
 urlpatterns = [
-    # email verification urls
-    path('send-mail/', SendMail.as_view(), name='send-mail'),
-    path('check-code/', VerifyCode.as_view(), name='check-code'),
-    
     # ia question urls
     path('ed/', IAView.as_view(), name='ia_question'),
 

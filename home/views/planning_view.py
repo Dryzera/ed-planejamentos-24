@@ -2,8 +2,8 @@ from django.shortcuts import redirect, get_object_or_404, render
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.views.generic import View
-from home.models import Matter, Activities, UserProfile
-from home.planejamento import gerador
+from home.models import Matter, UserProfile
+from apis.planejamento import gerador
 from home.utils.variables import WEEK_DAY_CHOICES
 from home.utils.weekday import get_weekday
 from home.utils.convert import convert_to_docx

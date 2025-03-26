@@ -1,4 +1,3 @@
-from home.models import User
 import json
 from django.core.mail import send_mail
 from django.http import JsonResponse
@@ -6,7 +5,7 @@ from django.views.decorators.csrf import csrf_protect
 from django.utils.decorators import method_decorator
 from django.core.cache import cache 
 from django.views.generic import View
-from home.utils import email_sender
+from apis.utils import email_sender
 
 class SendMail(View):
     def get(self, request):

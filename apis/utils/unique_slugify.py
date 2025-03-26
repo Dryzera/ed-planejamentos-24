@@ -1,7 +1,6 @@
 import string
 import random
 from django.utils.text import slugify
-from sympy import true
 
 def generate_slug(k, text='', only_numbers=False) -> str:
     if text:

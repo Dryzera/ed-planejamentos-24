@@ -4,4 +4,3 @@ from home.views.matter_view import *
 from home.views.planning_view import *
 from home.views.activities_view import *
 from home.views.ia_question_view import *
-from home.views.email_verification import *

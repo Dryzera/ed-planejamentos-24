@@ -1,9 +1,8 @@
 from django.contrib import admin
-from home.models import Matter, School, UserProfile, Activities, PromptIa
+from home.models import Matter, School, UserProfile, Activities
 
 admin.site.register(Matter)
 admin.site.register(School)
-admin.site.register(PromptIa)
 
 @admin.register(UserProfile)
 class UserProfileAdmin(admin.ModelAdmin):

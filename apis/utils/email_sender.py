@@ -1,6 +1,6 @@
 from django.core.mail import send_mail, get_connection
 from project.settings import EMAIL_HOST_USER
-from home.utils.unique_slugify import generate_slug
+from apis.utils.unique_slugify import generate_slug
 from django.conf.global_settings import EMAIL_HOST_USER
 
 def validate_register(email):

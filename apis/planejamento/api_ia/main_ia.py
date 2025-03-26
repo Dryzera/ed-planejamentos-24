@@ -1,6 +1,6 @@
 from huggingface_hub import InferenceClient
 from dotenv import load_dotenv
-from home.models import PromptIa
+from apis.models import PromptIa
 from together import Together 
 import os
 

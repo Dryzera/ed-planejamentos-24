@@ -1,8 +1,8 @@
 from django.contrib import messages
-from home.planejamento.api_ia.main_ia import question_ia
+from apis.planejamento.api_ia.main_ia import question_ia
 from django.views.generic import View
 from django.shortcuts import redirect, render
-from home.models import PromptIa
+from apis.models import PromptIa
 from home.utils.verify_inferences import verify_inferences
 from django.utils.timezone import localtime
 from datetime import datetime
