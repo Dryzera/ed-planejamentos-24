@@ -85,6 +85,23 @@ a:hover {
 .grid-matters { grid-template-columns: repeat(3, 1fr); }
 }
 
+.message {
+    max-width: 500px;
+    margin: 0 auto;
+    margin-top: calc(7px * 2);
+    padding: 0.5rem;
+    text-align: center;
+    border-radius: 7px;
+    font-size: 18px;
+    margin-bottom: 1rem;
+    transition: all 100ms ease-in-out;
+}
+
+.message.info {
+    background: rgba(85, 88, 255, 0.3);
+    border: 1px solid rgba(79, 146, 255, 0.9);
+}
+
 .matter {
     background-color: var(--background-color-cards);
     padding: 2rem;

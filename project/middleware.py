@@ -6,25 +6,26 @@ class RestrictAccessMiddleware:
     def __init__(self, get_response):
         self.get_response = get_response
         self.restricted_paths = [
-            "/planning/finish/",
-            "/planning/generate-planning/",
-            "/planning/create/",
-            '/planning/',
-            '/matter/add/',
-            '/matter/',
-            '/matter/<int:pk>/',
-            '/activity/<slug:slug>/',
-            '/activities/',
+            "/planejamento/finalizado/",
+            "/planejamento/gerar/",
+            "/planejamento/criar/",
+            '/planejamento/',
+            '/aula/adicionar/',
+            '/aulas/',
+            '/aula/<int:pk>/',
+            '/atividade/<slug:slug>/',
+            '/atividades/',
         ]
-        self.required_group = 'Free' 
+        self._not_allowed_groups = ('Free',) 
 
     def __call__(self, request):
         if request.path in self.restricted_paths:
             if not request.user.is_authenticated:
                 return redirect(reverse("home:login"))
             
-            if request.user.groups.filter(name=self.required_group).exists():
-                messages.error(request, 'Você não possui acesso a essa página com o plano Free. [607]')
-                return redirect(reverse("home:home"))
+            for group in self._not_allowed_groups:
+                if request.user.groups.filter(name=group).exists():
+                    messages.error(request, 'Você não possui acesso a essa página com o plano Free. [607]')
+                    return redirect(reverse("home:home"))
 
         return self.get_response(request)
