@@ -1,3 +1,4 @@
+from email import message
 from django.contrib.auth import logout
 from django.shortcuts import redirect, render
 from django.http.response import JsonResponse
@@ -53,6 +54,10 @@ class Register(View):
     form_class = RegisterForm
 
     def get(self, request, *args, **kwargs):
+        if request.user.is_authenticated:
+            messages.info(request, 'Você já está autenticado.')
+            return redirect('teachers:home')
+
         form = self.form_class(user=request.user)
         return render(request, self.template_name, context={'form': form, 'site_title': 'Cadastro - '})
     
