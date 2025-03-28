@@ -3,7 +3,7 @@
 
 {% block content %}
 <div class="add_new_matter">
-  <a href="{% url "home:matter_add" %}">Adicionar Aula</a>
+  <a href="{% url "teachers:matter_add" %}">Adicionar Aula</a>
 </div>
 
 <div class="container">
@@ -43,7 +43,7 @@
           {% if matters %}
         {% for matter in matters %}
             <div class='matter'>
-                <div class="aula"><a href="{% url "home:matter_view" matter.pk %}">{{ matter.matter }}</a></div>
+                <div class="aula"><a href="{% url "teachers:matter_view" matter.pk %}">{{ matter.matter }}</a></div>
                 <div class="infos">
                     <p class='descriptin-matter'>Descrição:</p>
                     <ul>

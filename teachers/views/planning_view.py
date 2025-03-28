@@ -2,11 +2,12 @@ from django.shortcuts import redirect, get_object_or_404, render
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.views.generic import View
-from home.models import Matter, UserProfile
+from home.models import UserProfile
+from teachers.models import Matter
 from apis.planejamento import gerador
-from home.utils.variables import WEEK_DAY_CHOICES
-from home.utils.weekday import get_weekday
-from home.utils.convert import convert_to_docx
+from teachers.utils.variables import WEEK_DAY_CHOICES
+from teachers.utils.weekday import get_weekday
+from teachers.utils.convert import convert_to_docx
 from datetime import datetime
 from django.http import FileResponse
 import os
@@ -28,7 +29,7 @@ class PlanningCreate(View):
         matters_available = Matter.objects.filter(teacher=request.user, school=school_pk, day_week=dia_semana).order_by('hour')
         if not matters_available:
             messages.error(request, 'Nenhuma aula para este dia/escola foi encontrada. [603]')
-            return redirect('home:planning')
+            return redirect('teachers:planning')
         
         request.session['info_list'] = {
         'matters_available': list((i.pk) for i in matters_available),
@@ -36,7 +37,7 @@ class PlanningCreate(View):
         'day_week': dia_semana,
         'school_pk': school_pk
         }
-        return redirect('home:planning_create')
+        return redirect('teachers:planning_create')
     
     def get(self, request):
         info_list = self.request.session.get('info_list')
@@ -90,7 +91,7 @@ class PlanningGenerate(View):
             print(e)
 
         request.session.modified = True
-        return redirect('home:planning_finish')
+        return redirect('teachers:planning_finish')
 
 class PlanningFinish(View):
     template_name = 'planning/finish.html'
@@ -101,7 +102,7 @@ class PlanningFinish(View):
 
         if not response_planning:
             messages.error(request, 'Ocorreu um erro inesperado ao gerar seu planejamento, tente novamente. [701]')
-            return redirect('home:planning')
+            return redirect('teachers:planning')
         else:
             messages.success(request, 'Seu planejamento foi gerado!')
             return render(request, self.template_name, context={'slug_file': response_planning, 'site_title': 'Download do Planejamento - '})
@@ -122,4 +123,4 @@ class PlanningFinish(View):
                 return render(request, self.template_name)
         except TypeError:
             messages.error(request, 'Você já baixou o arquivo. Você não pode baixar duas vezes. [604]')
-            return redirect('home:planning')
+            return redirect('teachers:planning')

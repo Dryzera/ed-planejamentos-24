@@ -1,6 +1,6 @@
 from django.views.generic import ListView, DetailView
-from home.models import Activities
-from django.shortcuts import get_object_or_404, render
+from teachers.models import Activities
+from django.shortcuts import get_object_or_404
 from django.db.models import Q
 
 

@@ -143,12 +143,25 @@ class EditProfile(DetailView):
     
     def post(self, request, *args, **kwargs):
         form = self.form_class(request.POST)
+        register = request.POST.get('register')
 
         if form.is_valid():
+            email = form.cleaned_data['email']
+
+            if register != 'on':
+                return render(request, self.template_name, context={'execute_js': True, 'form': form})
+            
+            code_validated = cache.get(f'validated_{email}')
+
+            if not code_validated:
+                messages.error(request, 'Código não validado.')
+                return redirect('home:register')
+            
+
             profile = User.objects.get(pk=self.kwargs['pk'])
-            profile.first_name=form.cleaned_data['first_name']
-            profile.last_name=form.cleaned_data['last_name']
-            profile.email=form.cleaned_data['email']
+            profile.email = email
+            profile.first_name = form.cleaned_data['first_name']
+            profile.last_name = form.cleaned_data['last_name']
             profile.save()
 
             messages.success(request, 'Dados editados com sucesso.')

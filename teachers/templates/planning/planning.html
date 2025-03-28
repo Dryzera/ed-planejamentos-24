@@ -3,7 +3,7 @@
 {% block content %}
 <div class="form-planning">
     <h1>Criar Planejamento</h1>
-    <form method='post' action="{% url "home:planning_create" %}">
+    <form method='post' action="{% url "teachers:planning_create" %}">
         {% csrf_token %}
         <div class="select-school-form-planning div-form-planning">
             <label for="school">Escola:</label>

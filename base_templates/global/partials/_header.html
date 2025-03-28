@@ -4,9 +4,9 @@
 </div>
 {% if user.is_authenticated %}
 <nav class="navigator">
-    <a href="{% url "home:planning" %}">Planejamento</a>
+    <a href="{% url "teachers:planning" %}">Planejamento</a>
     <div class='linha-vertical'></div>
-    <a href="{% url "home:matter" %}">Aulas</a>
+    <a href="{% url "teachers:matter" %}">Aulas</a>
     <div class='linha-vertical'></div>
     <a href="{% url "home:ia_question" %}">ED IA</a>
 </nav>

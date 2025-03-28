@@ -21,7 +21,7 @@
 
 <div class="info-finish-planning">
     <p>Baixe o planejamento em formato '.docx' (Word) clicando no botão abaixo:</p>
-    <form action="{% url "home:planning_finish" %}" method='post'>
+    <form action="{% url "teachers:planning_finish" %}" method='post'>
         {% csrf_token %}
         <button type="submit" class='btn btn-primary'>Baixar</button>
     </form>

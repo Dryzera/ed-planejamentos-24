@@ -1,7 +1,5 @@
 from django import forms
 from django.contrib.auth.models import User
-from home.models import Matter, School, UserProfile
-from home.utils.variables import WEEK_DAY_CHOICES
 
 class LoginForm(forms.ModelForm):
     user = forms.CharField(
@@ -171,6 +169,7 @@ class EditProfileForm(forms.ModelForm):
         widget=forms.TextInput(
             attrs={
                 'placeholder': 'Digite seu primeiro nome',
+                'class': 'input-validate'
                 }
             ),
             label='Nome:'
@@ -183,13 +182,16 @@ class EditProfileForm(forms.ModelForm):
                 'placeholder': 'Digite seu último nome'
             }
         ),
-        label='Sobrenome:'
+        label='Sobrenome:',
+        required=False,
     )
 
     email = forms.CharField(
         widget=forms.TextInput(
             attrs={
-                'placeholder': 'Digite seu email'
+                'placeholder': 'Digite seu email',
+                'class': 'input-validate',
+                'id': 'email'
             }
         ),
         label='Seu Email:'
@@ -198,48 +200,19 @@ class EditProfileForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ('first_name', 'last_name', 'email')
-
-class AddMatterForm(forms.ModelForm):
-    def __init__(self, *args, user=None, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.user = user
-
-        if user:
-            self.fields['school'].queryset = UserProfile.objects.get(user=self.user).schools.all()
-
-    school = forms.ModelChoiceField(queryset=School.objects.all(), empty_label='(selecione)', label='Escola:')
-
-    matter = forms.CharField(
-        widget=forms.TextInput(
-            attrs={'placeholder': 'Digite aqui...'}
-        ),
-        help_text='Digite o nome da matéria',
-        label='Matéria:'
-    )
-
-    day_week = forms.CharField(
-        widget=forms.Select(
-            choices=WEEK_DAY_CHOICES
-        ),
-        label='Dia da aula:',
-    )
-
-    hour = forms.TimeField(
-        widget=forms.TimeInput(
-            attrs={'type': 'time'}
-        ),
-        help_text='Coloque o horário em que a aula começa',
-        label='Horário:'
-    )
-
-    duration = forms.IntegerField(
-        widget=forms.NumberInput(
-            attrs={'placeholder': 'Digite aqui...', 'class': 'duration'}
-        ),
-        help_text='Coloque a duração da aula em minutos',
-        label='Duração:'
-    )
     
-    class Meta:
-        model = Matter
-        fields = ('school', 'matter', 'day_week', 'hour', 'duration')
+    def clean(self, *args, **kwargs):
+        cleaned = self.cleaned_data
+        validation_error_messages = {}
+        email_data = cleaned.get('email')
+
+        error_msg_email_exists = 'Este e-mail já existe.'
+
+        if User.objects.filter(email=email_data).exists():
+            validation_error_messages['email']  = error_msg_email_exists
+
+        
+        if validation_error_messages:
+            raise(forms.ValidationError(
+                validation_error_messages 
+            ))

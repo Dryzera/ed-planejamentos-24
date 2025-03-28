@@ -6,15 +6,15 @@ class RestrictAccessMiddleware:
     def __init__(self, get_response):
         self.get_response = get_response
         self.restricted_paths = [
-            "/planejamento/finalizado/",
-            "/planejamento/gerar/",
-            "/planejamento/criar/",
-            '/planejamento/',
-            '/aula/adicionar/',
-            '/aulas/',
-            '/aula/<int:pk>/',
-            '/atividade/<slug:slug>/',
-            '/atividades/',
+            "/professores/planejamento/finalizado/",
+            "/professores/planejamento/gerar/",
+            "/professores/planejamento/criar/",
+            '/professores/planejamento/',
+            '/professores/aula/adicionar/',
+            '/professores/aulas/',
+            '/professores/aula/<int:pk>/',
+            '/professores/atividade/<slug:slug>/',
+            '/professores/atividades/',
         ]
         self._not_allowed_groups = ('Free',) 
 

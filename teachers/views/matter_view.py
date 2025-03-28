@@ -1,8 +1,9 @@
 from django.shortcuts import redirect, render
 from django.contrib import messages
 from django.views.generic import View, ListView, DetailView
-from home.forms import AddMatterForm
-from home.models import Matter, UserProfile
+from teachers.forms import AddMatterForm
+from teachers.models import Matter
+from home.models import UserProfile
 from django.http import Http404
 from django.db.models import Q
 
@@ -55,7 +56,7 @@ class MatterAdd(View):
             )
             matter.save()
             messages.success(request, 'Aula adicionada!')
-            return redirect('home:matter')
+            return redirect('teachers:matter')
             
         messages.error(request, 'Algo deu errado. [603]')
         return render(request, self.template_name, context={'form': form})
@@ -92,7 +93,7 @@ class MatterDetail(DetailView):
         if apagar:
             self.model.objects.get(pk=pk).delete()
             messages.info(request, 'Aula apagada.')
-            return redirect('home:matter')
+            return redirect('teachers:matter')
         else:
             form = AddMatterForm(request.POST)
 
@@ -106,7 +107,7 @@ class MatterDetail(DetailView):
                 matter.save()
 
                 messages.success(request, 'Aula editada.')
-                return redirect('home:matter_view', pk)
+                return redirect('teachers:matter_view', pk)
             messages.error(request, 'Algo deu errado. [602]')
-            return redirect('home:matter_view', pk)
+            return redirect('teachers:matter_view', pk)
     

@@ -8,7 +8,7 @@
       <div class="col-8">
         <h1 class="mt-2">Editar Aula</h1>
         <hr class="mt-0 mb-4">
-        <form method="post" action='{% url "home:matter_view" matter.pk %}'>
+        <form method="post" action='{% url "teachers:matter_view" matter.pk %}'>
             {% csrf_token %}
                 {{ form.school|as_crispy_field }}
                 {{ form.matter|as_crispy_field }}

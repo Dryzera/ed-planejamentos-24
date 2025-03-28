@@ -1,8 +1,9 @@
 {% extends "global/base.html" %}
 {% load crispy_forms_tags %}
+{% load static %}
 
 {% block content %}
-    <form method='post'>
+    <form method='post' class='register-form'>
         {% csrf_token %}
         <div class="container">
             <div class="row justify-content-center">
@@ -10,10 +11,30 @@
                 <h1 class="mt-2">Editar Perfil</h1>
                 <div class="blocked">
                   {{ form|crispy }}
+                  {% if execute_js %}
+                    <input type="hidden" name="register" value='on'>
+                    <input type="button" value='Salvar' disabled class='btn btn-primary'>
+                  {% else %}
+                    <button type="submit" class='btn btn-primary'>Salvar</button>
+                  {% endif %}
                 </div>
-                <button type="submit" class='btn btn-primary'>Salvar</button>
               </div>
             </div>
           </div>
     </form>
+
+    <div class="modal-page">
+      <div class="modal-content">
+        <h5>Insira o código que você recebeu no seu e-mail</h5>
+        <span>*considere checar a caixa de span</span>
+        <input type="number" class='code' required>
+        <button id='verifyCode' class='btnVerifyCode btn btn-primary'>Verificar</button>
+        <button id='resendCode' class='btnVerifyCode btn btn-danger'>Reenviar Código</button>
+        <a class='btnVerifyCode btn btn-secondary' href='{% url "home:register" %}'>Preencher Novamente</a>
+      </div>
+    </div>
+    {% if execute_js %}   
+      <script src="{% static "global/js/codeVerify.js" %}"></script>
+    {% endif %}
+    <script src="{% static "global/js/validation.js" %}"></script>
 {% endblock content %}

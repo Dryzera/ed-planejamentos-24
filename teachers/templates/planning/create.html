@@ -10,7 +10,7 @@
     <h2>Atenção!</h2>
     <p>Nos campos de escrita abaixo, escreva o conteúdo da sua aula. <red>Lembre-se</red>, uma IA gerará um planejamento com base nas suas informações, seja específico para obter bons resultados.</p>
 </div>
-<form action="{% url "home:planning_generate" %}" method="post">
+<form action="{% url "teachers:planning_generate" %}" method="post">
     {% csrf_token %}
     <div class="general-configs-card">
         <h2>Configurações do Documento:</h2>
@@ -68,7 +68,7 @@
 
     <div class="btns-planning-create">
         <button type="submit" class='btn btn-primary' id='btnGerar'>Gerar</button>
-        <a href={% url "home:planning" %} class='btn btn-secondary'>Voltar</a>
+        <a href={% url "teachers:planning" %} class='btn btn-secondary'>Voltar</a>
     </div>
 </form>
 

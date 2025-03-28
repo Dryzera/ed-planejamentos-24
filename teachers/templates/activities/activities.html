@@ -3,7 +3,7 @@
 {% block content %}
 <div class="container">
     <h2>Repositório de Atividades</h2>
-    <form action="{% url "home:activities" %}" method='get'>
+    <form action="{% url "teachers:activities" %}" method='get'>
         <div class="input-group mb-3 mt-4">
             <span class="input-group-text">Digite palavras chave:</span>
             <input value="{{ search }}" type="text" class="form-control input-terms-activities" name='q' placeholder="Escreva alguns termos aqui" aria-describedby="button-addon2">
@@ -15,7 +15,7 @@
     <div class="grid-activities">
         {% if activities %}
             {% for activity in activities %}
-                <a href="{% url "home:activity_view" activity.slug %}" class='div-activity'>
+                <a href="{% url "teachers:activity_view" activity.slug %}" class='div-activity'>
                     <div class="activity">
                         <img src="{{ activity.url_image.url }}">
                         <h5>{{ activity.title }}</h5>
