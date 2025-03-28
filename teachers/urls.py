@@ -21,6 +21,8 @@ urlpatterns = [
     path('aula/<int:pk>/', login_required(MatterDetail.as_view(), login_url='home:login'), name='matter_view'),
     path('aula/adicionar/', login_required(MatterAdd.as_view(), login_url='home:login'), name='matter_add'),
     path('aulas/', login_required(MatterRead.as_view(), login_url='home:login'), name='matter'),
+
+    path('', index, name='home'),
 ]
 
 if settings.DEBUG:

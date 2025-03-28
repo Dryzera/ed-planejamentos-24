@@ -25,7 +25,7 @@ class Login(View):
 
     def get(self, request, *args, **kwargs):
         if request.user.is_authenticated:
-            return redirect('home:home')
+            return redirect('teachers:home')
 
         form = self.form_class()
         return render(request, self.template_name, context={'form': form, 'site_title': 'Login - '})
@@ -43,7 +43,7 @@ class Login(View):
             if user is not None:
                 login(request, user)
                 messages.success(request, 'Logado com sucesso!')
-                return redirect('home:home')
+                return redirect('teachers:home')
             
         messages.error(request, 'O login falhou. [601]')
         return render(request, self.template_name, context={'form': form})
@@ -91,7 +91,7 @@ class Register(View):
             )
             if user is not None:
                 login(request, user)
-            return redirect('home:home')
+            return redirect('teachers:home')
             
         messages.error(request, 'O cadastro falhou. [703]')
         return render(request, self.template_name, context={'form': form, 'site_title': 'Cadastro -'})
@@ -107,7 +107,7 @@ class SendMail(View):
 def view_profile(request, pk):
     if not request.user.is_authenticated:
         messages.error(request, 'Você não está autenticado. [605]')
-        return redirect('home:home')
+        return redirect('teachers:home')
     
     if not UserProfile.objects.filter(user=pk).exists():
         profile = User.objects.get(pk=pk)
@@ -131,7 +131,7 @@ class EditProfile(DetailView):
     def get(self, request, *args, **kwargs):
         if not request.user.is_authenticated:
             messages.error(request, 'Você não está autenticado. [605]')
-            return redirect('home:home')
+            return redirect('teachers:home')
         
         profile = get_object_or_404(User, pk=self.kwargs['pk'])
         if profile.pk != request.user.pk:

@@ -17,11 +17,10 @@ urlpatterns = [
     path('cadastro/', Register.as_view(), name='register'),
     path('logar/', Login.as_view(), name='login'),
 
-    path('nos-conheca/', know_us, name='signin'),
+    path('', know_us, name='signin'),
     path('contato/', contact, name='contact'),
     path('tutoriais/', tutorials, name='tutorials'),
     path('erros/', error_codes, name='errors'),
-    path('', index, name='home'),
 ]
 
 if settings.DEBUG:

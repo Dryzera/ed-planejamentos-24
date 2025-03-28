@@ -1,6 +1,6 @@
 {% load static %}
 <div class="logo">
-    <h2 class="site_title"><a href="{% url "home:home" %}"><img class='img-logo-completa-header' src="{% static "global/imgs/logo-sem-fundo.png" %}" alt="logo do site em formato completo escrito 'ed planejamentos'"></a></h2>
+    <h2 class="site_title"><a href="{% url "teachers:home" %}"><img class='img-logo-completa-header' src="{% static "global/imgs/logo-sem-fundo.png" %}" alt="logo do site em formato completo escrito 'ed planejamentos'"></a></h2>
 </div>
 {% if user.is_authenticated %}
 <nav class="navigator">

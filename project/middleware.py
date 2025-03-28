@@ -26,6 +26,6 @@ class RestrictAccessMiddleware:
             for group in self._not_allowed_groups:
                 if request.user.groups.filter(name=group).exists():
                     messages.error(request, 'Você não possui acesso a essa página com o plano Free. [607]')
-                    return redirect(reverse("home:home"))
+                    return redirect(reverse("teachers:home"))
 
         return self.get_response(request)
