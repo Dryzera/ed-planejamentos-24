@@ -4,7 +4,7 @@
 
     clearBtn.addEventListener('click', () => {
         if (input.value) {
-            window.location.replace('/activities/')
+            window.location.replace('/professores/atividades/')
         } else return
 
     }) 
