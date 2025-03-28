@@ -1,8 +1,9 @@
 from django.urls import path
 from django.contrib.auth.decorators import login_required
-from home.views import *
 from django.conf import settings
 from django.conf.urls.static import static
+from django_ratelimit.decorators import ratelimit
+from home.views import *
 
 app_name = 'home'
 
