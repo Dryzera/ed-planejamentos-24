@@ -9,9 +9,6 @@ class School(models.Model):
 
     def __str__(self):
         return self.name
-    
-    class Meta:
-        db_table = 'home_school'
 
 class Matter(models.Model):
     teacher = models.ForeignKey(User, on_delete=models.CASCADE, blank=False, null=False, verbose_name='Professor')
@@ -23,9 +20,6 @@ class Matter(models.Model):
 
     def __str__(self):
         return f'{self.school} | {self.teacher} | {self.matter}'
-    
-    class Meta:
-        db_table = 'home_matter'
     
 
 class Activities(models.Model):
@@ -45,7 +39,6 @@ class Activities(models.Model):
     class Meta:
         verbose_name = 'Activity'
         verbose_name_plural = 'Activities'
-        db_table = 'home_activities'
 
     def save(self, *args, **kwargs):
         if not self.slug:
