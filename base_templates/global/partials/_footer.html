@@ -17,9 +17,17 @@
       <div class="col mb-3">
         <h5>GERAL</h5>
         <ul class="nav flex-column">
+          <li class="nav-item mb-2"><a href="{% url "home:ia_question" %}" class="nav-link p-0 text-body-secondary navigator-footer-a">ED IA</a></li>
           <li class="nav-item mb-2"><a href="{% url "teachers:planning" %}" class="nav-link p-0 text-body-secondary navigator-footer-a">Planejamentos</a></li>
           <li class="nav-item mb-2"><a href="{% url "teachers:matter" %}" class="nav-link p-0 text-body-secondary navigator-footer-a">Aulas</a></li>
           <li class="nav-item mb-2"><a href="{% url "teachers:activities" %}" class="nav-link p-0 text-body-secondary navigator-footer-a">Atividades</a></li>
+        </ul>
+      </div>
+      {% else %}
+      <div class="col mb-3">
+        <h5>GERAL</h5>
+        <ul class="nav flex-column">
+          <li class="nav-item mb-2"><a href="{% url "home:ia_question" %}" class="nav-link p-0 text-body-secondary navigator-footer-a">ED IA</a></li>
         </ul>
       </div>
       {% endif %}
@@ -32,13 +40,6 @@
             {% endif %}
           <li class="nav-item mb-2"><a href="{% url "home:contact" %}" class="nav-link p-0 text-body-secondary navigator-footer-a">Contato</a></li>
           <li class="nav-item mb-2"><a href="{% url "home:errors" %}" class="nav-link p-0 text-body-secondary navigator-footer-a">Erros</a></li>
-        </ul>
-      </div>
-
-      <div class="col mb-3">
-        <h5>CHATBOT</h5>
-        <ul class="nav flex-column">
-          <li class="nav-item mb-2"><a href="{% url "home:ia_question" %}" class="nav-link p-0 text-body-secondary navigator-footer-a">ED IA</a></li>
         </ul>
       </div>
 

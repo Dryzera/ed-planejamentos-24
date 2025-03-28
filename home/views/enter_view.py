@@ -1,4 +1,3 @@
-from email import message
 from django.contrib.auth import logout
 from django.shortcuts import redirect, render
 from django.http.response import JsonResponse
@@ -11,6 +10,7 @@ from django.shortcuts import get_object_or_404
 from home.models import UserProfile, User
 from django.contrib.auth.models import Group
 from django.core.cache import cache 
+from django.utils.http import url_has_allowed_host_and_scheme
 
 free_group = Group.objects.get(name='Free')
 
@@ -64,6 +64,7 @@ class Register(View):
     def post(self, request, *args, **kwargs):
         form = self.form_class(request.POST, instance=User())
         register = request.POST.get('register')
+        next = request.GET.get('next', '/')
 
         if form.is_valid():
             user = form.cleaned_data['user']
@@ -96,18 +97,14 @@ class Register(View):
             )
             if user is not None:
                 login(request, user)
-            return redirect('teachers:home')
+                if not url_has_allowed_host_and_scheme(next, allowed_hosts=request.get_host()):
+                    next = '/'
+
+                return redirect(next)
             
         messages.error(request, 'O cadastro falhou. [703]')
         return render(request, self.template_name, context={'form': form, 'site_title': 'Cadastro -'})
     
-class SendMail(View):
-    def get(self, request):
-        return JsonResponse({"error": "Method not allowed"}, status=405)
-
-    def post(self, request, *args, **kwargs):
-        email = request.POST.get('email')
-
 @login_required(login_url='home:login')
 def view_profile(request, pk):
     if not request.user.is_authenticated:
@@ -154,7 +151,7 @@ class EditProfile(DetailView):
             email = form.cleaned_data['email']
 
             if register != 'on':
-                return render(request, self.template_name, context={'execute_js': True, 'form': form})
+                return render(request, self.template_name, context={'execute_js': True, 'form': form, 'site_title': 'Editar Perfil - '})
             
             code_validated = cache.get(f'validated_{email}')
 

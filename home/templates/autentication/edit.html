@@ -30,7 +30,7 @@
         <input type="number" class='code' required>
         <button id='verifyCode' class='btnVerifyCode btn btn-primary'>Verificar</button>
         <button id='resendCode' class='btnVerifyCode btn btn-danger'>Reenviar Código</button>
-        <a class='btnVerifyCode btn btn-secondary' href='{% url "home:register" %}'>Preencher Novamente</a>
+        <a class='btnVerifyCode btn btn-secondary' href='{% url "home:edit_profile" %}'>Preencher Novamente</a>
       </div>
     </div>
     {% if execute_js %}   

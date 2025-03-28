@@ -2,10 +2,12 @@ from django.contrib import messages
 from apis.planejamento.api_ia.main_ia import question_ia
 from django.views.generic import View
 from django.shortcuts import redirect, render
+from django.urls import reverse
 from apis.models import PromptIa
 from home.utils.verify_inferences import verify_inferences
 from django.utils.timezone import localtime
 from datetime import datetime
+from urllib.parse import quote
 
 class IAView(View):
     template_name = 'ed_ia/index.html'
@@ -47,5 +49,6 @@ class IAView(View):
             messages.error(request, f'Seu limite expirou. Aguarde até {datetime_local} para usar novamente ou assine um plano pago.')
             return redirect('home:ia_question')
         else:
+            next_url = quote('/ed/')
             messages.info(request, 'Crie uma conta para usar nossos serviços!')
-            return redirect('home:register')
+            return redirect(f'{reverse("home:register")}?next={next_url}')
