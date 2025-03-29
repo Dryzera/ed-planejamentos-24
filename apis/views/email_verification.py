@@ -21,7 +21,6 @@ class SendMail(View):
         
         code_generated = email_sender.validate_register(email)
 
-        print(code_generated)
         cache.set(f'code_{email}', code_generated, timeout=300)
 
         return JsonResponse({"success": "Code sended"}, status=200)
@@ -37,7 +36,6 @@ class VerifyCode(View):
         code = data.get('code', '').strip()
 
         correct_code = cache.get(f'code_{email}')
-        print('COdógio correto:', correct_code, 'Código recebido:', code)
 
         if correct_code and str(correct_code) == code:
             cache.set(f'validated_{email}', True, timeout=1440)
