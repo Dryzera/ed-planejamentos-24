@@ -45,6 +45,8 @@ INSTALLED_APPS = [
     'crispy_forms',
     "crispy_bootstrap4",
     'axes',
+    "compressor",
+    'webpack_loader'
 ]
 
 MIDDLEWARE = [
@@ -146,6 +148,12 @@ STATICFILES_DIRS = (
 )
 STATIC_ROOT = BASE_DIR / 'static' # collectstatic
 
+STATICFILES_FINDERS = (
+    "django.contrib.staticfiles.finders.FileSystemFinder",
+    "django.contrib.staticfiles.finders.AppDirectoriesFinder",
+    "compressor.finders.CompressorFinder",
+)
+
 MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
@@ -189,5 +197,24 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
+COMPRESS_ENABLED = True 
+COMPRESS_OFFLINE = True 
+COMPRESS_PRECOMPILERS = (
+    ("text/x-scss", "node_modules/.bin/sass {infile} {outfile}"),
+    ("text/x-sass", "node_modules/.bin/sass {infile} {outfile}"),
+    ("text/x-less", "node_modules/.bin/lessc {infile} {outfile}"),
+    ("text/javascript", "node_modules/.bin/babel {infile} -o {outfile}"),
+)
+
+WEBPACK_LOADER = {
+    "DEFAULT": {
+        "BUNDLE_DIR_NAME": "build/",
+        "STATS_FILE": BASE_DIR / 'base_static' / 'build' / "webpack-stats.json",
+        "POLL_INTERVAL": 0.1,
+        "IGNORE": [".+\.hot-update.js", ".+\.map"],
+        'CACHE': not DEBUG
+    }
+}
 
 from project.local_settings import *

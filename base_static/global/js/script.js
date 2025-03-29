@@ -1,3 +1,7 @@
+
+import '../css/style.css';
+import './toastifyMessages';
+
 (function() {
     const larguraTela = window.innerWidth;
     if (larguraTela <= 500) {

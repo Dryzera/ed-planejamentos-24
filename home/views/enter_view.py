@@ -72,7 +72,7 @@ class Register(View):
             email = form.cleaned_data['email']
 
             if register != 'on':
-                return render(request, self.template_name, context={'execute_js': True, 'form': form})
+                return render(request, self.template_name, context={'execute_js': True, 'form': form, 'site_title': 'Cadastro - '})
             
             code_validated = cache.get(f'validated_{email}')
 
