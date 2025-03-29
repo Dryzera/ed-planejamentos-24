@@ -29,7 +29,6 @@ class RestrictAccessMiddleware:
                 if request.user.groups.filter(name=group).exists():
                     messages.error(request, 'Você não possui acesso a essa página com o plano Free. [607]')
                     return redirect(reverse("teachers:home"))
-
         return self.get_response(request)
     
 
@@ -40,11 +39,9 @@ class RateLimitMiddleware:
     def __call__(self, request):
         if request.method == 'POST':
             ratelimited_response = ratelimit(key='ip', rate='10/m', method='POST', block=True)(self.get_response)(request)
-            if isinstance(ratelimited_response, HttpResponseForbidden):
-                return ratelimited_response
+            return ratelimited_response
         elif request.method == 'GET':
             ratelimited_response = ratelimit(key='ip', rate='15/m', method='GET', block=True)(self.get_response)(request)
-            if isinstance(ratelimited_response, HttpResponseForbidden):
-                return ratelimited_response
-            
+            return ratelimited_response
+
         return self.get_response(request)
