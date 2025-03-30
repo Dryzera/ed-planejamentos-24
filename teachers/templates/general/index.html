@@ -1,5 +1,7 @@
 {% extends "global/base.html" %}
 {% load static %}
+{% load render_bundle from webpack_loader %}
+
 {% block content %}
 <div class="message info alert-mobile">
     Não recomendamos que acesse nosso site por um dispositivo móvel. A sua experiência pode ser afetada. Considere utilizar um computador.
@@ -70,5 +72,6 @@
     </div>
 </div>
 </div>
-<script src="{% static "global/js/script.js" %}"></script>   
+
+{% render_bundle 'homeTeachers' %}
 {% endblock content %}

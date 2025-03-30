@@ -1,3 +1,5 @@
+import message from "./toastifyMessages";
+
 const form = document.querySelector('.register-form')
 
 sendCode()

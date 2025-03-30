@@ -1,4 +1,4 @@
-(function() {
+export default (function() {
     document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("loader").style.display = "flex";
 

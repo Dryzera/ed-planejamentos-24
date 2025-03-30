@@ -1,5 +1,4 @@
 import path from "path";
-import { fileURLToPath } from "url";
 import BundleTracker from "webpack-bundle-tracker";
 
 const __dirname = path.dirname('.');
@@ -7,6 +6,7 @@ const __dirname = path.dirname('.');
 export default {
   entry: {
     script: './base_static/global/js/script.js', 
+    homeTeachers: './base_static/global/js/teachersHome.js', 
   },
   output: {
     path: path.resolve(__dirname, "base_static/build/"),

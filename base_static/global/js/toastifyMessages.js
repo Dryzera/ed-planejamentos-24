@@ -1,7 +1,7 @@
 import Toastify from 'toastify-js'
 import "toastify-js/src/toastify.css"
 
-export default function message(message, type='info', time=4000) {
+function message(message, type='info', time=4000) {
     const backgroundColors = {
         success: 'linear-gradient(to right, #4caf50,rgb(106, 164, 109))',
         error: 'linear-gradient(to right,rgb(255, 43, 43),rgb(255, 65, 65))',
@@ -15,7 +15,12 @@ export default function message(message, type='info', time=4000) {
         gravity: 'top',
         position: 'left',
         stopOnFocus: true,
-        backgroundColor: backgroundColors[type],
         stopOnFocus: true,
+        style: {
+            background: backgroundColors[type]
+        }
     }).showToast();
 }
+
+window.message = message;
+export default message;
