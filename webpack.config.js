@@ -8,6 +8,8 @@ export default {
   entry: {
     script: './base_static/global/js/script.js', 
     homeTeachers: './base_static/global/js/teachersHome.js', 
+    validation: './base_static/global/js/validation.js', 
+    codeVerify: './base_static/global/js/codeVerify.js', 
   },
   output: {
     path: path.resolve(__dirname, "base_static/build/"),

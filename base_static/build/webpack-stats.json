@@ -1,6 +1,14 @@
 {
   "status": "done",
   "assets": {
+    "codeVerify.bundle.js": {
+      "name": "codeVerify.bundle.js",
+      "path": "C:\\Users\\endry\\Desktop\\devs\\ed-planejamentos\\base_static\\build\\codeVerify.bundle.js"
+    },
+    "codeVerify.bundle.js.LICENSE.txt": {
+      "name": "codeVerify.bundle.js.LICENSE.txt",
+      "path": "C:\\Users\\endry\\Desktop\\devs\\ed-planejamentos\\base_static\\build\\codeVerify.bundle.js.LICENSE.txt"
+    },
     "homeTeachers.bundle.js": {
       "name": "homeTeachers.bundle.js",
       "path": "C:\\Users\\endry\\Desktop\\devs\\ed-planejamentos\\base_static\\build\\homeTeachers.bundle.js"
@@ -12,14 +20,28 @@
     "script.bundle.js.LICENSE.txt": {
       "name": "script.bundle.js.LICENSE.txt",
       "path": "C:\\Users\\endry\\Desktop\\devs\\ed-planejamentos\\base_static\\build\\script.bundle.js.LICENSE.txt"
+    },
+    "validation.bundle.js": {
+      "name": "validation.bundle.js",
+      "path": "C:\\Users\\endry\\Desktop\\devs\\ed-planejamentos\\base_static\\build\\validation.bundle.js"
+    },
+    "validation.bundle.js.LICENSE.txt": {
+      "name": "validation.bundle.js.LICENSE.txt",
+      "path": "C:\\Users\\endry\\Desktop\\devs\\ed-planejamentos\\base_static\\build\\validation.bundle.js.LICENSE.txt"
     }
   },
   "chunks": {
+    "codeVerify": [
+      "codeVerify.bundle.js"
+    ],
     "homeTeachers": [
       "homeTeachers.bundle.js"
     ],
     "script": [
       "script.bundle.js"
+    ],
+    "validation": [
+      "validation.bundle.js"
     ]
   }
 }
