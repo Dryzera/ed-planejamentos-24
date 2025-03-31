@@ -1,5 +1,6 @@
 import path from "path";
 import BundleTracker from "webpack-bundle-tracker";
+import TerserPlugin from "terser-webpack-plugin";
 
 const __dirname = path.dirname('.');
 
@@ -34,5 +35,5 @@ export default {
     new BundleTracker({ filename: path.join(__dirname, "webpack-stats.json") }),
 
   ],
-  mode: "development",
+  mode: "production",
 };

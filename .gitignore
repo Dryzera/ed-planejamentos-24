@@ -9,6 +9,7 @@ media
 local_settings.py
 commands/
 node_modules/
+*.LICENSE.txt
 
 # Backup files # 
 *.bak 
