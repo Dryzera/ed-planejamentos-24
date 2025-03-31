@@ -3,15 +3,15 @@
   "assets": {
     "homeTeachers.bundle.js": {
       "name": "homeTeachers.bundle.js",
-      "path": "C:\\Users\\endry\\Desktop\\devs\\ed-planejamentos\\base_static\\build\\homeTeachers.bundle.js"
+      "path": "/root/edapp/base_static/build/homeTeachers.bundle.js"
     },
     "script.bundle.js": {
       "name": "script.bundle.js",
-      "path": "C:\\Users\\endry\\Desktop\\devs\\ed-planejamentos\\base_static\\build\\script.bundle.js"
+      "path": "/root/edapp/base_static/build/script.bundle.js"
     },
     "script.bundle.js.LICENSE.txt": {
       "name": "script.bundle.js.LICENSE.txt",
-      "path": "C:\\Users\\endry\\Desktop\\devs\\ed-planejamentos\\base_static\\build\\script.bundle.js.LICENSE.txt"
+      "path": "/root/edapp/base_static/build/script.bundle.js.LICENSE.txt"
     }
   },
   "chunks": {
