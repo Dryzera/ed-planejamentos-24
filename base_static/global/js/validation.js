@@ -14,13 +14,13 @@ function fieldsValidate(field) {
 }
 
 function registerValidation() {
-    form = document.querySelector('.register-form')
+    const form = document.querySelector('.register-form')
     
     form.addEventListener('submit', e => {
         e.preventDefault()
         const errorsOnValidation = []
         
-        inputs = form.querySelectorAll('.input-validate')
+        const inputs = form.querySelectorAll('.input-validate')
         inputs.forEach(element => {
             const validationResponses = fieldsValidate(element)
             errorsOnValidation.push(validationResponses)

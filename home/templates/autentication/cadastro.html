@@ -1,6 +1,7 @@
 {% extends "global/base.html" %}
 {% load static %}
 {% load crispy_forms_tags %}
+{% load render_bundle from webpack_loader %}
 
 {% block content %}
 
@@ -33,8 +34,8 @@
       <a class='btnVerifyCode btn btn-secondary' href='{% url "home:register" %}'>Preencher Novamente</a>
     </div>
   </div>
-  <script src="{% static "global/js/validation.js" %}"></script>
-{% if execute_js %}
-  <script src="{% static "global/js/codeVerify.js" %}"></script>
-{% endif %}
+  {% render_bundle 'validation' %}
+  {% if execute_js %}
+    {% render_bundle 'codeVerify' %}
+  {% endif %}
 {% endblock content %}
