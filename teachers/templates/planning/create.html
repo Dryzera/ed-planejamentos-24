@@ -1,6 +1,7 @@
 {% extends "global/base.html" %}
 {% load static %}
 {% block content %}
+{% load render_bundle from webpack_loader %}
 
 <div class="info-create-planning">
     <h1>Criando planejamento para {{ day_planning|date:'d/m/Y' }} ({{ day_week }})</h1>
@@ -72,6 +73,5 @@
     </div>
 </form>
 
-<script src="{% static "global/js/loadPlanning.js" %}"></script>
-<script src="{% static "global/js/caracteresCount.js" %}"></script>
+{% render_bundle 'planningFunctions' %}
 {% endblock content %}

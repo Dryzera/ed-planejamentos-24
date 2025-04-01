@@ -9,6 +9,7 @@ export default {
     script: './base_static/global/js/script.js', 
     homeTeachers: './base_static/global/js/teachersHome.js', 
     validation: './base_static/global/js/validation.js', 
+    planningFunctions: './base_static/global/js/planningFunctions.js', 
     codeVerify: './base_static/global/js/codeVerify.js', 
   },
   output: {
