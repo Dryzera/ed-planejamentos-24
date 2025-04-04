@@ -11,6 +11,7 @@ export default {
     validation: './base_static/global/js/validation.js', 
     planningFunctions: './base_static/global/js/planningFunctions.js', 
     codeVerify: './base_static/global/js/codeVerify.js', 
+    iaScript: './base_static/global/js/iaScript.js', 
   },
   output: {
     path: path.resolve(__dirname, "base_static/build/"),
