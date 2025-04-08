@@ -9,30 +9,9 @@ load_dotenv()
 client = InferenceClient(api_key=os.getenv('API_KEY'))
 # client = InferenceClient(api_key=os.getenv('API_KEY2'))
 
-def generate_planning_ia(term):
-	messages = [
-		{
-			"role": "user",
-			"content": f'{term}'
-		}
-	]
-	# microsoft/Phi-3.5-mini-instruct
-	completion = client.chat.completions.create(
-		model="google/gemma-2-2b-it", 
-		messages=messages, 
-		max_tokens=1500,
-		temperature=0.2,
-	)
-
-	response = completion.choices[0].message.content
-	return response
-
-def generate_response_ia(messages):
+def ia_generation(messages):
 	client = Together(api_key=os.getenv('API_KEY_TOGETHER'))
-
-	if len(messages) > 10:
-		messages = messages[-10:]
-
+	
 	response = client.chat.completions.create(
 		# cheap: meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo
 		model="meta-llama/Llama-3.3-70B-Instruct-Turbo-Free",
@@ -43,6 +22,23 @@ def generate_response_ia(messages):
 		truncation="end",
 	)
 	return response.choices[0].message.content
+
+
+def generate_planning_ia(term):
+	messages = [
+		{
+			"role": "user",
+			"content": f'{term}'
+		}
+	]
+	return ia_generation(messages)
+
+def generate_response_ia(messages):
+
+	if len(messages) > 10:
+		messages = messages[-10:]
+
+	return ia_generation(messages)
 
 def question_ia(term, user):
 	prompt_ia = PromptIa.objects.get(user=user)
