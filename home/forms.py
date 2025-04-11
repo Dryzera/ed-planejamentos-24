@@ -1,5 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User
+from django.core.cache import cache 
+
 
 class LoginForm(forms.ModelForm):
     user = forms.CharField(
@@ -165,6 +167,9 @@ class RegisterForm(forms.ModelForm):
             ))
 
 class EditProfileForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
     first_name = forms.CharField(
         widget=forms.TextInput(
             attrs={
@@ -196,23 +201,45 @@ class EditProfileForm(forms.ModelForm):
         ),
         label='Seu Email:'
     )
+
+    register = forms.CharField(
+        widget=forms.HiddenInput(
+            attrs={
+                'value': 'off'
+            }
+        ),
+        label='Seu Email:'
+    )
     
     class Meta:
         model = User
         fields = ('first_name', 'last_name', 'email')
     
     def clean(self, *args, **kwargs):
-        cleaned = self.cleaned_data
-        validation_error_messages = {}
+        cleaned = super().clean()
+        register = cleaned.get('register')
         email_data = cleaned.get('email')
+        validation_error_messages = {}
 
         error_msg_email_exists = 'Este e-mail já existe.'
+        find_mail = User.objects.filter(email=email_data)
 
-        if User.objects.filter(email=email_data).exists():
-            validation_error_messages['email']  = error_msg_email_exists
+        if find_mail.exists():
+            first_match = find_mail.first()
 
+            if first_match.pk != self.instance.pk:
+                validation_error_messages['email'] = error_msg_email_exists
+
+            elif first_match.email == email_data:
+                # Email não foi alterado
+                if register == 'off':
+                    cache.set(f'validated_{email_data}', True, timeout=1440)
+                    cleaned['register'] = 'on'
         
         if validation_error_messages:
             raise(forms.ValidationError(
                 validation_error_messages 
             ))
+        
+        return cleaned
+        
