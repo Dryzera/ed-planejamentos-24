@@ -144,10 +144,11 @@ class EditProfile(DetailView):
         return render(request, self.template_name, context={'form': form, 'site_title': 'Editar Perfil - ', 'profile': profile})
     
     def post(self, request, *args, **kwargs):
-        form = self.form_class(request.POST)
-        register = request.POST.get('register')
+        profile = get_object_or_404(User, pk=self.kwargs['pk'])
+        form = self.form_class(request.POST, instance=profile)
 
         if form.is_valid():
+            register = form.cleaned_data.get('register')
             email = form.cleaned_data['email']
 
             if register != 'on':

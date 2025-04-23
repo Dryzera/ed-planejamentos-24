@@ -13,7 +13,6 @@
                 <div class="blocked">
                   {{ form|crispy }}
                   {% if execute_js %}
-                    <input type="hidden" name="register" value='on'>
                     <input type="button" value='Salvar' disabled class='btn btn-primary'>
                   {% else %}
                     <button type="submit" class='btn btn-primary'>Salvar</button>
